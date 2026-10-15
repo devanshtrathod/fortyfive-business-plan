@@ -1,0 +1,2702 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FortyFive Website Plan</title>
+<style>
+:root{color-scheme:light;--paper:#f6f4ee;--surface:#fffffe;--wash:#efede6;--ink:#121211;--ink-2:#4a4945;--muted:#7a7873;--rule:#dcdad2;--blue:#2a78d6;--blue-wash:#e9f1fb;--red:#b42a2a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;--paper:#0f0f0e;--surface:#1a1a19;--wash:#232321;--ink:#f4f2ec;--ink-2:#c3c2b7;--muted:#8f8d86;--rule:#2f2f2c;--blue:#5b9be8;--blue-wash:#16263a;--red:#e06a6a}}
+:root[data-theme="dark"]{color-scheme:dark;--paper:#0f0f0e;--surface:#1a1a19;--wash:#232321;--ink:#f4f2ec;--ink-2:#c3c2b7;--muted:#8f8d86;--rule:#2f2f2c;--blue:#5b9be8;--blue-wash:#16263a;--red:#e06a6a}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}
+.top{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--rule)}
+.top .in{max-width:1240px;margin:0 auto;padding:12px 16px;display:flex;gap:12px;align-items:center}
+.mark{width:32px;height:32px;border-radius:7px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-weight:800;font-size:13px;flex:none}
+.top b{font-size:15px}.top .sp{flex:1}
+.btn{font:inherit;font-size:13px;border:1px solid var(--rule);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer;text-decoration:none}
+.layout{max-width:1240px;margin:0 auto;padding:0 16px;display:grid;grid-template-columns:270px minmax(0,1fr);gap:40px}
+nav.toc{position:sticky;top:58px;align-self:start;max-height:calc(100vh - 70px);overflow:auto;padding:18px 0 40px;font-size:13.5px}
+nav.toc ul{list-style:none;margin:0;padding:0}
+nav.toc ul ul{padding-left:12px;border-left:1px solid var(--rule);margin:2px 0 6px 4px}
+nav.toc li{margin:2px 0}
+nav.toc a{color:var(--ink-2);text-decoration:none}
+nav.toc a:hover{color:var(--blue)}
+nav.toc > div > ul > li > a{color:var(--ink);font-weight:650}
+details.mtoc{display:none}
+main{padding:22px 0 80px;min-width:0}
+h1{font-size:34px;line-height:1.15;letter-spacing:-.5px;margin:6px 0 10px}
+h2{font-size:26px;letter-spacing:-.3px;margin:48px 0 10px;padding-top:18px;border-top:1px solid var(--rule)}
+h3{font-size:19px;margin:30px 0 8px}
+h4{font-size:16px;margin:26px 0 6px}
+p,li{color:var(--ink-2)} strong{color:var(--ink)}
+ul,ol{padding-left:22px}
+hr{border:0;border-top:1px solid var(--rule);margin:26px 0}
+code{font:13.5px ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--wash);padding:1px 5px;border-radius:5px;color:var(--ink)}
+pre.wf{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;overflow-x:auto;white-space:pre;line-height:1.35;margin:14px 0}
+pre.wf code{background:none;padding:0;font-size:12.5px;color:var(--ink)}
+.tw{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--surface);margin:12px 0}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px 11px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--wash)}
+tr:last-child td{border-bottom:0}
+td{color:var(--ink-2)}
+@media (max-width:900px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:0}
+  nav.toc{display:none}
+  details.mtoc{display:block;margin:14px 0 0;border:1px solid var(--rule);border-radius:10px;background:var(--surface);padding:10px 14px;font-size:14px}
+  details.mtoc ul{list-style:none;padding-left:12px}
+  .top{position:static}
+}
+@media print{.top,nav.toc,details.mtoc{display:none}.layout{display:block}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in"><div class="mark">45.</div><b>Website plan</b><span class="sp"></span>
+<a class="btn" href="../index.html#website">Business plan</a><button class="btn" id="th" type="button">Theme</button></div></header>
+<div class="layout">
+<nav class="toc" aria-label="Contents"><div><ul><li><a href="#a-the-shape-of-the-site">A. The shape of the site</a><ul><li><a href="#a1-what-it-must-do">A1. What it must do</a></li><li><a href="#a2-how-well-know-it-works">A2. How we&#x27;ll know it works</a></li><li><a href="#a3-people-and-roles">A3. People and roles</a></li><li><a href="#a4-who-can-do-what">A4. Who can do what</a></li><li><a href="#a5-site-map">A5. Site map</a></li><li><a href="#a6-navigation">A6. Navigation</a></li></ul></li><li><a href="#b-the-sign-ups">B. The sign-ups</a><ul><li><a href="#b1-the-door-chooser-signup">B1. The door chooser (/signup)</a></li><li><a href="#b2-student-sign-up-signupstudent-four-steps">B2. Student sign-up (/signup/student): four steps</a></li><li><a href="#b3-parent-approval-consenttoken">B3. Parent approval (/consent/[token])</a></li><li><a href="#b4-parent-first-signupparent">B4. Parent first (/signup/parent)</a></li><li><a href="#b5-tutor-sign-up-signuptutor-and-the-checklist">B5. Tutor sign-up (/signup/tutor) and the checklist</a></li></ul></li><li><a href="#c-every-screen">C. Every screen</a><ul><li><a href="#public-site">Public site</a><ul><li><a href="#c1-home-">C1. Home (/)</a></li><li><a href="#c2-course-catalogue-courses">C2. Course catalogue (/courses)</a></li><li><a href="#c3-course-page-coursessubjectcourse">C3. Course page (/courses/[subject]/[course])</a></li><li><a href="#c4-tutor-search-tutors">C4. Tutor search (/tutors)</a></li><li><a href="#c5-tutor-profile-tutorsname-id">C5. Tutor profile (/tutors/[name-id])</a></li><li><a href="#c6-coursework-coursework">C6. Coursework (/coursework)</a></li><li><a href="#c7-free-tools-tools-and-one-page-each">C7. Free tools (/tools and one page each)</a></li><li><a href="#c8-honesty-honesty-and-its-pages">C8. Honesty (/honesty and its pages)</a></li><li><a href="#c9-for-parents-safety-and-report-a-concern-safetyreport">C9. For parents (/safety) and Report a concern (/safety/report)</a></li><li><a href="#c10-for-schools-schools">C10. For schools (/schools)</a></li><li><a href="#c11-teach-on-fortyfive-teach">C11. Teach on FortyFive (/teach)</a></li><li><a href="#c12-sign-in-signin">C12. Sign in (/signin)</a></li></ul></li><li><a href="#student-app">Student app</a><ul><li><a href="#c13-today-app-student">C13. Today (/app, student)</a></li><li><a href="#c14-course-player-appcoursesid">C14. Course player (/app/courses/[id])</a></li><li><a href="#c15-booking-student-side">C15. Booking (student side)</a></li><li><a href="#c16-requests-apprequests">C16. Requests (/app/requests)</a></li><li><a href="#c17-bookings-and-lesson-details-appbookings-applessonsid">C17. Bookings and lesson details (/app/bookings, /app/lessons/[id])</a></li><li><a href="#c18-lesson-room-applessonsidroom">C18. Lesson room (/app/lessons/[id]/room)</a></li><li><a href="#c19-coursework-appcoursework-and-appcourseworkpiece">C19. Coursework (/app/coursework and /app/coursework/[piece])</a></li><li><a href="#c20-marker-start-a-check">C20. Marker: start a check</a></li><li><a href="#c21-marker-report-appmarkerreport">C21. Marker report (/app/marker/[report])</a></li><li><a href="#c22-messages-appmessages">C22. Messages (/app/messages)</a></li><li><a href="#c23-account-appaccount">C23. Account (/app/account)</a></li></ul></li><li><a href="#parent-app">Parent app</a><ul><li><a href="#c24-parent-home-app-parent">C24. Parent home (/app, parent)</a></li><li><a href="#c25-approvals-appapprovals">C25. Approvals (/app/approvals)</a></li><li><a href="#c26-the-other-parent-screens">C26. The other parent screens</a></li></ul></li><li><a href="#tutor-app">Tutor app</a><ul><li><a href="#c27-tutor-home-app-tutor">C27. Tutor home (/app, tutor)</a></li><li><a href="#c28-requests-board-apprequests-tutor">C28. Requests board (/app/requests, tutor)</a></li><li><a href="#c29-calendar-appcalendar">C29. Calendar (/app/calendar)</a></li><li><a href="#c30-students-appstudents">C30. Students (/app/students)</a></li><li><a href="#c31-help-log-applogs">C31. Help log (/app/logs)</a></li><li><a href="#c32-earnings-appearnings">C32. Earnings (/app/earnings)</a></li><li><a href="#c33-profile-appprofile">C33. Profile (/app/profile)</a></li><li><a href="#c34-training-apptraining">C34. Training (/app/training)</a></li><li><a href="#c35-course-authoring-appauthoring-course-leads-v1">C35. Course authoring (/app/authoring, course leads, v1)</a></li><li><a href="#c36-guardian-view-app-guardian-of-a-17-year-old-tutor">C36. Guardian view (/app, guardian of a 17-year-old tutor)</a></li></ul></li><li><a href="#staff-console-adminfortyfivestudy">Staff console (admin.fortyfive.study)</a><ul><li><a href="#c37-verification-queue-verify">C37. Verification queue (/verify)</a></li><li><a href="#c38-safeguarding-inbox-safeguarding">C38. Safeguarding inbox (/safeguarding)</a></li><li><a href="#c39-integrity-reviews-integrity">C39. Integrity reviews (/integrity)</a></li><li><a href="#c40-content-and-corrections-content">C40. Content and corrections (/content)</a></li><li><a href="#c41-payments-payments">C41. Payments (/payments)</a></li><li><a href="#c42-people-and-data-people">C42. People and data (/people)</a></li><li><a href="#c43-marker-ops-marker">C43. Marker ops (/marker)</a></li><li><a href="#c44-open-books-books">C44. Open books (/books)</a></li></ul></li><li><a href="#school-console-v2">School console (v2)</a><ul><li><a href="#c45-school-coordinator-school">C45. School coordinator (/school)</a></li></ul></li></ul></li><li><a href="#d-the-flows">D. The flows</a><ul><li><a href="#d1-joining-student-and-parent">D1. Joining (student and parent)</a></li><li><a href="#d2-a-lesson-booking-start-to-finish">D2. A lesson booking, start to finish</a></li><li><a href="#d3-the-request-board">D3. The request board</a></li><li><a href="#d4-free-intro-call">D4. Free intro call</a></li><li><a href="#d5-lesson-day">D5. Lesson day</a></li><li><a href="#d6-cancelling-and-refunds">D6. Cancelling and refunds</a></li><li><a href="#d7-reviews">D7. Reviews</a></li><li><a href="#d8-buying-a-course-or-a-free-place">D8. Buying a course, or a free place</a></li><li><a href="#d9-coursework-coaching">D9. Coursework coaching</a></li><li><a href="#d10-a-marker-check">D10. A Marker check</a></li><li><a href="#d11-reporting-a-concern">D11. Reporting a concern</a></li><li><a href="#d12-payouts">D12. Payouts</a></li><li><a href="#d13-data-rights-and-withdrawing-consent">D13. Data rights and withdrawing consent</a></li><li><a href="#d14-turning-18">D14. Turning 18</a></li></ul></li><li><a href="#e-notifications">E. Notifications</a></li><li><a href="#f-the-look">F. The look</a><ul><li><a href="#f1-direction">F1. Direction</a></li><li><a href="#f2-fonts">F2. Fonts</a></li><li><a href="#f3-colour">F3. Colour</a></li><li><a href="#f4-type-spacing-and-grid">F4. Type, spacing and grid</a></li><li><a href="#f5-components">F5. Components</a></li><li><a href="#f6-access-for-everyone">F6. Access for everyone</a></li><li><a href="#f7-formats">F7. Formats</a></li></ul></li><li><a href="#g-the-words">G. The words</a><ul><li><a href="#g1-voice">G1. Voice</a></li><li><a href="#g2-words-for-key-moments">G2. Words for key moments</a></li><li><a href="#g3-what-has-to-be-written-before-launch">G3. What has to be written before launch</a></li></ul></li><li><a href="#h-building-it">H. Building it</a><ul><li><a href="#h1-what-each-part-runs-on">H1. What each part runs on</a></li><li><a href="#h2-what-ships-when">H2. What ships when</a></li><li><a href="#h3-order-of-work-for-v0">H3. Order of work for v0</a></li><li><a href="#h4-testing">H4. Testing</a></li><li><a href="#h5-before-the-pilot-opens">H5. Before the pilot opens</a></li></ul></li><li><a href="#i-questions-still-open">I. Questions still open</a></li></ul></div></nav>
+<main>
+<details class="mtoc"><summary>Contents</summary><div><ul><li><a href="#a-the-shape-of-the-site">A. The shape of the site</a><ul><li><a href="#a1-what-it-must-do">A1. What it must do</a></li><li><a href="#a2-how-well-know-it-works">A2. How we&#x27;ll know it works</a></li><li><a href="#a3-people-and-roles">A3. People and roles</a></li><li><a href="#a4-who-can-do-what">A4. Who can do what</a></li><li><a href="#a5-site-map">A5. Site map</a></li><li><a href="#a6-navigation">A6. Navigation</a></li></ul></li><li><a href="#b-the-sign-ups">B. The sign-ups</a><ul><li><a href="#b1-the-door-chooser-signup">B1. The door chooser (/signup)</a></li><li><a href="#b2-student-sign-up-signupstudent-four-steps">B2. Student sign-up (/signup/student): four steps</a></li><li><a href="#b3-parent-approval-consenttoken">B3. Parent approval (/consent/[token])</a></li><li><a href="#b4-parent-first-signupparent">B4. Parent first (/signup/parent)</a></li><li><a href="#b5-tutor-sign-up-signuptutor-and-the-checklist">B5. Tutor sign-up (/signup/tutor) and the checklist</a></li></ul></li><li><a href="#c-every-screen">C. Every screen</a><ul><li><a href="#public-site">Public site</a><ul><li><a href="#c1-home-">C1. Home (/)</a></li><li><a href="#c2-course-catalogue-courses">C2. Course catalogue (/courses)</a></li><li><a href="#c3-course-page-coursessubjectcourse">C3. Course page (/courses/[subject]/[course])</a></li><li><a href="#c4-tutor-search-tutors">C4. Tutor search (/tutors)</a></li><li><a href="#c5-tutor-profile-tutorsname-id">C5. Tutor profile (/tutors/[name-id])</a></li><li><a href="#c6-coursework-coursework">C6. Coursework (/coursework)</a></li><li><a href="#c7-free-tools-tools-and-one-page-each">C7. Free tools (/tools and one page each)</a></li><li><a href="#c8-honesty-honesty-and-its-pages">C8. Honesty (/honesty and its pages)</a></li><li><a href="#c9-for-parents-safety-and-report-a-concern-safetyreport">C9. For parents (/safety) and Report a concern (/safety/report)</a></li><li><a href="#c10-for-schools-schools">C10. For schools (/schools)</a></li><li><a href="#c11-teach-on-fortyfive-teach">C11. Teach on FortyFive (/teach)</a></li><li><a href="#c12-sign-in-signin">C12. Sign in (/signin)</a></li></ul></li><li><a href="#student-app">Student app</a><ul><li><a href="#c13-today-app-student">C13. Today (/app, student)</a></li><li><a href="#c14-course-player-appcoursesid">C14. Course player (/app/courses/[id])</a></li><li><a href="#c15-booking-student-side">C15. Booking (student side)</a></li><li><a href="#c16-requests-apprequests">C16. Requests (/app/requests)</a></li><li><a href="#c17-bookings-and-lesson-details-appbookings-applessonsid">C17. Bookings and lesson details (/app/bookings, /app/lessons/[id])</a></li><li><a href="#c18-lesson-room-applessonsidroom">C18. Lesson room (/app/lessons/[id]/room)</a></li><li><a href="#c19-coursework-appcoursework-and-appcourseworkpiece">C19. Coursework (/app/coursework and /app/coursework/[piece])</a></li><li><a href="#c20-marker-start-a-check">C20. Marker: start a check</a></li><li><a href="#c21-marker-report-appmarkerreport">C21. Marker report (/app/marker/[report])</a></li><li><a href="#c22-messages-appmessages">C22. Messages (/app/messages)</a></li><li><a href="#c23-account-appaccount">C23. Account (/app/account)</a></li></ul></li><li><a href="#parent-app">Parent app</a><ul><li><a href="#c24-parent-home-app-parent">C24. Parent home (/app, parent)</a></li><li><a href="#c25-approvals-appapprovals">C25. Approvals (/app/approvals)</a></li><li><a href="#c26-the-other-parent-screens">C26. The other parent screens</a></li></ul></li><li><a href="#tutor-app">Tutor app</a><ul><li><a href="#c27-tutor-home-app-tutor">C27. Tutor home (/app, tutor)</a></li><li><a href="#c28-requests-board-apprequests-tutor">C28. Requests board (/app/requests, tutor)</a></li><li><a href="#c29-calendar-appcalendar">C29. Calendar (/app/calendar)</a></li><li><a href="#c30-students-appstudents">C30. Students (/app/students)</a></li><li><a href="#c31-help-log-applogs">C31. Help log (/app/logs)</a></li><li><a href="#c32-earnings-appearnings">C32. Earnings (/app/earnings)</a></li><li><a href="#c33-profile-appprofile">C33. Profile (/app/profile)</a></li><li><a href="#c34-training-apptraining">C34. Training (/app/training)</a></li><li><a href="#c35-course-authoring-appauthoring-course-leads-v1">C35. Course authoring (/app/authoring, course leads, v1)</a></li><li><a href="#c36-guardian-view-app-guardian-of-a-17-year-old-tutor">C36. Guardian view (/app, guardian of a 17-year-old tutor)</a></li></ul></li><li><a href="#staff-console-adminfortyfivestudy">Staff console (admin.fortyfive.study)</a><ul><li><a href="#c37-verification-queue-verify">C37. Verification queue (/verify)</a></li><li><a href="#c38-safeguarding-inbox-safeguarding">C38. Safeguarding inbox (/safeguarding)</a></li><li><a href="#c39-integrity-reviews-integrity">C39. Integrity reviews (/integrity)</a></li><li><a href="#c40-content-and-corrections-content">C40. Content and corrections (/content)</a></li><li><a href="#c41-payments-payments">C41. Payments (/payments)</a></li><li><a href="#c42-people-and-data-people">C42. People and data (/people)</a></li><li><a href="#c43-marker-ops-marker">C43. Marker ops (/marker)</a></li><li><a href="#c44-open-books-books">C44. Open books (/books)</a></li></ul></li><li><a href="#school-console-v2">School console (v2)</a><ul><li><a href="#c45-school-coordinator-school">C45. School coordinator (/school)</a></li></ul></li></ul></li><li><a href="#d-the-flows">D. The flows</a><ul><li><a href="#d1-joining-student-and-parent">D1. Joining (student and parent)</a></li><li><a href="#d2-a-lesson-booking-start-to-finish">D2. A lesson booking, start to finish</a></li><li><a href="#d3-the-request-board">D3. The request board</a></li><li><a href="#d4-free-intro-call">D4. Free intro call</a></li><li><a href="#d5-lesson-day">D5. Lesson day</a></li><li><a href="#d6-cancelling-and-refunds">D6. Cancelling and refunds</a></li><li><a href="#d7-reviews">D7. Reviews</a></li><li><a href="#d8-buying-a-course-or-a-free-place">D8. Buying a course, or a free place</a></li><li><a href="#d9-coursework-coaching">D9. Coursework coaching</a></li><li><a href="#d10-a-marker-check">D10. A Marker check</a></li><li><a href="#d11-reporting-a-concern">D11. Reporting a concern</a></li><li><a href="#d12-payouts">D12. Payouts</a></li><li><a href="#d13-data-rights-and-withdrawing-consent">D13. Data rights and withdrawing consent</a></li><li><a href="#d14-turning-18">D14. Turning 18</a></li></ul></li><li><a href="#e-notifications">E. Notifications</a></li><li><a href="#f-the-look">F. The look</a><ul><li><a href="#f1-direction">F1. Direction</a></li><li><a href="#f2-fonts">F2. Fonts</a></li><li><a href="#f3-colour">F3. Colour</a></li><li><a href="#f4-type-spacing-and-grid">F4. Type, spacing and grid</a></li><li><a href="#f5-components">F5. Components</a></li><li><a href="#f6-access-for-everyone">F6. Access for everyone</a></li><li><a href="#f7-formats">F7. Formats</a></li></ul></li><li><a href="#g-the-words">G. The words</a><ul><li><a href="#g1-voice">G1. Voice</a></li><li><a href="#g2-words-for-key-moments">G2. Words for key moments</a></li><li><a href="#g3-what-has-to-be-written-before-launch">G3. What has to be written before launch</a></li></ul></li><li><a href="#h-building-it">H. Building it</a><ul><li><a href="#h1-what-each-part-runs-on">H1. What each part runs on</a></li><li><a href="#h2-what-ships-when">H2. What ships when</a></li><li><a href="#h3-order-of-work-for-v0">H3. Order of work for v0</a></li><li><a href="#h4-testing">H4. Testing</a></li><li><a href="#h5-before-the-pilot-opens">H5. Before the pilot opens</a></li></ul></li><li><a href="#i-questions-still-open">I. Questions still open</a></li></ul></div></details>
+<h1 id="fortyfive-website-plan">FortyFive website plan</h1>
+<p><strong>Version 1, 13 October 2026.</strong> The whole website and app, planned end to end: who uses it, every screen, every flow, the look, the words, the build order and the tests. It replaces the Fable brief (moved to <code>_old</code>).</p>
+<p><strong>How to read it.</strong></p>
+<ul>
+<li><strong>Part A:</strong> the shape of the site.</li>
+<li><strong>Part B:</strong> the sign-ups.</li>
+<li><strong>Part C:</strong> every screen, with wireframes for the important ones.</li>
+<li><strong>Part D:</strong> the flows that run across screens.</li>
+<li><strong>Part E:</strong> notifications.</li>
+<li><strong>Part F:</strong> the look.</li>
+<li><strong>Part G:</strong> the words.</li>
+<li><strong>Part H:</strong> how and when it gets built and tested.</li>
+<li><strong>Part I:</strong> the questions still open.</li>
+</ul>
+<p><strong>How to use the wireframes.</strong></p>
+<ul>
+<li>They show what goes where and in what order, not the final look.</li>
+<li>"Rs" stands for the rupee sign so the boxes line up; the real site uses ₹.</li>
+<li>Test the wireframes with students, parents and tutors first. Then style one screen (Home) for your sign-off before styling the rest.</li>
+</ul>
+<p><strong>Status, 13 October 2026: built.</strong></p>
+<ul>
+<li><strong>Where:</strong> every screen in this plan is built in <code>Downloads\fortyfive-site</code> (Next.js 16), working on demo data. Run <code>npm run dev</code> there and open localhost:4545.</li>
+<li><strong>How it differs from the plan:</strong>
+<ul>
+<li>Course pages live at <code>/courses/[course]</code> rather than <code>/courses/[subject]/[course]</code>.</li>
+<li>The demo world is set on 13 September 2027, so payments, coaching and the Marker can all be shown working.</li>
+<li>The brand is FortyFive at joinfortyfive.com (recommended, not yet registered).</li>
+</ul></li>
+<li><strong>Still to do:</strong> the build order in Part H still applies to the real v0. It now means replacing the demo data with Supabase, rather than building screens.</li>
+</ul>
+<h2 id="a-the-shape-of-the-site">A. The shape of the site</h2>
+<h3 id="a1-what-it-must-do">A1. What it must do</h3>
+<p>Three jobs, in this order:</p>
+<ol type="1">
+<li><strong>Keep under-18s safe and parents in control.</strong> Every other feature gives way to this one.</li>
+<li><strong>Get a student from "I'm stuck" to the right help in under five minutes.</strong> That help can be a course lesson, a tutor or a coach.</li>
+<li><strong>Get a good tutor from sign-up to a live profile in under ten days.</strong></li>
+</ol>
+<p>What it must never do:</p>
+<ul>
+<li>sell more than the student needs;</li>
+<li>track how students behave;</li>
+<li>let anyone write anyone's coursework;</li>
+<li>show anything that looks like an IB paper.</li>
+</ul>
+<h3 id="a2-how-well-know-it-works">A2. How we'll know it works</h3>
+<p>Everything here is counted from records the site keeps anyway: bookings, approvals, logs. Nothing comes from tracking clicks.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Target by October 2027</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Time for a parent to approve a booking (median)</td>
+<td>under 6 hours</td>
+</tr>
+<tr>
+<td>Student sign-up to first lesson or course (median)</td>
+<td>under 2 days</td>
+</tr>
+<tr>
+<td>Tutor sign-up to live profile (median)</td>
+<td>under 10 days</td>
+</tr>
+<tr>
+<td>Reports read by the safeguarding lead within 24 hours</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Coaching sessions with a help log filed within 24 hours</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Students who tick off 75% or more of a course checklist</td>
+<td>40%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Analytics run only on public pages, without cookies (Cloudflare Web Analytics). Nothing runs inside the logged-in app.</p>
+<h3 id="a3-people-and-roles">A3. People and roles</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Who</th>
+<th>How they get in</th>
+<th>What they mostly do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visitor</td>
+<td>anyone</td>
+<td>no account</td>
+<td>read, use the free tools</td>
+</tr>
+<tr>
+<td>Student</td>
+<td>DP1 or DP2, usually 16 or 17</td>
+<td>Door A; a parent approves if they're under 18</td>
+<td>courses, tutors, coursework</td>
+</tr>
+<tr>
+<td>Parent</td>
+<td>parent or legal guardian</td>
+<td>invited by the student, or signs up first</td>
+<td>approve, pay, watch, report</td>
+</tr>
+<tr>
+<td>Tutor</td>
+<td>IB graduate 18+, graduate tutor aged 17, or IB teacher</td>
+<td>Door B, then the checklist</td>
+<td>teach lessons</td>
+</tr>
+<tr>
+<td>Coach</td>
+<td>a tutor aged 18+ who passed the integrity course</td>
+<td>from tutor home</td>
+<td>coursework coaching</td>
+</tr>
+<tr>
+<td>Course lead</td>
+<td>a tutor with a verified 7 whose course was accepted</td>
+<td>applies from tutor home</td>
+<td>writes and records a course</td>
+</tr>
+<tr>
+<td>Guardian of a tutor</td>
+<td>the parent of a 17-year-old tutor</td>
+<td>invited by the tutor</td>
+<td>co-signs, receives payouts, sees their lessons</td>
+</tr>
+<tr>
+<td>Staff: verifier</td>
+<td>you, or a trained helper</td>
+<td>invitation</td>
+<td>checks documents</td>
+</tr>
+<tr>
+<td>Staff: safeguarding lead</td>
+<td>your parent, an adult</td>
+<td>invitation</td>
+<td>reads every report and decides</td>
+</tr>
+<tr>
+<td>Staff: integrity reviewer</td>
+<td>an IB teacher, paid per review</td>
+<td>invitation</td>
+<td>reviews coaching recordings</td>
+</tr>
+<tr>
+<td>Staff: subject lead</td>
+<td>a verified 7 or a teacher</td>
+<td>invitation</td>
+<td>checks course content and corrections</td>
+</tr>
+<tr>
+<td>Staff: admin</td>
+<td>you and your parent</td>
+<td>invitation</td>
+<td>money, settings, open books</td>
+</tr>
+<tr>
+<td>School coordinator or teacher (v2)</td>
+<td>staff at a school on a plan</td>
+<td>invitation</td>
+<td>help logs, Marker teacher mode</td>
+</tr>
+</tbody>
+</table></div>
+<p>Rules for accounts:</p>
+<ul>
+<li><strong>One person, one account.</strong> Someone with two roles, like a teacher who is also a parent, switches role from the account menu. The two views never share a screen.</li>
+<li><strong>Linking:</strong> a student can link up to two parents, and a parent can link any number of children.</li>
+<li><strong>Under-18 students never pay.</strong> Their parent does.</li>
+<li><strong>At 18, the student decides.</strong> On their 18th birthday we ask whether their parent keeps seeing their account. Until they answer, nothing changes.</li>
+</ul>
+<h3 id="a4-who-can-do-what">A4. Who can do what</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Student (under 18)</th>
+<th>Parent</th>
+<th>Tutor</th>
+<th>Staff</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Browse courses, tutors, free tools</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Use the site before a parent approves</td>
+<td>browse, free tools, course previews, save tutors</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Buy a course</td>
+<td>asks the parent</td>
+<td>yes</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Ask for a free place</td>
+<td>yes (the parent is told)</td>
+<td>yes</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Message a tutor</td>
+<td>after approval</td>
+<td>yes, in their own thread with the tutor</td>
+<td>replies</td>
+<td>only on a report</td>
+</tr>
+<tr>
+<td>Read a student's messages</td>
+<td>their own</td>
+<td>all of their child's, read-only</td>
+<td>their own threads</td>
+<td>only on a report</td>
+</tr>
+<tr>
+<td>Book a lesson</td>
+<td>requests it</td>
+<td>approves and pays</td>
+<td>accepts or declines</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Post on the request board</td>
+<td>after approval</td>
+<td>yes</td>
+<td>replies</td>
+<td>moderates</td>
+</tr>
+<tr>
+<td>Join a lesson</td>
+<td>yes</td>
+<td>any lesson, as an observer</td>
+<td>yes</td>
+<td>on a report or a review</td>
+</tr>
+<tr>
+<td>Open a recording</td>
+<td>no</td>
+<td>asks the safeguarding lead</td>
+<td>no</td>
+<td>safeguarding lead and integrity reviewer only, and every opening is logged</td>
+</tr>
+<tr>
+<td>Write a help log</td>
+<td>adds their next step</td>
+<td>no</td>
+<td>the coach writes it</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Read help logs</td>
+<td>yes</td>
+<td>yes</td>
+<td>their own</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Upload to the Marker</td>
+<td>yes</td>
+<td>sees the reports</td>
+<td>no</td>
+<td>sees reports, never files</td>
+</tr>
+<tr>
+<td>Review a tutor</td>
+<td>after a paid, finished lesson</td>
+<td>same rule</td>
+<td>replies once</td>
+<td>removes abuse only</td>
+</tr>
+<tr>
+<td>See the student's school</td>
+<td>yes</td>
+<td>yes</td>
+<td>no: only first name, DP year, subjects, session</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Report a concern</td>
+<td>yes</td>
+<td>yes</td>
+<td>yes</td>
+<td>handles it</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="a5-site-map">A5. Site map</h3>
+<p><strong>Public (fortyfive.study).</strong></p>
+<pre class="wf"><code>/                                Home
+/courses                         Course catalogue
+/courses/[subject]/[course]      Course page
+/tutors                          Tutor search
+/tutors/[name-id]                Tutor profile
+/coursework                      Coaching and the Marker: the rules
+/coursework/accuracy             Marker accuracy, subject by subject
+/tools                           Free tools
+/tools/predictor   /tools/next-point   /tools/timetable
+/tools/coursework-planner   /tools/results-day
+/honesty                         The ten promises
+/honesty/fees   /honesty/open-books   /honesty/corrections   /honesty/scorecard
+/safety                          For parents: how lessons stay safe
+/safety/report                   Report a concern, no account needed
+/schools                         For schools
+/teach                           Teach on FortyFive
+/about   /contact
+/legal/terms   /legal/privacy   /legal/refunds
+/legal/tutor-agreement   /legal/coursework-code
+/signin   /signup   /signup/student   /signup/parent   /signup/tutor
+/consent/[token]                 A parent approves from the invite</code></pre>
+<p><strong>The app (/app, after sign-in).</strong> The menu depends on the role.</p>
+<pre class="wf"><code>Student   /app   /app/courses/[id]   /app/tutors   /app/bookings
+          /app/requests   /app/coursework   /app/coursework/[piece]
+          /app/marker/[report]   /app/messages   /app/account
+Parent    /app   /app/approvals   /app/bookings   /app/messages
+          /app/payments   /app/logs   /app/settings
+Tutor     /app   /app/onboarding   /app/requests   /app/calendar
+          /app/students   /app/logs   /app/earnings   /app/profile
+          /app/training   /app/authoring
+Guardian  /app   (their tutor&#39;s lessons, messages, payouts, agreement)
+Shared    /app/lessons/[id]   (lesson details, then the lesson room)</code></pre>
+<p><strong>Staff console (admin.fortyfive.study).</strong> It has its own sign-in with two-factor authentication.</p>
+<pre class="wf"><code>/verify   /safeguarding   /integrity   /content
+/payments   /people   /marker   /books</code></pre>
+<p>The school console (<code>/school</code>) comes in v2.</p>
+<h3 id="a6-navigation">A6. Navigation</h3>
+<p><strong>Public header.</strong></p>
+<pre class="wf"><code>45. FortyFive   Courses  Tutors  Coursework  Free tools  For parents  For schools     Sign in  [ Join ]</code></pre>
+<ul>
+<li><strong>Join</strong> opens the door chooser (B1).</li>
+<li><strong>On a phone:</strong> the logo, Sign in and Menu, which opens a full-screen list.</li>
+<li><strong>Footer:</strong> four columns (Learn, Trust, Join, Legal), a <strong>Report a concern</strong> link, and the line "Not affiliated with or endorsed by the International Baccalaureate Organization."</li>
+</ul>
+<p><strong>App top bar.</strong></p>
+<pre class="wf"><code>45.  [ Student ]   Today  Courses  Tutors  Coursework  Messages        Report   (A)</code></pre>
+<ul>
+<li>The role chip says which home you're in.</li>
+<li><strong>Report</strong> is always in the top bar, in red text, on every screen and every device.</li>
+</ul>
+<p><strong>Phone bottom bars</strong>, five items at most:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Tabs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Student</td>
+<td>Today, Courses, Tutors, Coursework, Messages</td>
+</tr>
+<tr>
+<td>Parent</td>
+<td>Home, Approvals (with a count), Messages, Payments, Settings</td>
+</tr>
+<tr>
+<td>Tutor</td>
+<td>Home, Requests, Calendar, Earnings, More</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="b-the-sign-ups">B. The sign-ups</h2>
+<h3 id="b1-the-door-chooser-signup">B1. The door chooser (<code>/signup</code>)</h3>
+<p>Two doors, equal in size. Nobody lands in a mixed sign-up.</p>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| 45. FortyFive                                              Sign in     |
++------------------------------------------------------------------------+
+|  JOIN FORTYFIVE                                                        |
+|  Which door is yours?                                                  |
+|                                                                        |
+|  +-------------------------------+  +-------------------------------+  |
+|  | I&#39;m a student or a parent     |  | I teach the IB                |  |
+|  |                               |  |                               |  |
+|  | Courses, checked tutors and   |  | IB graduates (17 and over)    |  |
+|  | coursework help. Under 18?    |  | and IB teachers. Keep 90% of  |  |
+|  | A parent approves first.      |  | every lesson. About 10 days   |  |
+|  |                               |  | from sign-up to live.         |  |
+|  | [ I&#39;m a student ] [ Parent ]  |  | [ Apply to teach ]            |  |
+|  +-------------------------------+  +-------------------------------+  |
+|                                                                        |
+|  From a school? Write to us and we&#39;ll set you up.                      |
++------------------------------------------------------------------------+</code></pre>
+<p>On a phone the two cards stack, students and parents first.</p>
+<h3 id="b2-student-sign-up-signupstudent-four-steps">B2. Student sign-up (<code>/signup/student</code>): four steps</h3>
+<p>A line at the top reads "Step 2 of 4". There is no percentage bar. Back always works and nothing typed is lost.</p>
+<ol type="1">
+<li><strong>Account.</strong>
+<ul>
+<li>Fields: first name, email, password (or "email me a sign-in link"), date of birth.</li>
+<li>The note under birthday: "We ask because the law treats under-18s differently. Nobody else sees it."</li>
+<li>A student aged 18 or over skips step 4 and gives consent themselves.</li>
+</ul></li>
+<li><strong>School.</strong>
+<ul>
+<li>Search the 629 Diploma schools by name or city.</li>
+<li>Picking a school fills in its exam month from the IB directory ("Exams: November"). The student can change it.</li>
+<li>Year: DP1 or DP2. Exam session: worked out ("November 2027") and editable.</li>
+<li>"My school isn't listed" lets them type it in, and a person checks it.</li>
+</ul></li>
+<li><strong>Subjects.</strong>
+<ul>
+<li>Six slots, one per IB group. The chips show only what that school runs, with a "Show every IB subject" link.</li>
+<li>An HL or SL switch on each chip.</li>
+<li>If the count of HL subjects isn't 3 or 4, a hint appears: "Most students take 3 HL. Check with your coordinator." It never blocks.</li>
+<li>TOK, the EE and CAS are added automatically.</li>
+</ul></li>
+<li><strong>Your parent.</strong>
+<ul>
+<li>Fields: the parent's name, email and mobile.</li>
+<li>The button reads "Send the request". The next screen shows "Waiting for Priya", with Resend and Change buttons and a "While you wait" list: free tools, course previews, saving tutors.</li>
+<li>The parent hears from us straight away, again after 24 hours and again after 72 hours. The request expires after 14 days.</li>
+</ul></li>
+</ol>
+<pre class="wf"><code>+------------------------------------+
+| &lt;  Step 2 of 4                     |
+|                                    |
+| Which school are you at?           |
+| +--------------------------------+ |
+| | example int|                   | |
+| +--------------------------------+ |
+| | Example International School   | |
+| |   Pune             Exams: May  | |
+| | Example World School           | |
+| |   Coimbatore       Exams: Nov  | |
+| +--------------------------------+ |
+| My school isn&#39;t listed             |
+|                                    |
+| Year      ( ) DP1   (o) DP2        |
+| Exams     [ November 2026     v ]  |
+|                                    |
+| [ Next ]                           |
++------------------------------------+</code></pre>
+<h3 id="b3-parent-approval-consenttoken">B3. Parent approval (<code>/consent/[token]</code>)</h3>
+<p>Four short screens. This is the most important form on the site, so it gets the plainest words.</p>
+<ol type="1">
+<li><strong>"Aarav wants to join FortyFive."</strong>
+<ul>
+<li>Three lines on what FortyFive is.</li>
+<li>What we keep: first name, school, subjects, exam session, bookings, messages.</li>
+<li>What we never do: ads, selling data, tracking.</li>
+<li>Button: [ Continue ].</li>
+</ul></li>
+<li><strong>"Confirm you're an adult."</strong>
+<ul>
+<li>Verify with DigiLocker, which shares only that you're over 18. This is the route the DPDP Rules point to, and the lawyer confirms the final method.</li>
+<li>Then set a password.</li>
+</ul></li>
+<li><strong>Your choices.</strong>
+<ul>
+<li><strong>Record lessons?</strong> Yes or No, and nothing is preselected. The note says lesson recordings are kept 30 days and opened only if someone reports a problem. Coursework coaching is always recorded and kept until results, because that recording proves the help was fair.</li>
+<li><strong>Bookings:</strong> "You approve and pay for each booking." A standing approval for one tutor comes later.</li>
+<li><strong>Messages from us:</strong> email always; text messages for approvals, on or off.</li>
+</ul></li>
+<li><strong>"Done. Aarav can book and message now."</strong>
+<ul>
+<li>This leads to the parent home.</li>
+<li>The consent record is saved: the time, the method and the version of the notice. The parent can download it.</li>
+</ul></li>
+</ol>
+<p>A <strong>"This isn't my child"</strong> or <strong>"I don't agree"</strong> link on screen 1 leaves the student's account limited. The student sees "Your parent didn't approve the account." We don't give a reason or name anyone.</p>
+<pre class="wf"><code>+------------------------------------+
+| 45. FortyFive                      |
+|                                    |
+| Aarav wants to join FortyFive      |
+|                                    |
+| Courses by people who scored 7s    |
+| and tutors we&#39;ve checked, for IB   |
+| Diploma students. You&#39;ll see every |
+| booking and every message.         |
+|                                    |
+| What we keep                       |
+|  first name, school, subjects,     |
+|  exam session, bookings, messages  |
+| What we never do                   |
+|  ads, selling data, tracking       |
+|                                    |
+| [ Continue ]                       |
+| This isn&#39;t my child                |
++------------------------------------+</code></pre>
+<h3 id="b4-parent-first-signupparent">B4. Parent first (<code>/signup/parent</code>)</h3>
+<ol type="1">
+<li>Account: name, email, mobile, password.</li>
+<li>Verify you're an adult with DigiLocker.</li>
+<li><strong>Add a child:</strong> first name, date of birth and the child's email. The child gets an invite to set a password and finish steps 2 and 3 of B2.</li>
+<li>Your choices: the same as B3 screen 3.</li>
+<li>Parent home. More children can be added later from Settings.</li>
+</ol>
+<h3 id="b5-tutor-sign-up-signuptutor-and-the-checklist">B5. Tutor sign-up (<code>/signup/tutor</code>) and the checklist</h3>
+<ol type="1">
+<li><strong>Account and birthday.</strong>
+<ul>
+<li>Under 17: "You need to have finished the IB and be at least 17." Sign-up stops there.</li>
+<li>At 17: the graduate tutor track only. At 18 or over: the graduate or teacher track.</li>
+</ul></li>
+<li><strong>Track</strong>, shown as three cards with the rules for each:
+<ul>
+<li>IB graduate: 18 or over, a verified 6 or 7.</li>
+<li>Graduate tutor: 17, a verified 7, a parent co-signs.</li>
+<li>IB teacher: credentials and IB teaching experience.</li>
+</ul></li>
+<li><strong>What you'll teach:</strong> subject, level and papers, plus evidence. Graduates upload the IB results document as a PDF; teachers upload a CV and a letter from their school.</li>
+</ol>
+<p>After that the tutor home <em>is</em> the checklist, until every row is green.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Step</th>
+<th>Who</th>
+<th>Usual time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ID through DigiLocker</td>
+<td>you, 2 minutes</td>
+<td>instant</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Results or credentials checked</td>
+<td>us</td>
+<td>2 working days</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Background check (18+) or a DP Coordinator reference (17)</td>
+<td>the check provider, or your coordinator</td>
+<td>3 to 7 days</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Guardian co-signs (17 only)</td>
+<td>your parent</td>
+<td>same day</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Demo lesson, 15 minutes</td>
+<td>you and a subject lead</td>
+<td>book a slot</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Safeguarding course and quiz (8 of 10 to pass)</td>
+<td>you, 30 minutes</td>
+<td>instant</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Code of conduct and tutor agreement, e-signed</td>
+<td>you, and your guardian at 17</td>
+<td>5 minutes</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Profile: about, subjects, price, free times</td>
+<td>you</td>
+<td>15 minutes</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Payout account (Razorpay KYC: PAN and bank)</td>
+<td>you, or your guardian at 17</td>
+<td>1 to 3 days</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each row has one of four states: <strong>To do</strong>, <strong>Waiting for us</strong>, <strong>Needs a fix</strong> (with the reason) or <strong>Done</strong>.</p>
+<p>After going live, two optional extras appear:</p>
+<ul>
+<li><strong>Coursework coach:</strong> the integrity course, EE or TOK evidence, and a coursework rate. 18 and over only.</li>
+<li><strong>Course lead:</strong> apply with an outline.</li>
+</ul>
+<p>When a step doesn't go through:</p>
+<ul>
+<li><strong>The name on the results doesn't match the ID:</strong> "Needs a fix: the name on your results document doesn't match your ID. Upload it again, or write to us."</li>
+<li><strong>No reference after 7 days:</strong> the coordinator gets a reminder, and the tutor can name their head of school instead.</li>
+<li><strong>A background check comes back flagged:</strong> the safeguarding lead decides, privately. The tutor hears only the outcome.</li>
+<li><strong>The demo lesson doesn't pass:</strong> written feedback, and they can try again after 30 days.</li>
+</ul>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| 45. [ Tutor ]   Home  Training                          Report   (A)   |
++------------------------------------------------------------------------+
+| Welcome, Ananya. 6 of 9 done.                                          |
+| Your profile goes live when every step is done. Most people take a     |
+| week.                                                                  |
+|                                                                        |
+|  [x] 1  ID checked with DigiLocker                          Done       |
+|  [x] 2  IB results checked: Economics HL 7, Business HL 7   Done       |
+|  [~] 3  Background check                         Waiting for us (3d)   |
+|  [x] 5  Demo lesson with Rohan, 14 Dec                      Done       |
+|  [x] 6  Safeguarding course, 9 of 10                        Done       |
+|  [x] 7  Code of conduct and agreement signed                Done       |
+|  [ ] 8  Your profile                              [ Fill it in ]       |
+|  [!] 9  Payout account     Needs a fix: bank name does not match       |
+|                                                      [ Fix it ]        |
+|  ( step 4 is only for tutors under 18 )                                |
+|                                                                        |
+|  Questions? Write to us. We reply within a working day.                |
++------------------------------------------------------------------------+</code></pre>
+<h2 id="c-every-screen">C. Every screen</h2>
+<p>Each screen lists its <strong>job</strong>, its <strong>content</strong> from top to bottom, its <strong>actions</strong>, its <strong>states</strong> (empty, waiting, error) and anything that changes on a <strong>phone</strong>. Screen numbers (C1, C2...) are used in the build plan in Part H.</p>
+<h3 id="public-site">Public site</h3>
+<h4 id="c1-home-">C1. Home (<code>/</code>)</h4>
+<p><strong>Job:</strong> say what FortyFive is in five seconds, and send each person through the right door.</p>
+<p><strong>Content:</strong></p>
+<ol type="1">
+<li><strong>Hero.</strong>
+<ul>
+<li>Label: FOR IB DIPLOMA STUDENTS.</li>
+<li>Headline: "Mastering the IB Diploma. Nothing else."</li>
+<li>One line: "Courses by people who scored 7s, tutors we've checked, and coursework help that stays inside the IB's rules."</li>
+<li>The two doors, as cards (B1).</li>
+</ul></li>
+<li><strong>Proof strip.</strong> Real numbers only, once they're true: "34 checked tutors · 1,200 lessons · next open-books report: July". Before launch it says: "Pilot starts February 2027."</li>
+<li><strong>What we do:</strong> four blocks (Courses, Tutors, Coursework, Free tools), one line and one link each.</li>
+<li><strong>Two cards side by side:</strong>
+<ul>
+<li><strong>Where your money goes:</strong> the ₹1,000 lesson receipt, with "Read all ten promises".</li>
+<li><strong>For parents:</strong> four safety promises, with "How we keep lessons safe".</li>
+</ul></li>
+<li><strong>Try it:</strong> a small predicted-total calculator using the grade predictor. It needs no sign-up.</li>
+<li><strong>For schools:</strong> one line and a link.</li>
+<li><strong>Questions:</strong> six, each opening on its own.
+<ul>
+<li>Is it official IB?</li>
+<li>Who are the tutors?</li>
+<li>Do you help with the IA?</li>
+<li>What does it cost?</li>
+<li>Is it safe for my child?</li>
+<li>Can I get a free place?</li>
+</ul></li>
+<li><strong>Footer.</strong></li>
+</ol>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| 45. FortyFive  Courses Tutors Coursework Free tools For parents ...    |
+|                                                  Sign in  [ Join ]     |
++------------------------------------------------------------------------+
+| FOR IB DIPLOMA STUDENTS                                                |
+| Mastering the IB Diploma.                                              |
+| Nothing else.                                                          |
+| Courses by people who scored 7s, tutors we&#39;ve checked, and coursework  |
+| help that stays inside the IB&#39;s rules.                                 |
+| +--------------------------------+  +--------------------------------+ |
+| | I&#39;m a student or a parent    &gt; |  | I teach the IB               &gt; | |
+| | Find a course or a tutor       |  | Keep 90% of every lesson       | |
+| +--------------------------------+  +--------------------------------+ |
+|------------------------------------------------------------------------|
+| Pilot starts February 2027                                             |
+|------------------------------------------------------------------------|
+| WHAT WE DO                                                             |
+| Courses          Tutors           Coursework        Free tools         |
+| one line &gt;       one line &gt;       one line &gt;        one line &gt;         |
+|------------------------------------------------------------------------|
+| WHERE YOUR MONEY GOES            | FOR PARENTS                         |
+| Student pays        Rs 1,000.00  | - Every tutor checked               |
+| Tutor gets (90%)      Rs 900.00  | - You see every message             |
+| FortyFive&#39;s fee       Rs 100.00  | - Lessons 7 am to 9 pm only         |
+|   GST, payment fees    Rs 41.51  | - A named adult reads every report  |
+| Left for FortyFive     Rs 58.49  |                                     |
+| Read all ten promises &gt;          | How we keep lessons safe &gt;          |
+|------------------------------------------------------------------------|
+| TRY IT   Your six grades [7][6][6][5][6][5]  TOK/EE [B][A]  = 38       |
+|------------------------------------------------------------------------|
+| FOR SCHOOLS   A free pilot for your DP1s.  Talk to us &gt;                |
+| QUESTIONS     + Is it official IB?   + Who are the tutors?  ...        |
++------------------------------------------------------------------------+
+| Learn | Trust | Join | Legal                     Report a concern      |
+| Not affiliated with or endorsed by the International Baccalaureate ... |
++------------------------------------------------------------------------+</code></pre>
+<p><strong>Phone:</strong> everything stacks into one column, the doors come straight after the headline, and the predictor uses dropdowns.</p>
+<h4 id="c2-course-catalogue-courses">C2. Course catalogue (<code>/courses</code>)</h4>
+<p><strong>Job:</strong> find the right course, or learn it doesn't exist yet.</p>
+<ul>
+<li><strong>Filters along the top:</strong> subject group, subject, HL or SL, exam session.</li>
+<li><strong>Course cards:</strong>
+<ul>
+<li>title (subject and paper);</li>
+<li>lead's name with their verified badge;</li>
+<li>lessons and hours;</li>
+<li>"₹1,499 · free if you ask";</li>
+<li>one line: "Not for you if...".</li>
+</ul></li>
+<li><strong>Empty state:</strong> "No course for this subject yet. We add subjects in the order students ask." The [ Ask for this subject ] button needs an account, so it only counts real students.</li>
+</ul>
+<h4 id="c3-course-page-coursessubjectcourse">C3. Course page (<code>/courses/[subject]/[course]</code>)</h4>
+<p><strong>Job:</strong> let the student decide honestly, including deciding not to buy.</p>
+<p><strong>Content:</strong></p>
+<ol type="1">
+<li>Title.</li>
+<li>Lead (verified badge, one line).</li>
+<li>What it covers in 3 lines.</li>
+<li>Price and the receipt.</li>
+<li>Buttons: [ Buy ] [ Ask for a free place ] [ Watch lesson 1 free ].</li>
+<li><strong>Don't buy this if...</strong>: two or three honest lines, such as "you're already scoring 6s on Paper 1 under timed conditions".</li>
+<li><strong>Outline:</strong> modules, then lessons with their length. Lesson 1 is marked as free.</li>
+<li>What's inside: videos, notes, practice, the predicted mock, a live hour each month.</li>
+<li>About the lead.</li>
+<li><strong>Reviews:</strong> enrolled students only. Each one shows the reviewer's subject, session and the date.</li>
+<li><strong>Refund rule:</strong> a full refund within 7 days if you've watched less than a quarter.</li>
+<li>Questions.</li>
+</ol>
+<p><strong>Actions:</strong></p>
+<ul>
+<li>An under-18 student's Buy becomes <strong>Ask my parent</strong>. The parent gets an approval card (C25) with the price and the receipt.</li>
+<li><strong>Ask for a free place</strong> asks for nothing: one click, granted at once, one free place per course per student. The parent is told.</li>
+</ul>
+<p><strong>Phone:</strong> a sticky bar at the bottom with the price and the [ Buy ] button.</p>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| COURSES / ENGLISH A: LANGUAGE AND LITERATURE                           |
+| Paper 1, the method                                                    |
+| Led by Meera K.  English A HL 7 (verified)                             |
+| How to annotate an unseen text in 15 minutes and write an analysis     |
+| that reaches the top band.                                             |
+|                                                                        |
+| Rs 1,499, GST included          [ Buy ]  [ Ask for a free place ]      |
+| Full refund within 7 days       [ Watch lesson 1 free ]                |
+|------------------------------------------------------------------------|
+| DON&#39;T BUY THIS IF                                                      |
+| - you already score 6s on Paper 1 in timed practice                    |
+| - you want someone to mark your school essays (we don&#39;t)               |
+|------------------------------------------------------------------------|
+| OUTLINE                                    24 lessons, 3 h 40 min      |
+| 1 How Paper 1 is marked                                                |
+|   1.1 The four criteria                            8 min    Free       |
+|   1.2 What moves a 4 to a 6                       11 min               |
+| 2 Annotating in 15 minutes                                             |
+|   ...                                                                  |
+|------------------------------------------------------------------------|
+| REVIEWS (enrolled students only)                                       |
+| &quot;The annotation method saved me ...&quot;  DP2, May 2027 session, 3 Mar     |
++------------------------------------------------------------------------+</code></pre>
+<h4 id="c4-tutor-search-tutors">C4. Tutor search (<code>/tutors</code>)</h4>
+<p><strong>Job:</strong> find a tutor you can trust for one paper, at a time that works.</p>
+<ul>
+<li><strong>Filters:</strong>
+<ul>
+<li>subject, level, paper, session;</li>
+<li>price range;</li>
+<li>free times (weekday evenings, weekends);</li>
+<li>track (graduate, teacher);</li>
+<li>"coaches coursework".</li>
+</ul></li>
+<li><strong>Ranking note</strong> under the filters: "Sorted by subject match, free times and reviews. Nobody pays to rank higher."</li>
+<li><strong>Result cards:</strong>
+<ul>
+<li>first name and initial;</li>
+<li>track label ("IB graduate 2026", "Graduate tutor, 17", "IB teacher");</li>
+<li>a verified badge for each subject;</li>
+<li>price per hour;</li>
+<li>lessons taught;</li>
+<li>rating (shown only from 3 reviews);</li>
+<li>next free slot;</li>
+<li>[ Free intro call ] [ View ].</li>
+</ul></li>
+<li><strong>Empty state:</strong> "No tutor matches all of that. Try fewer filters, or post a request and tutors will come to you." Then [ Post a request ].</li>
+<li><strong>Phone:</strong> filters sit behind a "Filters (3)" button that opens a sheet.</li>
+</ul>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| Tutors                                                                 |
+| [ Economics       v] [ HL v] [ Paper 1 v] [ Nov 2027 v] [ More v ]     |
+| Sorted by subject match, free times and reviews. Nobody pays to rank.  |
+|------------------------------------------------------------------------|
+| +--------------------------------------------------------------------+ |
+| | Ananya R.   IB graduate 2026                         Rs 1,200 / h  | |
+| | Economics HL 7 (verified)   Business HL 7 (verified)               | |
+| | 38 lessons   4.9 from 12 reviews   Coaches coursework              | |
+| | Next free: Tue 5 pm              [ Free intro call ]  [ View ]     | |
+| +--------------------------------------------------------------------+ |
+| | Rahul S.    Graduate tutor, 17                         Rs 800 / h  | |
+| | Economics HL 7 (verified)                                          | |
+| | 6 lessons   reviews show from 3                                    | |
+| | Next free: Wed 6 pm              [ Free intro call ]  [ View ]     | |
+| +--------------------------------------------------------------------+ |
+|  Show 10 more                                                          |
++------------------------------------------------------------------------+</code></pre>
+<h4 id="c5-tutor-profile-tutorsname-id">C5. Tutor profile (<code>/tutors/[name-id]</code>)</h4>
+<p><strong>Job:</strong> show everything a parent needs to say yes, and nothing that lets anyone contact the tutor off FortyFive.</p>
+<p><strong>Content:</strong></p>
+<ol type="1">
+<li><strong>Header:</strong>
+<ul>
+<li>name, track, verified badges;</li>
+<li>lesson price, and coursework price if they coach;</li>
+<li>[ Free intro call ] [ Book a lesson ] [ Message ].</li>
+</ul></li>
+<li><strong>About:</strong> 600 characters at most. No links, and contact details are stripped.</li>
+<li><strong>What I teach:</strong> a table of subject, level, papers and their verified grade.</li>
+<li><strong>Free times:</strong> this week and next, shown in the visitor's time zone.</li>
+<li><strong>Reviews:</strong> all of them, newest first, filterable by subject. The tutor's one reply sits under each.</li>
+<li><strong>Rules:</strong> cancellation, intro call, recording.</li>
+<li>"Report this profile".</li>
+</ol>
+<p><strong>Actions:</strong> booking and messaging ask visitors to sign in first. For a student still waiting for their parent's approval, the buttons say why they're greyed out.</p>
+<p><strong>Phone:</strong> the header stacks; the buttons sit in a sticky bottom bar.</p>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| Ananya R.                         Rs 1,200 / h lesson                  |
+| IB graduate 2026                  Rs 1,500 / h coursework coaching     |
+| Economics HL 7 (verified)  Business HL 7 (verified)                    |
+| 38 lessons, 4.9 from 12 reviews                                        |
+| [ Free intro call ]  [ Book a lesson ]  [ Message ]                    |
+|------------------------------------------------------------------------|
+| ABOUT                                                                  |
+| I sat the November 2026 papers. I teach Paper 1 essays the way I ...   |
+|------------------------------------------------------------------------|
+| WHAT I TEACH            Level   Papers            My grade             |
+| Economics               HL      1, 2, 3           7 (verified)         |
+| Business Management     HL      1, 2, 3           7 (verified)         |
+|------------------------------------------------------------------------|
+| FREE TIMES (your time, IST)                                            |
+|        Mon  Tue  Wed  Thu  Fri  Sat  Sun                               |
+| 5 pm    .    o    .    o    .    o    .                                |
+| 6 pm    .    o    o    .    .    o    .                                |
+|------------------------------------------------------------------------|
+| REVIEWS (12)    [ All subjects v ]                                     |
+| &quot;Finally understood evaluation...&quot;  Economics HL, DP2, 2 Mar           |
+|   Ananya: Thank you! Keep timing the essays.                           |
+|------------------------------------------------------------------------|
+| Cancel 24 h before for a full refund.        Report this profile       |
++------------------------------------------------------------------------+</code></pre>
+<h4 id="c6-coursework-coursework">C6. Coursework (<code>/coursework</code>)</h4>
+<p><strong>Job:</strong> explain coaching and the Marker so plainly that a DP Coordinator would forward the page.</p>
+<p><strong>Content:</strong></p>
+<ol type="1">
+<li>The line in one sentence.</li>
+<li>"A coach does" next to "A coach never".</li>
+<li><strong>How an hour works</strong>, in six steps: pick the piece, sign the code, book, session, help log, show your supervisor.</li>
+<li>Hour limits per piece.</li>
+<li>The receipt for a ₹1,500 coaching hour.</li>
+<li>A sample help log.</li>
+<li><strong>The Marker:</strong> what a report shows, and what it never shows.</li>
+<li><strong>Accuracy table:</strong> subject, component, pieces tested, share within 2 marks, status (Open or Testing).</li>
+<li>"Your school's rules come first".</li>
+<li><strong>Questions:</strong> "Do I have to tell my supervisor?" (yes, and here's the link), "Can a coach read my draft?" (no), "Will this get flagged?" (the help log is your evidence).</li>
+</ol>
+<h4 id="c7-free-tools-tools-and-one-page-each">C7. Free tools (<code>/tools</code> and one page each)</h4>
+<ul>
+<li><strong>Predictor:</strong> six grades plus TOK and EE gives the total. Grade boundaries are kept by session.</li>
+<li><strong>Next point:</strong> enter mock marks per paper; it shows where the next point costs the fewest hours, using the boundaries.</li>
+<li><strong>Timetable:</strong> exam dates and free days in, a revision plan out, printable.</li>
+<li><strong>Coursework planner:</strong> pieces, school deadlines, milestones, a source log, a reflection diary for the EE.</li>
+<li><strong>Results-day guide:</strong> live on 16 December and early July. It covers remarks, retakes and what to tell universities.</li>
+</ul>
+<p>None of the tools needs an account. Work is kept in the browser on that device, and <strong>Save to my account</strong> appears for signed-in students. Each page ends with one quiet link to the matching course or tutors, never a pop-up.</p>
+<h4 id="c8-honesty-honesty-and-its-pages">C8. Honesty (<code>/honesty</code> and its pages)</h4>
+<ul>
+<li><strong>The ten promises:</strong> the charter, each with its proof link.</li>
+<li><strong>Fees:</strong> receipts for a lesson, a coaching hour, a course and a Marker check.</li>
+<li><strong>Open books:</strong> a quarterly table with income, tutor earnings, author earnings, costs, what was left and free places given.</li>
+<li><strong>Corrections:</strong> every error found in a course, the date it was fixed, and who found it (if they want credit).</li>
+<li><strong>Scorecards:</strong> how the predicted papers did against the real ones each session, and the Marker's accuracy.</li>
+</ul>
+<h4 id="c9-for-parents-safety-and-report-a-concern-safetyreport">C9. For parents (<code>/safety</code>) and Report a concern (<code>/safety/report</code>)</h4>
+<p><strong>Safety page:</strong></p>
+<ul>
+<li>who tutors, with the checks for each track;</li>
+<li>how lessons work;</li>
+<li>what parents see;</li>
+<li>recording;</li>
+<li>what happens after a report;</li>
+<li>the safeguarding lead's name, email and phone;</li>
+<li>"If a child is in danger now, call 112. Childline: 1098."</li>
+</ul>
+<p><strong>Report form</strong> (no account needed):</p>
+<ol type="1">
+<li>What happened, picked from categories:
+<ul>
+<li>someone asked for contact details;</li>
+<li>inappropriate message or behaviour;</li>
+<li>coursework was written or edited;</li>
+<li>a fake review or profile;</li>
+<li>something else.</li>
+</ul></li>
+<li>Who and when.</li>
+<li>Details.</li>
+<li>Your contact details (optional for the public, filled in for members).</li>
+<li>[ Send ].</li>
+</ol>
+<p>The confirmation says what happens next and by when.</p>
+<h4 id="c10-for-schools-schools">C10. For schools (<code>/schools</code>)</h4>
+<ol type="1">
+<li>The free pilot for DP1s.</li>
+<li>The school plan and its price.</li>
+<li>What a school sees: help logs and Marker teacher mode in v2, switches for coaching and the Marker.</li>
+<li>How FortyFive keeps to the IB's integrity policy.</li>
+<li>A contact form for coordinators.</li>
+</ol>
+<h4 id="c11-teach-on-fortyfive-teach">C11. Teach on FortyFive (<code>/teach</code>)</h4>
+<ol type="1">
+<li><strong>Why:</strong> keep 90%, no lead fees, students who were checked too.</li>
+<li><strong>The three tracks</strong> with their requirements.</li>
+<li><strong>Going live in 9 steps</strong>, shown as a timeline.</li>
+<li>A receipt for a ₹1,000 lesson.</li>
+<li>The rules: safety and coursework.</li>
+<li>Questions, then [ Apply to teach ].</li>
+</ol>
+<h4 id="c12-sign-in-signin">C12. Sign in (<code>/signin</code>)</h4>
+<ul>
+<li>Email and password, or "email me a sign-in link". The same form serves students, parents and tutors, and the role decides where they land.</li>
+<li>Five wrong tries locks the account for 15 minutes and sends an email.</li>
+<li>Staff sign in elsewhere (admin.), with two-factor authentication.</li>
+</ul>
+<h3 id="student-app">Student app</h3>
+<h4 id="c13-today-app-student">C13. Today (<code>/app</code>, student)</h4>
+<p><strong>Job:</strong> answer "what should I do now?" in one glance.</p>
+<p><strong>Content, top to bottom:</strong></p>
+<ol type="1">
+<li><strong>"Waiting for Priya to approve"</strong>, shown only while it's true, with [ Resend ].</li>
+<li><strong>Next lesson:</strong> tutor, subject, time.
+<ul>
+<li>[ Join ] turns on 10 minutes before the start.</li>
+<li>[ Reschedule ] and [ Cancel ] show the refund rule before you confirm.</li>
+</ul></li>
+<li><strong>Continue your course:</strong> "Paper 1, the method · 7 of 24 ticked · Next: 2.3 Tone and register".</li>
+<li><strong>Your next point</strong>, if the planner is set up: "Cheapest next point: Economics Paper 2, about 6 hours." Otherwise: "Set up the planner, 2 minutes."</li>
+<li><strong>Coursework:</strong> each piece with its next deadline, coaching hours left and Marker checks left.</li>
+<li><strong>Messages:</strong> the last two threads, under the banner "Your parent can see your chats."</li>
+<li><strong>[ Ask for help ]</strong> opens the request composer (C16).</li>
+</ol>
+<p><strong>Empty state:</strong> "Nothing booked yet. Watch a free first lesson, or find a tutor for one paper."</p>
+<pre class="wf"><code>+------------------------------------+
+| 45. [Student]            Report (A)|
+|                                    |
+| Hi Aarav                           |
+|                                    |
+| NEXT LESSON                        |
+| Economics HL, Paper 1 essays       |
+| with Ananya R.                     |
+| Tue 9 Mar, 5:00 pm                 |
+| [ Join ] opens 4:50 pm             |
+| Reschedule  Cancel                 |
+|                                    |
+| CONTINUE                           |
+| English P1, the method             |
+| 7 of 24 ticked                     |
+| Next: 2.3 Tone and register  &gt;     |
+|                                    |
+| YOUR NEXT POINT                    |
+| Economics Paper 2, about 6 hours &gt; |
+|                                    |
+| COURSEWORK                         |
+| Economics IA 2   due 30 Mar        |
+| 2 of 4 coaching hours left  &gt;      |
+|                                    |
+| [ Ask for help ]                   |
+|------------------------------------|
+| Today Courses Tutors Cwork Msgs    |
++------------------------------------+</code></pre>
+<h4 id="c14-course-player-appcoursesid">C14. Course player (<code>/app/courses/[id]</code>)</h4>
+<p><strong>Job:</strong> watch, read, practise and tick, with nothing to download.</p>
+<p><strong>Desktop layout:</strong></p>
+<ul>
+<li><strong>Left:</strong> modules, with a tick box beside each lesson.</li>
+<li><strong>Middle:</strong> the video through an expiring link. Below it, three tabs:
+<ul>
+<li><strong>Notes:</strong> drawn on the server, with the student's name faintly across each page.</li>
+<li><strong>Practice:</strong> our own question. From v1 it has an answer box and the Marker's practice marking.</li>
+<li><strong>Get help:</strong> the next monthly live hour, plus tutors for this paper.</li>
+</ul></li>
+</ul>
+<p>There's no chat.</p>
+<p><strong>Phone:</strong> the video on top, the tabs below, and the modules in a drawer.</p>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| &lt; My courses     English A: Paper 1, the method          7 of 24       |
+|------------------------------------------------------------------------|
+| MODULES               |  +------------------------------------------+  |
+| 1 How it&#39;s marked     |  |                                          |  |
+|  [x] 1.1 Criteria     |  |               video                      |  |
+|  [x] 1.2 4 to 6       |  |                                          |  |
+| 2 Annotating          |  +------------------------------------------+  |
+|  [x] 2.1 First read   |  2.3 Tone and register            11 min       |
+|  [x] 2.2 Purpose      |  [ Notes ]  [ Practice ]  [ Get help ]         |
+|  [ ] 2.3 Tone      &lt;  |  ----------------------------------------      |
+|  [ ] 2.4 Structure    |  Notes for Aarav M. (faint, on every page)     |
+| 3 Techniques          |  Tone is the writer&#39;s attitude ...             |
+|  ...                  |                                                |
+|                       |  [ Mark this lesson done ]                     |
++------------------------------------------------------------------------+</code></pre>
+<h4 id="c15-booking-student-side">C15. Booking (student side)</h4>
+<ol type="1">
+<li><strong>Type:</strong>
+<ul>
+<li>free intro call, 15 minutes;</li>
+<li>lesson, 30 or 60 minutes;</li>
+<li>coursework coaching, 60 minutes, coaches only, starting from the coursework piece (C19).</li>
+</ul></li>
+<li><strong>Time:</strong> the tutor's free slots in the student's time zone. For under-18s, slots outside 7 am to 9 pm local time don't appear.</li>
+<li><strong>What to cover:</strong> optional, 300 characters. For example: "Paper 1 part (b) evaluation".</li>
+<li><strong>Review:</strong>
+<ul>
+<li>the price and the receipt;</li>
+<li>the cancellation rule;</li>
+<li>"This lesson will be recorded" if the parent chose that.</li>
+</ul></li>
+<li><strong>Send:</strong>
+<ul>
+<li><strong>Under 18:</strong> [ Send to Priya for approval ]. The status reads "Waiting for Priya". The slot is held for 12 hours, then released.</li>
+<li><strong>18 or over:</strong> [ Pay ], through Razorpay.</li>
+</ul></li>
+</ol>
+<pre class="wf"><code>+------------------------------------+
+| &lt;  Check and send                  |
+|                                    |
+| Lesson, 60 minutes                 |
+| Ananya R.  Economics HL            |
+| Tue 9 Mar, 5:00 to 6:00 pm         |
+| Cover: Paper 1 (b) evaluation      |
+|                                    |
+| Price                  Rs 1,200.00 |
+|  Ananya gets (90%)     Rs 1,080.00 |
+|  FortyFive (10%)         Rs 120.00 |
+|                                    |
+| Recorded: yes (Priya&#39;s choice)     |
+| Cancel by Mon 5 pm for a full      |
+| refund.                            |
+|                                    |
+| [ Send to Priya for approval ]     |
+| We hold this slot for 12 hours.    |
++------------------------------------+</code></pre>
+<h4 id="c16-requests-apprequests">C16. Requests (<code>/app/requests</code>)</h4>
+<ul>
+<li><strong>Compose:</strong>
+<ul>
+<li>subject, level, paper;</li>
+<li>what help: one line;</li>
+<li>how often;</li>
+<li>until when;</li>
+<li>budget per hour.</li>
+</ul></li>
+<li><strong>Posted requests</strong> show replies from tutors: their plan, price and proposed times.</li>
+<li><strong>Choosing:</strong> [ Ask Priya to choose ] for under-18s, or [ Choose ] for over-18s. Choosing starts a booking (C15) with that tutor.</li>
+<li>Requests close after 14 days or once one tutor is chosen. Tutors see no name and no school.</li>
+</ul>
+<h4 id="c17-bookings-and-lesson-details-appbookings-applessonsid">C17. Bookings and lesson details (<code>/app/bookings</code>, <code>/app/lessons/[id]</code>)</h4>
+<ul>
+<li><strong>Lists:</strong> Upcoming and Past.</li>
+<li><strong>Lesson detail:</strong>
+<ul>
+<li>time, tutor, what to cover;</li>
+<li>the recording status;</li>
+<li>[ Join ];</li>
+<li>the tutor's lesson notes afterwards, which the parent also sees;</li>
+<li>[ Leave a review ] once a paid lesson is finished, within 14 days;</li>
+<li>[ Book again ].</li>
+</ul></li>
+</ul>
+<h4 id="c18-lesson-room-applessonsidroom">C18. Lesson room (<code>/app/lessons/[id]/room</code>)</h4>
+<ol type="1">
+<li><strong>Check first:</strong> camera, microphone and name.</li>
+<li><strong>Banner:</strong> "This lesson is recorded" or "Not recorded".</li>
+<li><strong>The room:</strong> video, screen share, and a simple whiteboard from v1.</li>
+<li><strong>Side panel:</strong> the tutor's notes as they're typed, and <strong>Report</strong> with a "leave now" option.</li>
+<li><strong>For coaching sessions:</strong> a banner reading "Coursework coaching: no files, no edits. Your coach will write a help log." At the end, the student types their next step in their own words.</li>
+<li><strong>Who's in:</strong> the parent can join as a named observer, shown as "Priya (parent) is watching".</li>
+</ol>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| Economics HL with Ananya R.    RECORDED     46:12 left   [ Leave ]     |
+|------------------------------------------------------------------------|
+| +-----------------------------------------------+  NOTES (Ananya)      |
+| |                                               |  - (b) needs one     |
+| |          Ananya          |       Aarav        |    clear judgement   |
+| |                          |                    |  - use the article   |
+| |                                               |    data, line 14     |
+| +-----------------------------------------------+                      |
+| [ Mic ] [ Camera ] [ Share screen ] [ Whiteboard ]   Report            |
+| Priya (parent) can join at any time.                                   |
++------------------------------------------------------------------------+</code></pre>
+<h4 id="c19-coursework-appcoursework-and-appcourseworkpiece">C19. Coursework (<code>/app/coursework</code> and <code>/app/coursework/[piece]</code>)</h4>
+<p><strong>List:</strong></p>
+<ul>
+<li>every piece: IA by subject, EE, TOK essay, TOK exhibition;</li>
+<li>[ Add a piece ]: type, subject, working title (optional), the school's draft and final deadlines.</li>
+</ul>
+<p><strong>Piece page:</strong></p>
+<ul>
+<li><strong>Header:</strong> the piece and its deadlines.</li>
+<li><strong>Coaching:</strong> "2 of 4 hours used", [ Book coaching ] (coaches in this subject only), and the help logs.</li>
+<li><strong>Marker:</strong> "0 of 2 checks used", [ Start a check ], and past reports.</li>
+<li><strong>Planner:</strong> milestones, a source log, and the reflection diary (EE).</li>
+<li><strong>[ Share with my supervisor ]:</strong> a read-only link to the logs and Marker reports. It expires after 30 days and can be switched off.</li>
+</ul>
+<p><strong>The coursework code</strong> is signed once per piece, by the student and the parent, before the first coaching hour or Marker check. It has five lines:</p>
+<ol type="1">
+<li>The work is mine.</li>
+<li>Coaches teach; they don't write.</li>
+<li>I'll follow my school's rules.</li>
+<li>I'll tell my supervisor I'm getting help.</li>
+<li>I'll credit any AI feedback the way my school asks.</li>
+</ol>
+<p><strong>At the limit:</strong> "You've used all 4 coaching hours for this IA. That's the limit, so the work stays yours. Your supervisor is the next step."</p>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| COURSEWORK / Economics IA, commentary 2                                |
+| Draft due 16 Mar    Final due 30 Mar        [ Share with supervisor ]  |
+|------------------------------------------------------------------------|
+| COACHING                      2 of 4 hours used                        |
+| [ Book coaching ]                                                      |
+|  Session 2, 14 Mar, Ananya R.   Covered: criterion D evaluation  &gt;     |
+|  Session 1, 2 Mar, Ananya R.    Covered: choosing the article    &gt;     |
+|------------------------------------------------------------------------|
+| THE MARKER                    0 of 2 checks used                       |
+| [ Start a check ]   One on a draft, one before you submit,             |
+|                     at least 7 days apart.                             |
+|------------------------------------------------------------------------|
+| PLANNER                                                                |
+|  [x] Article chosen 1 Mar   [x] Diagram drafted   [ ] Draft to teacher |
+|  Sources (3)  &gt;      Reflection diary  &gt;                               |
++------------------------------------------------------------------------+</code></pre>
+<h4 id="c20-marker-start-a-check">C20. Marker: start a check</h4>
+<ol type="1">
+<li>Pick the piece. It's preselected when the check starts from a piece page.</li>
+<li><strong>Draft or final.</strong> The second check must come at least 7 days after the first.</li>
+<li><strong>Upload:</strong> PDF only, 20 MB at most. A scanned PDF gets a warning: "We can't read scans well; export from your document instead."</li>
+<li><strong>Confirm</strong>, with all three boxes ticked:
+<ul>
+<li>this is my own work;</li>
+<li>my school allows AI feedback;</li>
+<li>delete my file after 48 hours (already ticked and locked).</li>
+</ul></li>
+<li><strong>Send.</strong> "Marking takes about 5 minutes. We'll email you." The page updates by itself.</li>
+</ol>
+<h4 id="c21-marker-report-appmarkerreport">C21. Marker report (<code>/app/marker/[report]</code>)</h4>
+<p><strong>Content:</strong></p>
+<ol type="1">
+<li>A summary table: criterion, band, how sure.</li>
+<li><strong>One section per criterion:</strong>
+<ul>
+<li>the band and how sure it is;</li>
+<li>the evidence ("p. 3, paragraph 2");</li>
+<li>two or three things that work;</li>
+<li>two or three questions to ask yourself.</li>
+</ul></li>
+<li><strong>The checklist.</strong></li>
+<li><strong>How to credit it:</strong> "Feedback on this draft came from the FortyFive Marker (AI) on 14 March 2027."</li>
+<li>Checks left.</li>
+<li>[ Share with my supervisor ].</li>
+<li><strong>"Think this is wrong? Tell us"</strong>, which feeds the accuracy checks.</li>
+</ol>
+<p>There is no chat box and no suggested text, and the report says so in its footer.</p>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| MARKER REPORT  Economics IA, commentary 2   Draft   14 Mar 2027        |
+| Checks left on this piece: 1 of 2           [ Share with supervisor ]  |
+|------------------------------------------------------------------------|
+| Criterion                         Band          How sure               |
+| A  Diagrams                       2 of 3        sure                   |
+| B  Terminology                    2 of 2        sure                   |
+| C  Application and analysis      2 to 3 of 3   fairly sure            |
+| D  Key concept                    1 to 2 of 3   unsure: read the notes |
+| E  Evaluation                     1 to 2 of 3   fairly sure            |
+|------------------------------------------------------------------------|
+| E  EVALUATION                     1 to 2 of 3, fairly sure             |
+| Evidence: p. 3, paragraphs 2 and 3                                     |
+| Works:  - you weigh short-run against long-run effects                 |
+| Ask yourself:                                                          |
+|  - Which stakeholder does the article leave out, and does that change  |
+|    your judgement?                                                     |
+|  - Is your final judgement tied to this market, or would it fit any?   |
+|------------------------------------------------------------------------|
+| CHECKLIST   [x] Article attached  [x] Word count 768  [ ] Source dated |
+|------------------------------------------------------------------------|
+| Credit line: Feedback on this draft came from the FortyFive Marker     |
+| (AI) on 14 March 2027.        This report never suggests your words.   |
+| Think this is wrong? Tell us                                           |
++------------------------------------------------------------------------+</code></pre>
+<p>The criteria shown are placeholders; the real rubric packs are written in our own words and checked by a subject lead.</p>
+<h4 id="c22-messages-appmessages">C22. Messages (<code>/app/messages</code>)</h4>
+<ul>
+<li><p>A list of threads, then the thread itself. The banner at the top is always there: "Priya (your parent) can see this chat."</p></li>
+<li><p><strong>Contact details are hidden as you type</strong>, and the server catches them again. The check covers:</p>
+<ul>
+<li>phone numbers, including ones written in words;</li>
+<li>emails;</li>
+<li>social handles;</li>
+<li>UPI IDs;</li>
+<li>links.</li>
+</ul>
+<p>They appear as "[contact details hidden: keep chats on FortyFive]", and the safeguarding inbox sees repeated attempts.</p></li>
+<li><p>No attachments in v0. From v1, images are allowed for maths questions, but never files of coursework.</p></li>
+<li><p>To-be-sent messages to under-18s wait during quiet hours (9 pm to 7 am) and are delivered at 7 am.</p></li>
+</ul>
+<pre class="wf"><code>+------------------------------------+
+| &lt;  Ananya R.            Report     |
+| Priya (your parent) can see this.  |
+|------------------------------------|
+|        Can we do Paper 1 (b)       |
+|        next time?          Aarav &gt; |
+| &lt; Yes! Bring one essay plan.       |
+|   Ananya                           |
+|        my number is [contact       |
+|        details hidden: keep chats  |
+|        on FortyFive]       Aarav &gt; |
+|------------------------------------|
+| [ Write a message...       ] Send  |
++------------------------------------+</code></pre>
+<h4 id="c23-account-appaccount">C23. Account (<code>/app/account</code>)</h4>
+<ul>
+<li>Profile: first name, school, subjects, session.</li>
+<li>Linked parents.</li>
+<li>Messages from us.</li>
+<li><strong>Your data:</strong> download it, or ask us to delete it. Deletion explains what has to be kept by law (invoices).</li>
+<li>Sign out.</li>
+</ul>
+<h3 id="parent-app">Parent app</h3>
+<h4 id="c24-parent-home-app-parent">C24. Parent home (<code>/app</code>, parent)</h4>
+<p><strong>Job:</strong> see what needs your yes, and what happened this week.</p>
+<p><strong>Content:</strong></p>
+<ol type="1">
+<li>A child switcher, as tabs with first names.</li>
+<li><strong>Needs your approval:</strong> cards (C25).</li>
+<li><strong>This week:</strong> lessons, each with [ Join quietly ].</li>
+<li><strong>Recent help logs</strong> and Marker reports.</li>
+<li><strong>This month:</strong> what you've spent, linking to the receipts.</li>
+<li><strong>Safety:</strong> [ Report a concern ] and the safeguarding lead's contact.</li>
+</ol>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| 45. [ Parent ]  Home  Approvals(1)  Messages  Payments  Settings  Rep. |
++------------------------------------------------------------------------+
+| [ Aarav ]  [ Diya ]                                                    |
+|------------------------------------------------------------------------|
+| NEEDS YOUR APPROVAL                                                    |
+| +--------------------------------------------------------------------+ |
+| | Lesson: Economics HL with Ananya R. (Economics HL 7, verified)     | |
+| | Tue 9 Mar, 5 to 6 pm.  Rs 1,200    Recorded: yes                   | |
+| | [ Approve and pay ]   [ Decline ]        See the receipt &gt;         | |
+| +--------------------------------------------------------------------+ |
+| THIS WEEK                                                              |
+|  Tue 5 pm   Economics HL, Ananya R.            [ Join quietly ]        |
+|  Sat 11 am  English P1 clinic (4 students)     [ Join quietly ]        |
+| RECENT                                                                 |
+|  Help log: Economics IA 2, session 2 (14 Mar)  &gt;                       |
+|  Marker report: Economics IA 2, draft (14 Mar) &gt;                       |
+| THIS MONTH   Rs 3,600 on 3 lessons   Receipts &gt;                        |
+| SAFETY       Report a concern    Safeguarding lead: [name], [phone]    |
++------------------------------------------------------------------------+</code></pre>
+<h4 id="c25-approvals-appapprovals">C25. Approvals (<code>/app/approvals</code>)</h4>
+<p>Each card shows:</p>
+<ul>
+<li>what it is: a lesson, coaching, a course or a Marker check;</li>
+<li>the tutor's verified badge;</li>
+<li>the time and price, with the receipt;</li>
+<li>[ Approve and pay ] or [ Decline ] (with an optional reason, which the student sees).</li>
+</ul>
+<p><strong>Paying:</strong></p>
+<ul>
+<li><strong>From v1:</strong> Razorpay checkout by UPI or card. A failed payment changes nothing: "Nothing was charged. Try again or use UPI."</li>
+<li><strong>In the v0 pilot:</strong> "Approve" shows the tutor's UPI ID (or their guardian's) to the parent only, with [ I've paid ]. The tutor confirms receipt.</li>
+</ul>
+<h4 id="c26-the-other-parent-screens">C26. The other parent screens</h4>
+<ul>
+<li><strong>Bookings:</strong> each child's upcoming and past lessons, with [ Join quietly ].</li>
+<li><strong>Messages:</strong>
+<ul>
+<li>every thread the child has, read-only;</li>
+<li>plus the parent's own threads with tutors.</li>
+</ul></li>
+<li><strong>Payments:</strong> a receipt for each payment, refunds, and GST invoices (fee and course sales), all downloadable.</li>
+<li><strong>Logs and reports:</strong> help logs and Marker reports for each child.</li>
+<li><strong>Settings:</strong>
+<ul>
+<li>the consent record;</li>
+<li>the recording choice;</li>
+<li>messages from us;</li>
+<li>linked children (add another);</li>
+<li><strong>withdraw consent</strong>, which explains what stops and what has to be kept by law;</li>
+<li>delete our data.</li>
+</ul></li>
+</ul>
+<h3 id="tutor-app">Tutor app</h3>
+<h4 id="c27-tutor-home-app-tutor">C27. Tutor home (<code>/app</code>, tutor)</h4>
+<p>Until the profile is live, this page is the checklist (B5). After that:</p>
+<ol type="1">
+<li><strong>Today:</strong> lessons, each with [ Join ].</li>
+<li><strong>Help logs to file:</strong> a 24-hour countdown, and a note that the payout waits for the log.</li>
+<li><strong>New requests</strong> that match your subjects: three at most, then "See all".</li>
+<li><strong>This month:</strong> money in after the fee, and lessons taught.</li>
+<li><strong>Latest reviews</strong>, with [ Reply ] (once each).</li>
+<li><strong>Profile tips</strong>, only when they help. For example: "Add Saturday mornings: 40% of requests ask for weekends."</li>
+</ol>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| 45. [ Tutor ]  Home  Requests  Calendar  Students  Earnings  ...  Rep. |
++------------------------------------------------------------------------+
+| TODAY                                                                  |
+|  5:00 pm  Aarav, Economics HL, 60 min           [ Join ] at 4:50 pm    |
+|  7:00 pm  Coaching: Kavya, Economics IA         recorded               |
+|------------------------------------------------------------------------|
+| HELP LOGS TO FILE                                                      |
+|  Kavya, Economics IA, 12 Mar     due in 9 h     [ Write the log ]      |
+|  Your payout for this session waits for the log.                       |
+|------------------------------------------------------------------------|
+| NEW REQUESTS FOR YOU                                                   |
+|  DP2, Economics HL, Paper 1 essays, 2 h a week until Jan, up to        |
+|  Rs 1,000 / h                                          [ Reply ]       |
+|  See all 6 &gt;                                                           |
+|------------------------------------------------------------------------|
+| THIS MONTH   Rs 12,960 to you from 12 lessons      Earnings &gt;          |
+| REVIEWS      &quot;Finally understood evaluation...&quot;   [ Reply ]            |
++------------------------------------------------------------------------+</code></pre>
+<h4 id="c28-requests-board-apprequests-tutor">C28. Requests board (<code>/app/requests</code>, tutor)</h4>
+<ul>
+<li><p><strong>Filtered to the tutor's subjects:</strong> level, paper, how often, until when and budget, with no names and no schools.</p></li>
+<li><p><strong>[ Reply ]:</strong> a plan (500 characters), a price and up to three proposed times. A tutor can reply once per request.</p></li>
+<li><p><strong>My replies:</strong> sent, chosen, or not chosen.</p></li>
+<li><p><strong>Rules shown on the page:</strong></p>
+<ul>
+<li>no contact details;</li>
+<li>no promises of grades;</li>
+<li>no coursework writing.</li>
+</ul>
+<p>Replies are checked like messages.</p></li>
+</ul>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| REQUESTS FOR YOUR SUBJECTS                         [ Economics HL v ]  |
+|------------------------------------------------------------------------|
+| DP2 student, Economics HL, Paper 1 essays                              |
+| 2 hours a week until the January mocks. Up to Rs 1,000 an hour.        |
+| Posted 2 h ago, 3 replies so far                         [ Reply ]     |
+|------------------------------------------------------------------------|
+| REPLY                                                                  |
+| Your plan (500 characters)                                             |
+| [ Week 1: diagnose with one timed essay. Weeks 2 to 6: one part   ]    |
+| [ (a) and one (b) a week, marked in the lesson...                 ]    |
+| Your price  [ Rs 950 ] an hour                                         |
+| Times       [ Tue 5 pm ] [ Thu 6 pm ] [ Sat 11 am ]                    |
+| No contact details, no grade promises. [ Send reply ]                  |
++------------------------------------------------------------------------+</code></pre>
+<h4 id="c29-calendar-appcalendar">C29. Calendar (<code>/app/calendar</code>)</h4>
+<ul>
+<li><strong>Free times:</strong> a weekly pattern plus exceptions (holidays, exams).</li>
+<li><strong>Booked lessons:</strong> shown on the same calendar.</li>
+<li><strong>Time zones:</strong> shown in the tutor's zone, with the student's zone on hover.</li>
+<li><strong>Late slots:</strong> anything after 9 pm or before 7 am in a student's local time is greyed out with the reason ("under-18s: 7 am to 9 pm").</li>
+<li><strong>Optional sync</strong> to Google Calendar, one way (from FortyFive, out).</li>
+</ul>
+<h4 id="c30-students-appstudents">C30. Students (<code>/app/students</code>)</h4>
+<ul>
+<li>Each student shows: first name, subjects, lessons together, and the next lesson.</li>
+<li><strong>Lesson notes</strong> are visible to the student and their parent. Tutors don't get private notes about students: that keeps everything in view.</li>
+</ul>
+<h4 id="c31-help-log-applogs">C31. Help log (<code>/app/logs</code>)</h4>
+<p>Filed within 24 hours of each coaching session. The payout waits for it.</p>
+<p><strong>Fields:</strong></p>
+<ol type="1">
+<li>The piece and session number (filled in for you).</li>
+<li><strong>Criteria covered:</strong> chips.</li>
+<li><strong>Covered:</strong> 300 characters, plain words.</li>
+<li><strong>Student's next step:</strong> typed by the student at the end of the session, and read-only for the coach.</li>
+<li><strong>The signed statement:</strong> "I did not read, edit, rewrite or comment on the draft, and no files changed hands."</li>
+<li>[ File the log ].</li>
+</ol>
+<p>Once filed, a log can't be edited. A correction is added as a dated note.</p>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| HELP LOG   Kavya, Economics IA, commentary 2, session 2 of 4           |
+| 12 Mar, 7 to 8 pm, recorded                         due in 9 hours     |
+|------------------------------------------------------------------------|
+| Criteria covered   [ D Key concept ] [ E Evaluation ] [ + ]            |
+| What we covered                                                        |
+| [ How criterion D rewards linking the key concept to the article,  ]   |
+| [ and what makes an evaluation point specific rather than general. ]   |
+| Kavya&#39;s next step (her words)                                          |
+|   &quot;Find two stakeholders the article leaves out.&quot;                      |
+|                                                                        |
+| [x] I did not read, edit, rewrite or comment on the draft, and no      |
+|     files changed hands.                                               |
+| [ File the log ]     Filed logs can&#39;t be edited; corrections are       |
+|                      added as dated notes.                             |
++------------------------------------------------------------------------+</code></pre>
+<h4 id="c32-earnings-appearnings">C32. Earnings (<code>/app/earnings</code>)</h4>
+<p><strong>Content:</strong></p>
+<ul>
+<li><strong>The month:</strong> lessons booked, what came to you, the fee, and what's still held.</li>
+<li><strong>A receipt for every lesson,</strong> the same breakdown the parent sees.</li>
+<li><strong>Payout dates:</strong> two days after each lesson, unless there's a complaint or a help log is missing.</li>
+<li><strong>Tax lines:</strong> TDS (with PAN) and the GST/TCS status.</li>
+<li><strong>Downloads:</strong> a monthly statement and the year's summary for tax.</li>
+</ul>
+<p><strong>At 17:</strong> the page shows it all, but says "Payouts go to Rakesh (your guardian)".</p>
+<h4 id="c33-profile-appprofile">C33. Profile (<code>/app/profile</code>)</h4>
+<ul>
+<li><strong>Preview as the public sees it.</strong></li>
+<li><strong>Fields:</strong> about, subjects, papers, lesson price, coursework price (coaches only), intro calls on or off.</li>
+<li><strong>Photo:</strong> optional, a head-and-shoulders shot of the tutor only.</li>
+<li><strong>Changes:</strong> changes to price apply to new bookings only.</li>
+</ul>
+<h4 id="c34-training-apptraining">C34. Training (<code>/app/training</code>)</h4>
+<ul>
+<li><strong>Courses:</strong> safeguarding (required, every year) and coursework integrity (coaches, every year).</li>
+<li><strong>Track record:</strong> dates passed and quiz scores, plus when each needs renewing.</li>
+</ul>
+<h4 id="c35-course-authoring-appauthoring-course-leads-v1">C35. Course authoring (<code>/app/authoring</code>, course leads, v1)</h4>
+<ol type="1">
+<li><strong>Outline:</strong> modules and lessons.</li>
+<li><strong>Video upload</strong>, one per lesson.</li>
+<li><strong>Notes editor:</strong> markdown with LaTeX for maths, and a preview with the watermark.</li>
+<li><strong>Practice questions:</strong> our own questions with our own markschemes. There's a box to tick: "No IB paper text, no other publisher's material."</li>
+<li><strong>Submit for review:</strong> a subject lead leaves comments, and fixes are made.</li>
+<li><strong>Sales report:</strong> sales and the 70% share.</li>
+</ol>
+<h4 id="c36-guardian-view-app-guardian-of-a-17-year-old-tutor">C36. Guardian view (<code>/app</code>, guardian of a 17-year-old tutor)</h4>
+<ul>
+<li><strong>Visibility:</strong> the tutor's bookings and lessons, plus every message thread, read-only.</li>
+<li><strong>Money:</strong> payouts into the guardian's account, and the signed tutor agreement.</li>
+<li><strong>Safety:</strong> [ Report a concern ].</li>
+</ul>
+<h3 id="staff-console-adminfortyfivestudy">Staff console (admin.fortyfive.study)</h3>
+<p>Two-factor authentication on every account. Every opening of a document, recording or message is logged, with who and why.</p>
+<h4 id="c37-verification-queue-verify">C37. Verification queue (<code>/verify</code>)</h4>
+<ul>
+<li><strong>Columns:</strong>
+<ul>
+<li>ID (automatic from DigiLocker);</li>
+<li>results documents to check;</li>
+<li>references waiting;</li>
+<li>background checks;</li>
+<li>demo lessons.</li>
+</ul></li>
+<li><strong>An item:</strong>
+<ul>
+<li>the document viewer next to the checklist ("name matches ID", "grade matches the claim", "session and year make sense");</li>
+<li>[ Accept ] or [ Needs a fix ], with a reason picked from a list plus free text.</li>
+</ul></li>
+<li><strong>Timers:</strong> each item shows its age. Anything over 2 working days goes red.</li>
+</ul>
+<h4 id="c38-safeguarding-inbox-safeguarding">C38. Safeguarding inbox (<code>/safeguarding</code>)</h4>
+<p>The safeguarding lead's screen. It's the most important staff screen.</p>
+<ul>
+<li><strong>Order:</strong> child safety first (red, same day), then contact attempts, coursework integrity, reviews and other.</li>
+<li><strong>A report shows:</strong>
+<ul>
+<li>who reported, about whom;</li>
+<li>the evidence, linked: messages, booking, recording;</li>
+<li>earlier reports about the same people.</li>
+</ul></li>
+<li><strong>Actions:</strong>
+<ul>
+<li>[ Suspend now ] stops their bookings and messages at once and can be undone;</li>
+<li>contact the parent;</li>
+<li><strong>log a police report</strong> (date, station, reference), a duty under POCSO s19 and s21 with no internal inquiry first;</li>
+<li>notes;</li>
+<li>close with an outcome.</li>
+</ul></li>
+<li><strong>Audit trail:</strong> every action has a time and a name.</li>
+</ul>
+<pre class="wf"><code>+------------------------------------------------------------------------+
+| SAFEGUARDING                         Open: 3   Due today: 1            |
+|------------------------------------------------------------------------|
+| ! CHILD SAFETY  Reported 10:42  About: tutor #T-0193  By: parent       |
+|   &quot;Asked my daughter for her Instagram&quot;           [ Open ]             |
+|   Contact attempts   Reported 09:15   Tutor #T-0211, 3rd attempt       |
+|   Coursework         Reported Mon     Coach #T-0102, flagged by review |
+|------------------------------------------------------------------------|
+| REPORT  #R-0042                                                        |
+| Evidence: messages (2) &gt;   booking B-1180 &gt;   recording (asks why) &gt;   |
+| Earlier reports about T-0193: none                                     |
+| [ Suspend now ]  [ Contact parent ]  [ Log police report ]             |
+| Notes ______________________________________________                   |
+| Every action here is logged with your name and the time.               |
++------------------------------------------------------------------------+</code></pre>
+<h4 id="c39-integrity-reviews-integrity">C39. Integrity reviews (<code>/integrity</code>)</h4>
+<ul>
+<li><strong>Queue:</strong> a random 1 in 10 of coaching sessions, plus any that were flagged.</li>
+<li><strong>The reviewer:</strong>
+<ul>
+<li>watches the recording, up to 30 minutes, at up to 2x speed;</li>
+<li>reads the help log.</li>
+</ul></li>
+<li><strong>Checklist:</strong>
+<ul>
+<li>Did the coach write, edit or dictate any of the work?</li>
+<li>Did files change hands?</li>
+<li>Does the log match the session?</li>
+</ul></li>
+<li><strong>Outcome:</strong>
+<ul>
+<li><strong>Pass.</strong></li>
+<li><strong>Concern:</strong> coaching advice goes to the coach.</li>
+<li><strong>Breach:</strong> passed to the safeguarding lead, and the coach is suspended.</li>
+</ul></li>
+<li><strong>Pay:</strong> ₹500 per review, to the reviewer.</li>
+</ul>
+<h4 id="c40-content-and-corrections-content">C40. Content and corrections (<code>/content</code>)</h4>
+<ul>
+<li><strong>Review:</strong> course submissions with comments.</li>
+<li><strong>Corrections:</strong> reports from students flow into a queue. A fix is published to the public corrections page with the date and credit.</li>
+</ul>
+<h4 id="c41-payments-payments">C41. Payments (<code>/payments</code>)</h4>
+<ul>
+<li><strong>Problems:</strong> refunds, complaints within the 48-hour window, held payouts (complaint or missing log), and failed payouts.</li>
+<li><strong>Each case:</strong> has a reason and a decision; the parent and tutor are told automatically.</li>
+</ul>
+<h4 id="c42-people-and-data-people">C42. People and data (<code>/people</code>)</h4>
+<ul>
+<li><strong>Find an account:</strong> see its roles and links; suspend or restore it.</li>
+<li><strong>Consent records.</strong></li>
+<li><strong>Data requests</strong> (access, correction, deletion), each with a due date.</li>
+</ul>
+<h4 id="c43-marker-ops-marker">C43. Marker ops (<code>/marker</code>)</h4>
+<ul>
+<li><strong>Accuracy, per subject and component:</strong> pieces tested, average error per criterion, the share within 2 marks, and an Open or Testing switch.</li>
+<li><strong>Rubric pack versions.</strong></li>
+<li><strong>"Think this is wrong" reports.</strong></li>
+<li><strong>Rule:</strong> staff see reports, never the uploaded files.</li>
+</ul>
+<h4 id="c44-open-books-books">C44. Open books (<code>/books</code>)</h4>
+<ul>
+<li><strong>Every quarter:</strong> income, tutor and author earnings, costs, what was left, and free places.</li>
+<li><strong>Publishing:</strong> check it, then publish it to <code>/honesty/open-books</code>.</li>
+</ul>
+<h3 id="school-console-v2">School console (v2)</h3>
+<h4 id="c45-school-coordinator-school">C45. School coordinator (<code>/school</code>)</h4>
+<ul>
+<li><strong>Students:</strong> the school's students who've linked, with their consent.</li>
+<li><strong>Help logs:</strong> for those students.</li>
+<li><strong>Marker teacher mode:</strong> upload a class set of drafts and get a first-pass report per student, for the teacher only.</li>
+<li><strong>Switches:</strong> coaching on or off, and the Marker on or off, for the school's students.</li>
+<li><strong>Billing:</strong> invoices for the school plan.</li>
+</ul>
+<h2 id="d-the-flows">D. The flows</h2>
+<h3 id="d1-joining-student-and-parent">D1. Joining (student and parent)</h3>
+<pre class="wf"><code>Student signs up (B2) --&gt; parent invited --&gt; parent approves (B3) --&gt; full access
+        |                      |                      |
+        |                      | no answer: reminders  | &quot;I don&#39;t agree&quot;:
+        |                      | at 24 h and 72 h,     | account stays limited
+        |                      | expires at 14 days    |
+        v                      v                      v
+   limited mode:          student can change      student sees &quot;Your parent
+   browse, free tools,    the parent&#39;s contact    didn&#39;t approve the account&quot;
+   previews, save tutors</code></pre>
+<p>A student aged 18 or over goes straight to full access and gives their own consent.</p>
+<h3 id="d2-a-lesson-booking-start-to-finish">D2. A lesson booking, start to finish</h3>
+<p>Every booking moves through these states. Each change tells the right people (Part E).</p>
+<pre class="wf"><code>REQUESTED --(student under 18)--&gt; WAITING FOR PARENT --approve+pay--&gt; CONFIRMED
+    |                                  |  decline --&gt; DECLINED
+    | (18+ pays)                       |  12 h, no answer --&gt; EXPIRED (slot freed)
+    v
+CONFIRMED --start--&gt; IN PROGRESS --end--&gt; FINISHED --48 h, no complaint--&gt; PAID OUT
+    |                     |                   |
+    | cancelled           | no-show           | complaint within 48 h
+    v                     v                   v
+ CANCELLED            NO-SHOW            HELD (a person decides)</code></pre>
+<p>What each case does:</p>
+<ul>
+<li><strong>The tutor declines a request:</strong> the parent isn't charged, and the student sees two other tutors with free times.</li>
+<li><strong>The slot gets taken while the parent decides:</strong> it can't, because the slot is held for 12 hours.</li>
+<li><strong>The time is outside 7 am to 9 pm for an under-18:</strong> the slot never appears.</li>
+<li><strong>The tutor wants to move a lesson:</strong> they propose a new time, and the student and parent accept. If nobody accepts, it's cancelled with a full refund.</li>
+</ul>
+<h3 id="d3-the-request-board">D3. The request board</h3>
+<ol type="1">
+<li>The student posts. Under-18s post only once their parent has approved the account.</li>
+<li>Tutors who teach that subject see it, with no names or schools, and reply once each.</li>
+<li>The student, or the parent for under-18s, compares the replies and picks one. A booking (D2) starts with that tutor.</li>
+<li>A request closes after 14 days or once a tutor is picked. The tutors who weren't picked are told politely.</li>
+</ol>
+<h3 id="d4-free-intro-call">D4. Free intro call</h3>
+<ul>
+<li>15 minutes, free, once per student per tutor.</li>
+<li>It happens in the lesson room. The parent is welcome and is invited automatically.</li>
+<li>It's recorded only if the parent chose recording.</li>
+<li>Messages and the lesson room hide contact details, as always.</li>
+</ul>
+<h3 id="d5-lesson-day">D5. Lesson day</h3>
+<ol type="1">
+<li><strong>24 hours before:</strong> a reminder to the student, the parent and the tutor.</li>
+<li><strong>1 hour before:</strong> a reminder to the student and the tutor.</li>
+<li><strong>10 minutes before:</strong> [ Join ] turns on.</li>
+<li><strong>No-shows:</strong>
+<ul>
+<li><strong>The tutor waits 15 minutes:</strong> a student no-show, so the tutor gets half.</li>
+<li><strong>The student waits 15 minutes:</strong> a tutor no-show, so the student gets a full refund, and the tutor gets a strike (three strikes and they're removed).</li>
+</ul></li>
+<li><strong>After the lesson:</strong>
+<ul>
+<li>the tutor adds lesson notes;</li>
+<li>the student gets a review prompt;</li>
+<li>for coaching sessions, the help log is due within 24 hours.</li>
+</ul></li>
+</ol>
+<h3 id="d6-cancelling-and-refunds">D6. Cancelling and refunds</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Who cancels</th>
+<th>When</th>
+<th>Money</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Student or parent</td>
+<td>more than 24 hours before</td>
+<td>full refund</td>
+</tr>
+<tr>
+<td>Student or parent</td>
+<td>less than 24 hours before, or no-show</td>
+<td>tutor gets half</td>
+</tr>
+<tr>
+<td>Tutor</td>
+<td>any time less than 24 hours before, or no-show</td>
+<td>full refund, and a strike for the tutor</td>
+</tr>
+<tr>
+<td>Anyone</td>
+<td>unhappy after a lesson, within 48 hours</td>
+<td>payout held; a person decides</td>
+</tr>
+<tr>
+<td>Course buyer</td>
+<td>within 7 days, less than a quarter watched</td>
+<td>full refund</td>
+</tr>
+</tbody>
+</table></div>
+<p>Refunds go back to the way the parent paid, and the receipt is updated.</p>
+<h3 id="d7-reviews">D7. Reviews</h3>
+<ul>
+<li><strong>Who:</strong> only after a paid, finished lesson, within 14 days. One review per lesson, with stars and up to 500 characters.</li>
+<li><strong>The tutor's side:</strong> they can reply once, but can't hide or delete a review.</li>
+<li><strong>Removal:</strong> only for abuse or personal details, and the public review page says how many were removed.</li>
+<li><strong>The rating:</strong> a tutor's rating appears only once they have 3 reviews.</li>
+</ul>
+<h3 id="d8-buying-a-course-or-a-free-place">D8. Buying a course, or a free place</h3>
+<pre class="wf"><code>Course page --[Buy]--&gt; (under 18) parent approval card --&gt; pay --&gt; course unlocked
+            --[Ask for a free place]--&gt; unlocked at once, parent told, no questions</code></pre>
+<p>There's one free place per course per student. Free places are counted in the open books.</p>
+<h3 id="d9-coursework-coaching">D9. Coursework coaching</h3>
+<ol type="1">
+<li>Add the piece (C19) and sign the coursework code. The student and the parent sign once per piece.</li>
+<li>Book an hour with a coach in that subject. The page shows the hours left.</li>
+<li>Parent approval and payment, as in D2.</li>
+<li><strong>The session:</strong> always recorded, with no files and a banner saying so. At the end the student types their next step.</li>
+<li>The coach files the help log within 24 hours. The payout is held until it's filed.</li>
+<li>The log goes to the student and the parent, and the student shares it with their supervisor.</li>
+<li><strong>At the limit:</strong> the booking button is replaced by the limit message (C19).</li>
+<li><strong>Reviews:</strong> 1 in 10 sessions is picked at random for integrity review (C39), as is any flagged session.</li>
+</ol>
+<h3 id="d10-a-marker-check">D10. A Marker check</h3>
+<pre class="wf"><code>Start a check (C20) --&gt; upload --&gt; marking (3 passes, about 5 min) --&gt; report (C21)
+   | second check: at least 7 days after the first                     |
+   | subject in &quot;Testing&quot;: button off, &quot;We open a subject once its      |
+   |   accuracy is published&quot;                                           v
+   | file deleted after 48 hours, report kept               share with supervisor</code></pre>
+<p><strong>If marking fails</strong> (an unreadable PDF, or a timeout), the check isn't used up. The student sees "We couldn't read this file. Export it again from your document and retry."</p>
+<h3 id="d11-reporting-a-concern">D11. Reporting a concern</h3>
+<ol type="1">
+<li>[ Report ] is on every screen, plus the public form (C9).</li>
+<li><strong>The report:</strong> pick a category, then who and when, and the details. Evidence (the thread, the booking) is attached automatically.</li>
+<li><strong>Child safety:</strong> the safeguarding lead gets an SMS and an email at once, at any hour. Everything else is read within 24 hours.</li>
+<li><strong>The person reporting</strong> gets: "Thanks. A trained adult will read this within 24 hours. If someone is in danger now, call 112."</li>
+<li><strong>If a child may have been abused:</strong> suspend the account, tell the parent, report to the police or the Special Juvenile Police Unit straight away, log it, and fix the rule that failed.</li>
+</ol>
+<h3 id="d12-payouts">D12. Payouts</h3>
+<ul>
+<li><strong>Normal case:</strong> two days after a finished lesson, with no complaint, the money goes to the tutor's Razorpay linked account. For a tutor aged 17 it goes to their guardian's.</li>
+<li><strong>Coaching:</strong> held until the help log is filed.</li>
+<li><strong>Statement:</strong> a monthly one on the earnings page (C32).</li>
+</ul>
+<h3 id="d13-data-rights-and-withdrawing-consent">D13. Data rights and withdrawing consent</h3>
+<ul>
+<li><strong>Download my data:</strong> a ZIP of the account, bookings, messages and logs, ready within 7 days.</li>
+<li><strong>Delete my account:</strong> the account and messages go. Invoices and records the law requires are kept for as long as tax law asks, and the page says so.</li>
+<li><strong>A parent withdraws consent:</strong> the student's account goes back to limited mode, upcoming bookings are cancelled with full refunds, and data is deleted unless the law requires it.</li>
+</ul>
+<h3 id="d14-turning-18">D14. Turning 18</h3>
+<ul>
+<li><strong>Students:</strong> on their birthday, a message asks: "Should your parent keep seeing your account?" They answer Keep or End. Until they answer, nothing changes.</li>
+<li><strong>Graduate tutors:</strong> at 18 they move to the standard track (a background check, payouts to their own account). The guardian's view ends once that's done.</li>
+</ul>
+<h2 id="e-notifications">E. Notifications</h2>
+<p><strong>Channels:</strong></p>
+<ul>
+<li>in-app;</li>
+<li>email;</li>
+<li>SMS only for one-time codes, parent approvals (if the parent chose them) and safety.</li>
+</ul>
+<p>There are no push notifications in v0, because there's no phone app yet.</p>
+<p><strong>Quiet hours for under-18s:</strong> nothing between 9 pm and 7 am except safety messages. Anything else waits until 7 am.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Student</th>
+<th>Parent</th>
+<th>Tutor</th>
+<th>Staff</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parent invite and reminders</td>
+<td>-</td>
+<td>email (+SMS)</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Account approved</td>
+<td>in-app, email</td>
+<td>email</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Booking needs approval</td>
+<td>in-app</td>
+<td>in-app, email (+SMS)</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Booking confirmed</td>
+<td>in-app, email</td>
+<td>email</td>
+<td>in-app, email</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Booking declined or expired</td>
+<td>in-app, email</td>
+<td>-</td>
+<td>in-app</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Lesson reminder (24 h, 1 h)</td>
+<td>email</td>
+<td>email (24 h)</td>
+<td>email</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Lesson cancelled, refund</td>
+<td>in-app, email</td>
+<td>email</td>
+<td>in-app, email</td>
+<td>-</td>
+</tr>
+<tr>
+<td>New message</td>
+<td>in-app (email if unread for 1 h)</td>
+<td>-</td>
+<td>in-app (email if unread for 1 h)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Review prompt</td>
+<td>in-app, email</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Help log due</td>
+<td>-</td>
+<td>-</td>
+<td>in-app, email</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Help log ready</td>
+<td>in-app, email</td>
+<td>email</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Marker report ready</td>
+<td>in-app, email</td>
+<td>email</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Checklist step done or needs a fix</td>
+<td>-</td>
+<td>-</td>
+<td>in-app, email</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Profile live</td>
+<td>-</td>
+<td>-</td>
+<td>email</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Payout sent</td>
+<td>-</td>
+<td>-</td>
+<td>email (guardian at 17)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>New request in your subject</td>
+<td>-</td>
+<td>-</td>
+<td>in-app (daily email digest)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Report received</td>
+<td>email (if they reported)</td>
+<td>email (if they reported)</td>
+<td>-</td>
+<td>SMS + email (child safety), email (others)</td>
+</tr>
+<tr>
+<td>Data request done</td>
+<td>email</td>
+<td>email</td>
+<td>email</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="f-the-look">F. The look</h2>
+<h3 id="f1-direction">F1. Direction</h3>
+<p><strong>One idea: a well-set exam paper.</strong> Calm, serious, warm.</p>
+<ul>
+<li><strong>The layout bones</strong> come from your template <code>site-templates/templates/03-lab-dossier</code>:
+<ul>
+<li>a warm paper background;</li>
+<li>big headlines set to the left;</li>
+<li>small letter-spaced labels above sections;</li>
+<li>square black main buttons;</li>
+<li>hairline rules between sections;</li>
+<li>lots of white space.</li>
+</ul></li>
+<li><strong>Fonts:</strong> Latin Modern replaces the template's grotesk headlines, so the site matches the deck and every PDF.</li>
+<li><strong>Never:</strong>
+<ul>
+<li>mascots, cartoons or confetti;</li>
+<li>gradients or glass effects;</li>
+<li>stock photos of smiling teenagers;</li>
+<li>streaks, badges or leaderboards;</li>
+<li>countdown timers or "3 spots left".</li>
+</ul></li>
+</ul>
+<p><strong>Process, because earlier visual designs were rejected:</strong></p>
+<ol type="1">
+<li>Test the wireframes.</li>
+<li>Style one screen, Home, and get your sign-off.</li>
+<li>Only then style the rest.</li>
+</ol>
+<h3 id="f2-fonts">F2. Fonts</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Use</th>
+<th>Font</th>
+<th>Licence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Headlines, course notes, long reading</td>
+<td>Latin Modern Roman (LM Roman 10 and 12 for text, LM Roman 17 for display)</td>
+<td>GUST Font License</td>
+<td>Convert the MiKTeX OTFs to WOFF2 and host them ourselves</td>
+</tr>
+<tr>
+<td>Buttons, forms, tables, prices, numbers</td>
+<td>Inter, with tabular figures</td>
+<td>SIL Open Font License</td>
+<td>Has the ₹ sign</td>
+</tr>
+<tr>
+<td>Small labels, receipts, help logs</td>
+<td>Latin Modern Mono (LM Mono 10)</td>
+<td>GUST Font License</td>
+<td>The typed-record feel</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Latin Modern has no ₹ sign</strong> (checked 13 October). Every price is wrapped as <code>&lt;span class="money"&gt;</code> in Inter, and Inter sits next in the font list so a stray ₹ still shows.</p>
+<p>Satoshi and Cabinet Grotesk are not used: their Indian Type Foundry licences are marked "check" in the font audit.</p>
+<h3 id="f3-colour">F3. Colour</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Light</th>
+<th>Dark</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--paper</code></td>
+<td>#f6f4ee</td>
+<td>#0f0f0e</td>
+<td>page background</td>
+</tr>
+<tr>
+<td><code>--surface</code></td>
+<td>#fffffe</td>
+<td>#1a1a19</td>
+<td>cards</td>
+</tr>
+<tr>
+<td><code>--wash</code></td>
+<td>#efede6</td>
+<td>#232321</td>
+<td>quiet panels</td>
+</tr>
+<tr>
+<td><code>--ink</code></td>
+<td>#121211</td>
+<td>#f4f2ec</td>
+<td>text</td>
+</tr>
+<tr>
+<td><code>--ink-2</code></td>
+<td>#4a4945</td>
+<td>#c3c2b7</td>
+<td>secondary text</td>
+</tr>
+<tr>
+<td><code>--muted</code></td>
+<td>#7a7873</td>
+<td>#8f8d86</td>
+<td>labels, hints</td>
+</tr>
+<tr>
+<td><code>--rule</code></td>
+<td>#dcdad2</td>
+<td>#2f2f2c</td>
+<td>hairlines, borders</td>
+</tr>
+<tr>
+<td><code>--blue</code></td>
+<td>#2a78d6</td>
+<td>#5b9be8</td>
+<td>the one accent: links, the app's main action, the verified tick</td>
+</tr>
+<tr>
+<td><code>--blue-wash</code></td>
+<td>#e9f1fb</td>
+<td>#16263a</td>
+<td>selected rows, the chosen door</td>
+</tr>
+<tr>
+<td><code>--red</code></td>
+<td>#b42a2a</td>
+<td>#e06a6a</td>
+<td>Report, safety notices, destructive actions only</td>
+</tr>
+<tr>
+<td><code>--green</code></td>
+<td>#1f7a3a</td>
+<td>#4fb06a</td>
+<td>a "done" tick only</td>
+</tr>
+</tbody>
+</table></div>
+<p>Dark mode is designed, not inverted. It follows the device setting, and a switch can override it.</p>
+<p>Check text contrast at WCAG AA in both themes before anything ships.</p>
+<h3 id="f4-type-spacing-and-grid">F4. Type, spacing and grid</h3>
+<ul>
+<li><strong>Type sizes:</strong>
+<ul>
+<li>13 (labels), 15 (interface), 17 (body);</li>
+<li>20, 26, 34, 48 and 72 (display).</li>
+<li>Line height: 1.55 for body text and 1.1 for headlines.</li>
+</ul></li>
+<li><strong>Spacing steps:</strong> 4, 8, 12, 16, 24, 32, 48, 72, 112.</li>
+<li><strong>Corners:</strong>
+<ul>
+<li>cards 10px;</li>
+<li>inputs 8px;</li>
+<li>main buttons square (0px), like the template.</li>
+</ul></li>
+<li><strong>Grid:</strong>
+<ul>
+<li>12 columns from 900px up, at most 1180px wide;</li>
+<li>4 columns on phones, with a 16px gutter at the sides.</li>
+</ul></li>
+<li><strong>Breakpoints:</strong> 360 (smallest phone), 600, 900, 1200.</li>
+<li><strong>No sideways scrolling</strong> on any page. Wide tables scroll inside their own box.</li>
+</ul>
+<h3 id="f5-components">F5. Components</h3>
+<p>Design each once, with every state:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Component</th>
+<th>States</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Button: main (ink, square), secondary (outline), quiet (text), danger (red text)</td>
+<td>normal, hover, focus, pressed, disabled with the reason shown, loading</td>
+</tr>
+<tr>
+<td>Text field, select, date, search with suggestions</td>
+<td>empty, filled, focus, error with the message under it, disabled</td>
+</tr>
+<tr>
+<td>Chips (subjects), HL/SL switch, radio cards (doors, tracks)</td>
+<td>off, on, focus, disabled</td>
+</tr>
+<tr>
+<td>Step line ("Step 2 of 4")</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Verified badge: blue tick + "Economics HL 7"</td>
+<td>tap shows "We checked the official IB results document on 18 Dec 2026"</td>
+</tr>
+<tr>
+<td>Track label: "IB graduate 2026", "Graduate tutor, 17", "IB teacher"</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Receipt (LM Mono, right-aligned figures)</td>
+<td>lesson, coaching, course, Marker</td>
+</tr>
+<tr>
+<td>Tutor card, course card, request card</td>
+<td>normal, hover, unavailable</td>
+</tr>
+<tr>
+<td>Approval card</td>
+<td>waiting, approved, declined, expired</td>
+</tr>
+<tr>
+<td>Lesson card</td>
+<td>upcoming, join open, in progress, finished, cancelled</td>
+</tr>
+<tr>
+<td>Help log</td>
+<td>to file (countdown), filed, with a correction note</td>
+</tr>
+<tr>
+<td>Marker criterion row</td>
+<td>sure, fairly sure, unsure (with a range)</td>
+</tr>
+<tr>
+<td>Checklist row</td>
+<td>to do, waiting for us, needs a fix, done</td>
+</tr>
+<tr>
+<td>"Your parent can see this" banner</td>
+<td>on every chat</td>
+</tr>
+<tr>
+<td>Report button and report sheet</td>
+<td>normal, sending, sent</td>
+</tr>
+<tr>
+<td>Banner</td>
+<td>info (blue), waiting (muted), safety (red)</td>
+</tr>
+<tr>
+<td>Empty state: one sentence and one button</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Modal sheet (phone) and dialog (desktop)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Bottom tab bar (phone)</td>
+<td>with a count badge on Approvals</td>
+</tr>
+<tr>
+<td>Week grid of free times</td>
+<td>free, booked, outside allowed hours</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Icons:</strong> Lucide (ISC licence), with a 1.5px line, and only where a word alone is slower (join, report, settings). Every icon has a text label or an accessible name.</p>
+<p><strong>Pictures:</strong></p>
+<ul>
+<li>tutors' own profile photos only, and optional;</li>
+<li>no photos of students, ever;</li>
+<li>no illustrations.</li>
+</ul>
+<p><strong>Motion:</strong> fades and slides of 150 to 200 ms, nothing that bounces, and none at all for users who switch motion off.</p>
+<h3 id="f6-access-for-everyone">F6. Access for everyone</h3>
+<ul>
+<li><strong>Standard:</strong> WCAG 2.2 AA.</li>
+<li><strong>Keyboard:</strong> every action works by keyboard, with a visible focus ring, and a skip link on every page.</li>
+<li><strong>Forms:</strong> every field has a label; placeholders never stand in for one. Errors say what to do, next to the field, and are announced.</li>
+<li><strong>Size:</strong> touch targets of at least 44px; works at 200% zoom.</li>
+<li><strong>Captions:</strong> every course video has captions, and the lesson room offers live captions where the video service supports them.</li>
+<li><strong>Testing:</strong> with NVDA on Windows and TalkBack on Android before each release.</li>
+</ul>
+<h3 id="f7-formats">F7. Formats</h3>
+<ul>
+<li><strong>Money:</strong> ₹ with Indian grouping (₹1,49,900). Paise only on receipts (₹58.49). Elsewhere round to the rupee.</li>
+<li><strong>Dates:</strong> "Tue 9 Mar", with the year only when it isn't this year.</li>
+<li><strong>Times:</strong> "5:00 pm IST". The viewer's own zone comes first if it isn't IST: "7:30 pm GST (9:00 pm IST)".</li>
+<li><strong>Names:</strong>
+<ul>
+<li>students are always first names only to tutors;</li>
+<li>tutors are first name and initial in public, and full name after a booking.</li>
+</ul></li>
+</ul>
+<h2 id="g-the-words">G. The words</h2>
+<h3 id="g1-voice">G1. Voice</h3>
+<p>A sharp, kind IB student talking to another student, and to their parent:</p>
+<ul>
+<li>short sentences;</li>
+<li>specific words;</li>
+<li>British spelling;</li>
+<li>no em dashes.</li>
+</ul>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Say</th>
+<th>Don't say</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Criterion B is where most 4s become 5s."</td>
+<td>"Unlock your potential."</td>
+</tr>
+<tr>
+<td>"Nobody pays to rank higher."</td>
+<td>"Our proprietary matching algorithm."</td>
+</tr>
+<tr>
+<td>"Not for you if you already score 6s."</td>
+<td>"Perfect for everyone!"</td>
+</tr>
+<tr>
+<td>"Your parent can see this chat."</td>
+<td>"This conversation may be monitored."</td>
+</tr>
+<tr>
+<td>"We don't know yet; we'll publish it."</td>
+<td>"Industry-leading accuracy."</td>
+</tr>
+</tbody>
+</table></div>
+<p>Never use: revolutionise, seamless, unlock, empower, journey, game-changer, cutting-edge, supercharge, elevate, guaranteed.</p>
+<p>Always say "the IB" or "IB Diploma students". Never put "IB" in the FortyFive name or logo.</p>
+<h3 id="g2-words-for-key-moments">G2. Words for key moments</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Moment</th>
+<th>Words</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Waiting for a parent</td>
+<td>"Sent to Priya. You can use the free tools and previews while you wait."</td>
+</tr>
+<tr>
+<td>Booking sent for approval</td>
+<td>"Sent to Priya for approval. We hold this slot for 12 hours."</td>
+</tr>
+<tr>
+<td>Parent declined a booking</td>
+<td>"Priya didn't approve this one. Talk to her, or pick another time."</td>
+</tr>
+<tr>
+<td>Payment failed</td>
+<td>"The payment didn't go through. Nothing was charged. Try again or use UPI."</td>
+</tr>
+<tr>
+<td>Contact details hidden</td>
+<td>"[contact details hidden: keep chats on FortyFive]"</td>
+</tr>
+<tr>
+<td>Slot outside allowed hours</td>
+<td>"Lessons for under-18s run 7 am to 9 pm."</td>
+</tr>
+<tr>
+<td>Coaching limit reached</td>
+<td>"You've used all 4 coaching hours for this IA. That's the limit, so the work stays yours. Your supervisor is the next step."</td>
+</tr>
+<tr>
+<td>Marker subject not open</td>
+<td>"We open a subject once its accuracy is published. Economics opens when 30 marked pieces are in."</td>
+</tr>
+<tr>
+<td>Second Marker check too soon</td>
+<td>"Your second check opens on 21 March, a week after the first."</td>
+</tr>
+<tr>
+<td>Report sent</td>
+<td>"Thanks. A trained adult will read this within 24 hours. If someone is in danger now, call 112."</td>
+</tr>
+<tr>
+<td>Empty Today</td>
+<td>"Nothing booked yet. Watch a free first lesson, or find a tutor for one paper."</td>
+</tr>
+<tr>
+<td>Tutor not live yet</td>
+<td>"Your profile goes live when every step is done. Most people take a week."</td>
+</tr>
+<tr>
+<td>Needs a fix</td>
+<td>"The name on your results document doesn't match your ID. Upload it again, or write to us."</td>
+</tr>
+<tr>
+<td>No search results</td>
+<td>"No tutor matches all of that. Try fewer filters, or post a request."</td>
+</tr>
+<tr>
+<td>Error, something broke</td>
+<td>"Something went wrong on our side. Nothing was lost. Try again in a minute."</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="g3-what-has-to-be-written-before-launch">G3. What has to be written before launch</h3>
+<p><strong>Legal (with the lawyer):</strong></p>
+<ul>
+<li>terms of use;</li>
+<li>privacy notice;</li>
+<li>parental consent notice;</li>
+<li>refund policy;</li>
+<li>tutor agreement;</li>
+<li>coursework code;</li>
+<li>safeguarding policy;</li>
+<li>sponsor rules.</li>
+</ul>
+<p><strong>Pages:</strong></p>
+<ul>
+<li>the ten promises;</li>
+<li>For parents;</li>
+<li>Coursework;</li>
+<li>Teach on FortyFive;</li>
+<li>For schools;</li>
+<li>About;</li>
+<li>the questions on each page.</li>
+</ul>
+<p><strong>Training:</strong></p>
+<ul>
+<li>the safeguarding course (30 minutes, 10-question quiz);</li>
+<li>the coursework integrity course (60 minutes, quiz);</li>
+<li>the demo lesson checklist for subject leads.</li>
+</ul>
+<p><strong>Emails, about 25:</strong></p>
+<ul>
+<li>the parent invite and reminders;</li>
+<li>approved;</li>
+<li>every booking state;</li>
+<li>lesson reminders;</li>
+<li>receipts and refunds;</li>
+<li>the review prompt;</li>
+<li>help log ready;</li>
+<li>Marker report ready;</li>
+<li>each tutor checklist step;</li>
+<li>profile live;</li>
+<li>payout sent;</li>
+<li>report received;</li>
+<li>data request done.</li>
+</ul>
+<p><strong>SMS templates</strong>, registered on DLT before any SMS can be sent in India:</p>
+<ul>
+<li>the one-time code;</li>
+<li>approval needed;</li>
+<li>the safety alert to the safeguarding lead.</li>
+</ul>
+<h2 id="h-building-it">H. Building it</h2>
+<h3 id="h1-what-each-part-runs-on">H1. What each part runs on</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Need</th>
+<th>Choice</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public site and app</td>
+<td>Next.js on Cloudflare Workers</td>
+<td>Same set-up as the Kalpya build; pages rendered on the server</td>
+</tr>
+<tr>
+<td>Accounts, data, access rules</td>
+<td>Supabase: sign-in, Postgres, row-level security</td>
+<td>The table in A4 becomes database rules, so a wrong URL can't show someone else's data</td>
+</tr>
+<tr>
+<td>Chat</td>
+<td>Supabase Realtime, plus a server check for contact details</td>
+<td>Catches numbers (also written in words), emails, handles, UPI IDs, links</td>
+</tr>
+<tr>
+<td>Files</td>
+<td>A private bucket (Supabase Storage or Cloudflare R2)</td>
+<td>Marker uploads go in a bucket that deletes after 48 hours</td>
+</tr>
+<tr>
+<td>Course video</td>
+<td>Cloudflare Stream, with links that expire</td>
+<td>Captions on every video</td>
+</tr>
+<tr>
+<td>Lesson room and recording</td>
+<td>Jitsi: hosted (8x8 JaaS) or self-hosted with Jibri</td>
+<td>Decide on cost in November. Recordings go to a private bucket</td>
+</tr>
+<tr>
+<td>Payments (v1)</td>
+<td>Razorpay Route</td>
+<td>Linked accounts for tutors and guardians; money held until payout</td>
+</tr>
+<tr>
+<td>ID and adult check</td>
+<td>DigiLocker through a licensed provider</td>
+<td>Parents and tutors</td>
+</tr>
+<tr>
+<td>Background checks</td>
+<td>An Indian check provider</td>
+<td>Tutors 18 and over</td>
+</tr>
+<tr>
+<td>E-signatures</td>
+<td>Aadhaar e-sign through the same provider, or click-to-accept</td>
+<td>The lawyer decides</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>A transactional email service</td>
+<td>From a fortyfive.study address</td>
+</tr>
+<tr>
+<td>SMS</td>
+<td>An Indian SMS provider</td>
+<td>Needs DLT registration of the business and every template first</td>
+</tr>
+<tr>
+<td>The Marker</td>
+<td>Claude API (Opus 5.5) with prompt caching</td>
+<td>Practice marking in v1, coursework checks in v2. Three passes, then a checker that blocks rewritten text</td>
+</tr>
+<tr>
+<td>Analytics</td>
+<td>Cloudflare Web Analytics</td>
+<td>Public pages only, no cookies</td>
+</tr>
+<tr>
+<td>Errors</td>
+<td>An error tracker that strips personal data</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Staff console</td>
+<td>The same app on admin.fortyfive.study</td>
+<td>Two-factor sign-in; every opening logged</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Main tables:</strong></p>
+<ul>
+<li><strong>People:</strong> accounts, roles, parent links, consents.</li>
+<li><strong>Schools and subjects:</strong> schools (the 629), subjects, student subjects.</li>
+<li><strong>Tutors:</strong> tutor subjects (with the verified grade), checklist items, free times.</li>
+<li><strong>Bookings:</strong> bookings (with their state), lesson rooms, recordings.</li>
+<li><strong>Messages and the board:</strong> threads, messages, requests, replies, reviews.</li>
+<li><strong>Courses:</strong> courses, modules, lessons, enrolments, free places, checklist ticks.</li>
+<li><strong>Coursework:</strong> pieces, help logs, Marker checks, Marker reports.</li>
+<li><strong>Money:</strong> payments, refunds, payouts.</li>
+<li><strong>Safety and running:</strong> reports, the audit log, notifications.</li>
+</ul>
+<h3 id="h2-what-ships-when">H2. What ships when</h3>
+<p><strong>v0, the pilot (1 February 2027).</strong> No payments go through FortyFive; parents pay founding tutors directly by UPI. About 30 screens:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Screens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public</td>
+<td>C1 Home, C2 Catalogue (2 courses), C3 Course page, C4 Tutor search, C5 Tutor profile, C6 Coursework (says coaching opens in April), C7 Predictor, Next point and Results-day guide, C8 Promises and Fees, C9 For parents and Report, C11 Teach, C12 Sign in</td>
+</tr>
+<tr>
+<td>Sign-ups</td>
+<td>B1 to B5</td>
+</tr>
+<tr>
+<td>Student</td>
+<td>C13 Today, C14 Course player, C15 Booking, C17 Bookings, C18 Lesson room, C22 Messages, C23 Account</td>
+</tr>
+<tr>
+<td>Parent</td>
+<td>C24 Home, C25 Approvals (UPI directly, with "I've paid"), C26 Bookings, Messages, Settings</td>
+</tr>
+<tr>
+<td>Tutor</td>
+<td>Checklist, C27 Home, C29 Calendar, C30 Students, C33 Profile, C34 Training, C36 Guardian view</td>
+</tr>
+<tr>
+<td>Staff</td>
+<td>C37 Verify, C38 Safeguarding, C42 People (basic)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>v1, the launch (April 2027):</strong></p>
+<ul>
+<li><strong>Money:</strong> Razorpay payments, receipts and refunds (C25, C26 Payments, C32 Earnings, C41 Payments); course sales and free places.</li>
+<li><strong>Matching:</strong> the request board (C16, C28); reviews (D7); small-group clinics.</li>
+<li><strong>Coursework:</strong> coaching (C19 coaching, C31 Help log, C39 Integrity reviews); practice marking in C14; the timetable and coursework planner tools.</li>
+<li><strong>Trust and content:</strong> open books (C8, C44); corrections (C40); course authoring (C35); C10 For schools.</li>
+</ul>
+<p><strong>v2 (from August 2027):</strong></p>
+<ul>
+<li>Marker coursework checks (C20, C21, C43 and the accuracy page), subject by subject.</li>
+<li>School console and teacher mode (C45).</li>
+<li>The exemplar library.</li>
+<li>Standing approvals for one tutor.</li>
+<li>An installable phone version of the site.</li>
+</ul>
+<h3 id="h3-order-of-work-for-v0">H3. Order of work for v0</h3>
+<p>Nothing starts before 13 November. The weeks below are rough; the 16 December line isn't, because founding tutors sign up right after results.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Weeks</th>
+<th>Work</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>14 to 22 Nov</td>
+<td><strong>First round of wireframe tests (H4).</strong> Settle the open questions in Part I with the lawyer. Set up the code, hosting, database, sign-in, roles, access rules, fonts and colours, and the public page frame.</td>
+</tr>
+<tr>
+<td>23 to 29 Nov</td>
+<td><strong>Style Home for your sign-off.</strong> Then the content pages: C1, C8, C9, C11.</td>
+</tr>
+<tr>
+<td>30 Nov to 6 Dec</td>
+<td><strong>Sign-ups B1 to B4 and parent approval,</strong> with DigiLocker in test mode, plus limited mode.</td>
+</tr>
+<tr>
+<td>7 to 16 Dec</td>
+<td><strong>Tutor sign-up B5 and the checklist,</strong> C37 Verify, C34 safeguarding course and quiz. <strong>Ready by results day.</strong></td>
+</tr>
+<tr>
+<td>17 to 23 Dec</td>
+<td>Tutor profile C33 and C5, search C4, calendar C29.</td>
+</tr>
+<tr>
+<td>24 to 31 Dec</td>
+<td>Booking C15, approvals C25 (UPI), bookings C17, booking emails.</td>
+</tr>
+<tr>
+<td>1 to 10 Jan</td>
+<td>Messages C22 with contact hiding; reports D11 and the safeguarding inbox C38.</td>
+</tr>
+<tr>
+<td>11 to 20 Jan</td>
+<td>Lesson room C18 with recording; Today C13; parent home C24.</td>
+</tr>
+<tr>
+<td>21 to 31 Jan</td>
+<td><strong>Second round of tests:</strong> course player C14 with both courses loaded, accessibility and safety checks (H4), then fixes.</td>
+</tr>
+<tr>
+<td>1 Feb</td>
+<td>The pilot opens.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="h4-testing">H4. Testing</h3>
+<p><strong>1. Wireframe tests (late November) and build tests (late January).</strong></p>
+<ul>
+<li><strong>Who:</strong> 5 DP students, 5 parents and 3 tutors, 20 minutes each, using their own phones where possible.</li>
+<li><strong>Student tasks:</strong>
+<ul>
+<li>sign up and reach "waiting for your parent";</li>
+<li>find an Economics HL tutor free on a Tuesday evening and send a booking;</li>
+<li>find how many coaching hours you have left.</li>
+</ul></li>
+<li><strong>Parent tasks:</strong>
+<ul>
+<li>approve the account;</li>
+<li>approve a booking;</li>
+<li>find a message your child sent;</li>
+<li>report a concern.</li>
+</ul></li>
+<li><strong>Tutor tasks:</strong>
+<ul>
+<li>sign up and say what's left before you go live;</li>
+<li>reply to a request;</li>
+<li>file a help log.</li>
+</ul></li>
+<li><strong>Pass mark:</strong> 4 of 5 people finish each task without help. Anything below that gets changed and tested again.</li>
+</ul>
+<p><strong>2. Safety checks, before every release.</strong> Every one of these must fail:</p>
+<ul>
+<li>sharing a phone number in chat six ways (digits, spaced out, in words, mixed, as a handle, as a UPI ID);</li>
+<li>booking an under-18 at 9:30 pm;</li>
+<li>messaging or booking before the parent approves;</li>
+<li>a tutor opening another student's booking by changing the URL;</li>
+<li>a student opening someone else's Marker report by URL;</li>
+<li>staff opening a recording without giving a reason;</li>
+<li>uploading a .docx or a 50 MB file to the Marker;</li>
+<li>a coach filing a log for a session they didn't teach;</li>
+<li>a review on a lesson that never happened.</li>
+</ul>
+<p><strong>3. Access for everyone.</strong></p>
+<ul>
+<li>keyboard only, through the sign-up, approval, booking and messaging flows (B2, B3, C15, C25, C22);</li>
+<li>NVDA and TalkBack;</li>
+<li>contrast in both themes;</li>
+<li>200% zoom;</li>
+<li>a 360px phone.</li>
+</ul>
+<h3 id="h5-before-the-pilot-opens">H5. Before the pilot opens</h3>
+<ol type="1">
+<li>The lawyer has signed off every legal page and the consent method.</li>
+<li>The safeguarding lead is trained, has the inbox on their phone, and has a test child-safety report sent at 11 pm and handled.</li>
+<li>DLT registration and SMS templates are approved.</li>
+<li>DigiLocker and the check provider are on live keys.</li>
+<li>Backups are restored once, for real, to prove they work.</li>
+<li>Every founding tutor is fully green on the checklist.</li>
+<li>Both courses have been checked by their leads and have captions.</li>
+<li>The DP Coordinator has agreed to the pilot in writing.</li>
+</ol>
+<h2 id="i-questions-still-open">I. Questions still open</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Question</th>
+<th>Who decides</th>
+<th>By</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>How a parent proves they're an adult for consent (DigiLocker, or another method the DPDP Rules accept)</td>
+<td>the lawyer</td>
+<td>30 Nov 2026</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Who may watch recordings, and how long each kind is kept</td>
+<td>the lawyer and the safeguarding lead</td>
+<td>30 Nov 2026</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Hosted or self-hosted Jitsi for recorded lessons</td>
+<td>you, on cost</td>
+<td>22 Nov 2026</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Tutors never see the student's school: keep that?</td>
+<td>you (recommended: keep)</td>
+<td>22 Nov 2026</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Graduate tutors aged 17 and coursework coaching</td>
+<td>you (recommended: not until 18)</td>
+<td>22 Nov 2026</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Group clinics: each student's parent approves and pays separately?</td>
+<td>you (recommended: yes)</td>
+<td>before v1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Standing approval for one tutor</td>
+<td>after the pilot, from parents' feedback</td>
+<td>April 2027</td>
+</tr>
+<tr>
+<td>8</td>
+<td>A phone app</td>
+<td>not before v2; the site is built for phones first</td>
+<td>2027</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Other languages (Hindi first)</td>
+<td>not in v1</td>
+<td>2027</td>
+</tr>
+<tr>
+<td>10</td>
+<td>What the Marker costs per check, for real</td>
+<td>measure in v1 with practice marking</td>
+<td>June 2027</td>
+</tr>
+</tbody>
+</table></div>
+
+</main>
+</div>
+<script>
+(function(){
+  var r=document.documentElement;
+  function st(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+  var s=st('ffp-theme'); if(s==='light'||s==='dark') r.setAttribute('data-theme',s);
+  document.getElementById('th').addEventListener('click',function(){
+    var c=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var n=c==='dark'?'light':'dark'; r.setAttribute('data-theme',n); st('ffp-theme',n);
+  });
+})();
+</script>
+</body>
+</html>

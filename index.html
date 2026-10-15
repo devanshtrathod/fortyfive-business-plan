@@ -1,0 +1,1733 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FortyFive Business Plan</title>
+<style>
+:root{
+  color-scheme: light;
+  --plane:#f9f9f7; --surface:#fcfcfb; --surface-2:#f2f1ed;
+  --ink:#0b0b0b; --ink-2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,.10);
+  --accent:#2a78d6; --accent-wash:rgba(42,120,214,.10);
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100;
+  --good:#006300; --bad:#c22f2f; --warnbg:#fff6e3; --badbg:#fdeceb; --goodbg:#e9f6e9;
+  --emph-muted:#c3c2b7;
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme: dark;
+    --plane:#0d0d0d; --surface:#1a1a19; --surface-2:#232321;
+    --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
+    --accent:#3987e5; --accent-wash:rgba(57,135,229,.14);
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+    --good:#0ca30c; --bad:#e66767; --warnbg:#2a2412; --badbg:#2c1717; --goodbg:#142414;
+    --emph-muted:#4a4a46;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --plane:#0d0d0d; --surface:#1a1a19; --surface-2:#232321;
+  --ink:#ffffff; --ink-2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,.10);
+  --accent:#3987e5; --accent-wash:rgba(57,135,229,.14);
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500;
+  --good:#0ca30c; --bad:#e66767; --warnbg:#2a2412; --badbg:#2c1717; --goodbg:#142414;
+  --emph-muted:#4a4a46;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--plane);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+header.top{position:sticky;top:0;z-index:20;background:var(--plane);border-bottom:1px solid var(--grid)}
+.brandrow{display:flex;align-items:center;gap:12px;padding:14px 0 8px;flex-wrap:wrap}
+.mark{width:34px;height:34px;border-radius:8px;background:var(--ink);color:var(--plane);display:grid;place-items:center;font-weight:800;font-size:14px;letter-spacing:-.5px;flex:none}
+.brandrow h1{font-size:17px;margin:0;font-weight:700}
+.brandrow .sub{color:var(--muted);font-size:13px}
+.brandrow .sp{flex:1}
+.btn{font:inherit;font-size:13px;border:1px solid var(--grid);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer}
+.btn:hover{border-color:var(--axis)}
+.btn.on{background:var(--ink);color:var(--plane);border-color:var(--ink)}
+nav.tabs{display:flex;gap:4px;overflow-x:auto;padding:4px 0 10px;scrollbar-width:thin}
+nav.tabs button{font:inherit;font-size:13.5px;white-space:nowrap;border:0;background:transparent;color:var(--ink-2);padding:7px 11px;border-radius:999px;cursor:pointer}
+nav.tabs button .n{color:var(--muted);font-variant-numeric:tabular-nums;margin-right:6px;font-size:12px}
+nav.tabs button:hover{background:var(--surface-2)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--plane)}
+nav.tabs button[aria-selected="true"] .n{color:var(--plane);opacity:.6}
+main{padding:22px 0 60px}
+section.panel{display:none;scroll-margin-top:600px}
+section.panel.active{display:block}
+@media (max-width:620px){header.top{position:static}}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 6px}
+h2{font-size:26px;line-height:1.2;margin:0 0 6px;letter-spacing:-.3px}
+h3{font-size:16px;margin:0 0 8px}
+p.lead{font-size:16px;color:var(--ink-2);max-width:780px;margin:0 0 20px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g21{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.g2x{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:900px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g21{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:620px){.g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:420px){.g2x{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--surface);border:1px solid var(--ring);border-radius:12px;padding:16px 18px;min-width:0}
+.card.tight{padding:14px 16px}
+.card p{margin:0 0 8px}
+.card p:last-child{margin-bottom:0}
+.card ul,.card ol{margin:6px 0 0;padding-left:18px}
+.card li{margin:3px 0}
+.muted{color:var(--muted)}
+.ink2{color:var(--ink-2)}
+.small{font-size:13px}
+.tile .lab{font-size:13px;color:var(--ink-2)}
+.tile .val{font-size:28px;font-weight:650;letter-spacing:-.5px;line-height:1.15;margin:4px 0 2px}
+.tile .note{font-size:12.5px;color:var(--muted)}
+.hero{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center}
+.hero .big{font-size:64px;font-weight:700;letter-spacing:-2px;line-height:1}
+.hero .what{color:var(--ink-2);font-size:15px;max-width:680px}
+@media (max-width:620px){.hero{grid-template-columns:1fr}.hero .big{font-size:52px}}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--ring);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+.tbl-wrap table{min-width:640px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface-2)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sechead{margin:26px 0 10px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.sechead h3{margin:0}
+.price{font-size:24px;font-weight:650;letter-spacing:-.4px;margin:2px 0 6px}
+.price small{font-size:13px;color:var(--muted);font-weight:500}
+.tier.best{border:1.5px solid var(--accent);box-shadow:0 0 0 3px var(--accent-wash)}
+.flag{font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+/* bar charts */
+.chart{margin-top:6px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink-2);margin:4px 0 10px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend i.ln{width:16px;height:3px;border-radius:2px;vertical-align:3px}
+.brow{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;margin:9px 0}
+.brow .bl{font-size:13px;color:var(--ink-2);text-align:right;line-height:1.25}
+.track{display:flex;align-items:center;gap:8px;min-width:0}
+.bar{display:flex;height:22px;min-width:2px}
+.seg{height:100%;margin-right:2px;cursor:default}
+.seg:last-child{margin-right:0;border-radius:0 4px 4px 0}
+.seg:only-child{border-radius:0 4px 4px 0}
+.bval{font-size:13px;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.axis{display:grid;grid-template-columns:150px 1fr;gap:12px;font-size:11.5px;color:var(--muted)}
+.chart.wide .brow,.chart.wide .axis{grid-template-columns:230px 1fr}
+@media (max-width:620px){.brow,.axis,.chart.wide .brow,.chart.wide .axis{grid-template-columns:112px 1fr}}
+.ticks{position:relative;height:16px;border-top:1px solid var(--axis)}
+.ticks span{position:absolute;transform:translateX(-50%);top:2px;font-variant-numeric:tabular-nums}
+.tablet{margin-top:10px}
+#tip{position:fixed;pointer-events:none;z-index:50;background:var(--ink);color:var(--plane);font-size:12.5px;padding:7px 9px;border-radius:8px;max-width:270px;opacity:0;transition:opacity .08s;box-shadow:0 4px 18px rgba(0,0,0,.18)}
+/* line chart */
+.lc{position:relative;border-radius:6px}
+.lc svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y}
+.lc .gl{stroke:var(--grid);stroke-width:1}
+.lc .ax{stroke:var(--axis);stroke-width:1}
+.lc text{fill:var(--muted);font-size:11.5px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
+.lc text.lab{fill:var(--ink-2);font-size:12.5px}
+.lc .ln{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.lc .now{stroke:var(--axis);stroke-width:1}
+.lc .xh{stroke:var(--ink-2);stroke-width:1}
+.lc .dot{stroke:var(--surface);stroke-width:2}
+.lc:focus{outline:2px solid var(--accent);outline-offset:4px}
+/* calculator */
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:14px}
+@media (max-width:900px){.calc{grid-template-columns:minmax(0,1fr)}}
+.fgroup{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:16px 0 2px;padding-top:12px;border-top:1px solid var(--grid)}
+.fgroup.first{border-top:0;margin-top:6px;padding-top:0}
+.field{display:grid;grid-template-columns:1fr 104px;gap:6px 10px;align-items:center;margin:8px 0}
+.field label{font-size:13.5px;color:var(--ink-2)}
+.field input[type=number]{font:inherit;font-size:14px;width:100%;padding:6px 8px;border:1px solid var(--grid);border-radius:8px;background:var(--surface);color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+.field input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--accent);margin:0}
+.presets{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.costline{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:5px 0;border-bottom:1px solid var(--grid)}
+.costline span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.costline.tot{border-bottom:0;font-weight:650}
+.cgroup{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:14px 0 2px}
+.cgroup:first-child{margin-top:0}
+/* receipt */
+.receipt{font-variant-numeric:tabular-nums}
+.rline{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--grid);font-size:14px}
+.rline span:last-child{white-space:nowrap}
+.rline.sub{padding-left:18px;color:var(--ink-2);font-size:13.5px}
+.rline.total,.rline.keep{font-weight:650}
+.rline.keep{border-bottom:0}
+/* charter */
+ol.charter{list-style:none;margin:0;padding:0;counter-reset:c}
+ol.charter li{counter-increment:c;display:grid;grid-template-columns:30px 1fr;gap:12px;padding:11px 0;margin:0;border-bottom:1px solid var(--grid)}
+ol.charter li:last-child{border-bottom:0;padding-bottom:0}
+ol.charter li:first-child{padding-top:0}
+ol.charter li::before{content:counter(c);width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--plane);display:grid;place-items:center;font-weight:700;font-size:13px;margin-top:1px}
+ol.charter b{display:block;color:var(--ink)}
+ol.charter span{color:var(--ink-2)}
+/* timeline */
+.phase{display:grid;grid-template-columns:170px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--grid)}
+.phase:last-child{border-bottom:0}
+.phase .when{font-size:13px;color:var(--muted);font-weight:600}
+.phase .when b{display:block;color:var(--ink);font-size:15px}
+@media (max-width:620px){.phase{grid-template-columns:1fr;gap:4px}}
+.callout{border-left:3px solid var(--accent);background:var(--accent-wash);padding:12px 14px;border-radius:0 10px 10px 0;margin:14px 0}
+.callout.bad{border-color:var(--bad);background:var(--badbg)}
+.quote{font-style:italic;color:var(--ink-2)}
+.script{white-space:pre-wrap;font:13.5px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--surface-2);border-radius:10px;padding:12px 14px;margin:8px 0 0}
+.copy{float:right;font-size:12px}
+.foot{color:var(--muted);font-size:12.5px;margin-top:30px;border-top:1px solid var(--grid);padding-top:14px}
+.foot p{margin:0 0 6px}
+.flow{display:flex;align-items:stretch;gap:8px}
+.flow .node{flex:1;min-width:0;border:1px solid var(--ring);border-radius:10px;padding:10px 12px;background:var(--surface-2)}
+.flow .node b{display:block;font-size:14px}
+.flow .node span{display:block;font-size:12.5px;color:var(--ink-2);margin-top:2px}
+.flow .arrow{flex:none;display:grid;place-items:center;color:var(--muted);font-size:18px}
+.flow .arrow::before{content:"\2192"}
+@media (max-width:900px){.flow{flex-direction:column}.flow .arrow::before{content:"\2193"}}
+.chk{display:flex;gap:8px;align-items:flex-start;margin:8px 0}
+.chk .ic{flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;margin-top:2px}
+.chk .ic.x{background:var(--badbg);color:var(--bad)}
+/* schools and ways to earn */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters input,.filters select{font:inherit;font-size:14px;padding:7px 10px;border:1px solid var(--grid);border-radius:8px;background:var(--surface);color:var(--ink)}
+.filters input{flex:1 1 220px;min-width:0}
+.pri{display:inline-block;min-width:22px;text-align:center;font-size:12px;font-weight:700;border-radius:6px;padding:1px 6px;background:var(--surface-2);color:var(--ink-2)}
+.pri.A{background:var(--ink);color:var(--plane)}
+.pri.B{background:var(--accent-wash);color:var(--accent)}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;border-radius:999px;padding:1px 7px;margin-right:4px;background:var(--surface-2);color:var(--ink-2);white-space:nowrap}
+.tag.nov{background:var(--accent-wash);color:var(--accent)}
+table.compact td,table.compact th{padding:7px 10px;font-size:13.5px}
+.earn .meta{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600;margin-bottom:4px}
+.earn .price{font-size:19px;margin:4px 0 6px}
+.earn .who{font-size:13px;color:var(--ink-2);margin-bottom:6px}
+.stage{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:1px 8px;margin-left:6px}
+.stage.Now{background:var(--goodbg);color:var(--good)}
+.stage.Next{background:var(--accent-wash);color:var(--accent)}
+.stage.Later{background:var(--surface-2);color:var(--ink-2)}
+a.btn{text-decoration:none;display:inline-block}
+@media print{
+  header.top{position:static} nav.tabs,.btn,.copy{display:none}
+  section.panel{display:block !important;break-before:page}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+<div id="tip" role="tooltip"></div>
+<header class="top">
+  <div class="wrap">
+    <div class="brandrow">
+      <div class="mark" aria-hidden="true">45.</div>
+      <div><h1>FortyFive: courses and an honest tutor marketplace</h1><div class="sub">A passion project for IB Diploma students in India &middot; plan v2, 11 Oct 2026, updated 13 Oct &middot; local file, not published</div></div>
+      <div class="sp"></div>
+      <a class="btn" href="FortyFive Pitch Deck.pdf" target="_blank" rel="noopener">Pitch deck</a>
+      <a class="btn" href="website/website-plan.html">Website plan</a>
+      <a class="btn" href="brand/FortyFive%20brand.html">Brand</a>
+      <button class="btn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Sections"></nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- 01 PITCH -->
+<section class="panel" id="pitch" data-title="Pitch" role="tabpanel">
+  <p class="kicker">01 &middot; The pitch on one screen</p>
+  <h2>Mastering the IB Diploma. Nothing else.</h2>
+  <p class="lead">FortyFive does one thing and means to be the best in the world at it: the IB Diploma. Every subject's criteria, every paper since 2020, every grade boundary, both exam sessions, the coursework and the core. No CBSE, no A levels, no SAT, ever. Depth is the product.</p>
+  <div class="card hero" style="margin-bottom:14px">
+    <div class="big">&#8377;900</div>
+    <div class="what"><b style="color:var(--ink)">of every &#8377;1,000 a student pays goes to the tutor.</b> FortyFive gives IB Diploma students in India three things: full courses, each led by someone with a verified 7 in the subject, an honest marketplace where checked tutors and students find each other, and coursework coaching inside the IB's rules. Small fees, shown on every booking. No hidden charges, no paid rankings, no fake reviews. It's a passion project: it has to pay its own bills, not make a profit.</div>
+  </div>
+  <div class="grid g3">
+    <div class="card"><h3>The problem</h3><p>IB students pay &#8377;1,000 to 9,500 an hour for tutors whose scores they can't check, or use global platforms priced in dollars. The big tutor marketplaces take 18 to 33% of every lesson (Preply keeps the whole first lesson with each new student). Others sell leads to tutors, or charge students just to send a message.</p></div>
+    <div class="card"><h3>The product</h3><ol><li><b>Courses</b>: short video lessons, protected notes, original practice and a predicted mock, at &#8377;1,499 a course. Free for anyone who asks.</li><li><b>Tutors</b>: IB graduates and teachers, all checked. Graduates still 17 can tutor a subject they got a 7 in, with a parent's sign-off. Students search, or post what they need and tutors reply. Lessons happen on FortyFive, where parents see everything.</li><li><b>Coursework coaching</b>: IA, EE and TOK help by the hour, inside the IB's rules. Coaches teach and never write, and the Marker, an AI, checks a draft criterion by criterion (section 05).</li><li><b>The honesty charter</b>: every fee shown on every booking, real reviews, open books (section 06).</li></ol></div>
+    <div class="card"><h3>Why you</h3><p>You built the material for your own November 2026 exams: predicted mock sets, a pattern analysis of every paper since 2020, about 600 pages of original toolkits and the FortyFive grade predictor. Your batch gets results on 16 December: your first group of verified tutors. And you know how to grow a community and make content.</p><p class="small muted">Only quote numbers you can prove.</p></div>
+  </div>
+  <div class="grid g4" style="margin-top:14px">
+    <div class="card tile"><div class="lab">Tutors keep</div><div class="val">90%</div><div class="note">of every lesson; students pay nothing on top</div></div>
+    <div class="card tile"><div class="lab">Pays its own bills at</div><div class="val" id="pNeed">76 hours</div><div class="note">of lessons a month (the base case has 120)</div></div>
+    <div class="card tile"><div class="lab">Year one, base case</div><div class="val" id="pNet">&minus;&#8377;31.7k</div><div class="note">&#8377;35k of it is one-off set-up</div></div>
+    <div class="card tile"><div class="lab">Free course places</div><div class="val">1 in 5</div><div class="note">for anyone who asks, no questions</div></div>
+  </div>
+  <div class="callout" style="margin-top:16px"><b>The ask.</b> First your parents: you're 17, so one of them runs the business side and acts as the adult safeguarding lead. Then your DP Coordinator: permission to offer both courses free to this year's DP1s as a pilot.</div>
+  <div class="grid g2">
+    <div class="card"><h3>What makes it different</h3><ul><li><b>Mastering the IB, nothing else</b>: every criterion, paper and boundary, both sessions. Depth a generalist can't afford.</li><li><b>Honest by design</b>: one flat fee, verified scores, reviews only from real lessons, open books.</li><li><b>Safe for under-18s</b>: checked tutors, a parent co-signing for any tutor under 18, lessons and messages only on FortyFive, parents see everything.</li><li><b>Rupee prices</b>, and the November session too.</li></ul></div>
+    <div class="card"><h3>What could kill it</h3><ul><li>One safety incident with a minor. Section 07 is the most important page in this plan.</li><li>IB or third-party material in a course, even behind a paywall.</li><li>One coach who writes a paragraph of someone's IA. Section 05 draws the line and polices it.</li><li>Too few lesson hours to pay the bills (section 14), or no time once you're at university.</li></ul></div>
+  </div>
+</section>
+
+<!-- 02 OUR EDGE -->
+<section class="panel" id="edge" data-title="Our edge" role="tabpanel">
+  <p class="kicker">02 &middot; Our edge</p>
+  <h2>IB only. Honest always. That's the whole strategy.</h2>
+  <p class="lead">Every edtech has notes, videos and an AI chatbot. AI has made content cheap, so content can't be what sets us apart. What sets us apart is everything the big players can't copy without breaking their own business.</p>
+
+  <div class="grid g2">
+    <div class="card tier best"><div class="flag">Yes: IB only, forever</div>
+      <ul>
+        <li><b>The name already says it.</b> 45 is the top IB score. A FortyFive for CBSE makes no sense.</li>
+        <li><b>The IB is big enough.</b> 209,607 students got Diploma or Career-related results in May 2026, up 3.7%, from 3,442 schools in 159 countries. 6,265 were in India.</li>
+        <li><b>The IB rewards depth.</b> Criteria, command terms, markbands, grade boundaries, core points, two exam sessions. A generalist can't go this deep without wrecking its own costs.</li>
+        <li><b>Going wide means fighting giants.</b> CBSE, JEE and NEET belong to companies with ad budgets in crores. In the IB, a focused student team can be the best in the world.</li>
+      </ul>
+    </div>
+    <div class="card"><div class="flag">Where the line is</div>
+      <p><b>In:</b> the IB Diploma first. Later, a bridge for Grade 10s moving into the DP, and the Career-related Programme. Both are IB.</p>
+      <p><b>Out, forever:</b> CBSE, ICSE, IGCSE, A levels, AP, SAT, JEE, NEET.</p>
+      <p><b>How we grow instead:</b> deeper, not wider. More IB subjects, both sessions, more countries. Half of all DP and CP results in May 2026 were in the US (104,132 students), so "IB only" still leaves a lot of world to reach.</p>
+    </div>
+  </div>
+
+  <div class="sechead"><h3>What "mastering the IB" means</h3><span class="muted small">the pitch line, made checkable</span></div>
+  <div class="grid g4">
+    <div class="card"><div class="flag">Every criterion</div><p>Each subject's assessment criteria and markbands, explained in our own words, for every paper and every piece of coursework.</p></div>
+    <div class="card"><div class="flag">Every paper</div><p>Every question since 2020 tagged by topic and command term, the patterns turned into predicted mocks, and the misses published.</p></div>
+    <div class="card"><div class="flag">Every boundary</div><p>Grade boundaries for every session in the predictor and the next-point planner, so effort goes where marks are cheapest.</p></div>
+    <div class="card"><div class="flag">Both sessions</div><p>May and November treated as equals: courses, mocks and results-day help timed for each.</p></div>
+    <div class="card"><div class="flag">The core</div><p>TOK and the EE, with coaching inside the IB's rules, and CAS volunteering with partners who have child-protection policies.</p></div>
+    <div class="card"><div class="flag">The rules</div><p>Academic integrity, the IB's AI guidance, the 24-hour rule after exams: followed to the letter and explained to students.</p></div>
+    <div class="card"><div class="flag">The calendar</div><p>Mocks, coursework deadlines, results day, remarks and retakes: help that arrives when each one does.</p></div>
+    <div class="card"><div class="flag">The people</div><p>Verified 7s who sat these exact papers and come back every results day to teach the next batch.</p></div>
+  </div>
+
+  <div class="sechead"><h3>The copy test</h3><span class="muted small">if a bigger rival could copy it in a month, it isn't an edge</span></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>What</th><th>Could a big rival copy it?</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Notes, videos, question banks</td><td>In weeks. AI makes content cheap for everyone.</td><td><span class="tag">Table stakes</span></td></tr>
+      <tr><td>An AI tutor chatbot</td><td>Everyone has one, and students already use ChatGPT for free.</td><td><span class="tag">Table stakes</span></td></tr>
+      <tr><td>An AI coursework grader</td><td>RevisionDojo and Clastify have one, and everyone will.</td><td><span class="tag">Table stakes</span></td></tr>
+      <tr><td><b>Tutors keep 90%</b></td><td>Not without breaking their model: Preply runs on 18 to 33% plus the first lesson.</td><td><span class="tag nov">Edge</span></td></tr>
+      <tr><td><b>Open books and a prediction scorecard</b></td><td>Investor-funded edtech won't publish its margins or its misses.</td><td><span class="tag nov">Edge</span></td></tr>
+      <tr><td><b>A Marker with published accuracy</b>, two checks per piece, and coaching logs for supervisors</td><td>Not without admitting how accurate their graders really are.</td><td><span class="tag nov">Edge</span></td></tr>
+      <tr><td><b>A network of verified 7s</b></td><td>Takes years of graduating batches and trust. It grows every results day.</td><td><span class="tag nov">Edge</span></td></tr>
+      <tr><td><b>Exam intelligence</b>: every past question tagged, every session</td><td>Possible but slow, and it compounds each session if we keep it fresh.</td><td><span class="tag nov">Edge</span></td></tr>
+      <tr><td><b>November specialists</b></td><td>They could. It's too small for them to bother, which is exactly why it's ours.</td><td><span class="tag nov">Edge</span></td></tr>
+      <tr><td><b>Trusted by coordinators and parents</b></td><td>Safety and integrity rules take years to be believed.</td><td><span class="tag nov">Edge</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sechead"><h3>Eliminate, reduce, raise, create</h3><span class="muted small">the blue-ocean grid: do what the industry does less, and what it never does</span></div>
+  <div class="grid g4">
+    <div class="card"><div class="flag" style="color:var(--bad)">Eliminate</div><ul>
+      <li>Sales calls and EMI loans</li><li>Auto-renewing subscriptions</li><li>Streaks, leaderboards, midnight notifications</li><li>Ads aimed at students</li><li>A chatbot talking to kids</li><li>Anything that isn't IB</li></ul></div>
+    <div class="card"><div class="flag" style="color:var(--ink-2)">Reduce</div><ul>
+      <li>Pages: fewer, sharper, each worth marks</li><li>Price: rupees, sessions, free if you ask</li><li>The platform's cut: 10%</li><li>Screen time</li><li>Exam panic</li></ul></div>
+    <div class="card"><div class="flag">Raise</div><ul>
+      <li>Verification: real 7s, checked</li><li>Safety for under-18s</li><li>Transparency: receipts, open books</li><li>IB depth: criteria, boundaries, command terms</li><li>The November session</li><li>Help for parents and schools</li></ul></div>
+    <div class="card tier best"><div class="flag">Create</div><ul>
+      <li>"Your next point" planner</li><li>A public prediction scorecard</li><li>The post-exam debrief</li><li>"Don't buy this" advice</li><li>Free places, no questions</li><li>The alumni loop</li></ul></div>
+  </div>
+
+  <div class="sechead"><h3>Eight things nobody else does</h3></div>
+  <div class="grid g4">
+    <div class="card"><div class="flag">1 &middot; Your next point</div><p>Enter your mock marks. The planner uses the grade boundaries to show where your next point is cheapest in hours of work, and what you can safely skip. Revision as return on time, not a pile of notes.</p></div>
+    <div class="card"><div class="flag">2 &middot; The scorecard</div><p>After every session we publish which predictions came up and which missed. Every predicted-paper seller claims accuracy; we show our misses too.</p></div>
+    <div class="card"><div class="flag">3 &middot; The post-exam debrief</div><p>A calm live session on approaches, never the paper itself, and only once 24 hours have passed. The IB treats talking about a paper sooner as misconduct, so we say so loudly.</p></div>
+    <div class="card"><div class="flag">4 &middot; "Don't buy this"</div><p>Every course page says who doesn't need it, and the planner sometimes says "you don't need a tutor for this paper". Losing a sale to keep trust is the point.</p></div>
+    <div class="card"><div class="flag">5 &middot; Free if you ask</div><p>One in five course places goes free, no forms, no proof. Sponsors fund them, and the open books show it.</p></div>
+    <div class="card"><div class="flag">6 &middot; The receipt</div><p>Every booking shows where each rupee goes: ₹900 to the tutor, GST, Razorpay, and what FortyFive keeps.</p></div>
+    <div class="card"><div class="flag">7 &middot; Results night</div><p>On results day, free help for anyone who missed by a point: is a remark worth it, how retakes work, what to tell your university.</p></div>
+    <div class="card"><div class="flag">8 &middot; The alumni loop</div><p>Get help, pass, help the next batch. Graduates come back as verified tutors and course leads, badged with their batch, so supply renews itself every year.</p></div>
+  </div>
+
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>How it feels: calm, not loud</h3><ul>
+      <li><b>Looks like a good exam paper</b>, not a cartoon app. Use the LaTeX font (Latin Modern) for the brand: no edtech uses it, it feels like the real thing, and it's free.</li>
+      <li><b>Ink and one blue.</b> No mascot, no confetti, no stock photos of smiling teenagers. The "45." mark is enough.</li>
+      <li><b>Talks like a student</b>, specifically: "criterion B is where most 4s become 5s", never "unlock your potential".</li>
+      <li><b>Quiet by design.</b> No streaks or tracking, which also keeps us inside the children's-data rules.</li>
+    </ul></div>
+    <div class="card"><h3>Growth that doesn't look like edtech</h3><ul>
+      <li><b>You make the content.</b> Short, specific videos from a student who just sat the papers. Your strongest skill, and no ad budget can buy it.</li>
+      <li><b>Build in public:</b> the open books, the scorecard and what broke this month.</li>
+      <li><b>Be useful where IB students already are:</b> IB subreddits and Discords. Answer questions, share the free tools, never spam.</li>
+      <li><b>Schools as allies.</b> Coordinators recommend whoever protects integrity and safety.</li>
+      <li><b>Offline moments</b> an app can't copy: Mock Days, results-day meetups, the hand-me-down exchange.</li>
+    </ul></div>
+  </div>
+
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>What would make us boring</h3>
+      <div class="chk"><span class="ic x">&times;</span><div>Adding CBSE, JEE or A levels "because the market is bigger".</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>Taking investor money that wants growth before it pays for itself.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>Building a chatbot because everyone else has one.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>Copying a competitor's feature list.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>Claiming results we can't prove.</div></div>
+    </div>
+    <div class="card"><h3>The risks of IB only, handled</h3><ul>
+      <li><b>Small market?</b> Go global, not wide: 209,607 students a year, two sessions.</li>
+      <li><b>We depend on the IB.</b> Never use its material, and keep the "not affiliated" line everywhere. Every syllabus change resets everyone's content, and a small IB-only team updates fastest.</li>
+      <li><b>Seasonal money.</b> May and November smooth it out; countries in both sessions smooth it more.</li>
+      <li><b>Exams can be cancelled.</b> In May 2026 the IB cancelled exams at some Middle East schools and graded from coursework and predicted grades. Teach the subject, not only exam tricks.</li>
+    </ul></div>
+  </div>
+
+  <div class="callout"><b>In one line:</b> for IB Diploma students who want their next point without the panic, FortyFive is the IB-only platform that shows exactly where your marks are, with courses by verified 7s and tutors you can trust. Unlike other edtech, it never sells you more than you need.<br><span class="muted small">Tagline options: "Mastering the IB. Nothing else." &middot; "Your next point, honestly." &middot; "IB only. Honest always." &middot; "The IB, minus the panic."</span></div>
+</section>
+
+<!-- 03 COURSES -->
+<section class="panel" id="courses" data-title="Courses" role="tabpanel">
+  <p class="kicker">03 &middot; Courses</p>
+  <h2>Full courses, each led by someone with a verified 7</h2>
+  <p class="lead">A course takes one paper or one subject from the first lesson to exam day. Your notes, pattern analysis and predicted mocks are the skeleton. A named lead with a verified 7 in that subject (or an experienced IB teacher) checks every page and presents the videos. That goes for you too: front a course only in a subject where you get a 7.</p>
+  <div class="sechead"><h3>What's inside every course</h3></div>
+  <div class="grid g3">
+    <div class="card"><div class="flag">Video lessons</div><p>Short lessons of 5 to 12 minutes, one idea each, recorded by the course lead.</p></div>
+    <div class="card"><div class="flag">Notes</div><p>The toolkit pages, read on FortyFive with the student's name on every page. Nothing to download.</p></div>
+    <div class="card"><div class="flag">Practice</div><p>Original questions with model answers. For past papers, the course names the question to do from the school's own copy ("May 2023, Paper 1, Question 2") and never copies it.</p></div>
+    <div class="card"><div class="flag">A predicted mock</div><p>A timed attempt built from the pattern analysis. Its markscheme opens after you submit. Labelled as a prediction, never a leak.</p></div>
+    <div class="card"><div class="flag">Live hour</div><p>One live question-and-answer hour a month with the course lead, for everyone enrolled.</p></div>
+    <div class="card"><div class="flag">Checklist</div><p>The skills for each paper, ticked off by the student. No tracking of how students behave (that's the law for under-18s, section 07).</p></div>
+  </div>
+  <div class="sechead"><h3>The first two courses</h3><span class="muted small">your most complete material, and both papers reward a method that can be taught</span></div>
+  <div class="grid g2">
+    <div class="card"><h3>English Lang and Lit: Paper 1, the method</h3><p class="small muted">Built from: the P1 phrase bank and formats, the P1 Master Guide, the terminology sheets.</p><ol><li>How Paper 1 is marked: the four criteria.</li><li>Annotating a text in 15 minutes.</li><li>Text types and their conventions: comics, ads, infographics, speeches, opinion pieces and more.</li><li>Techniques and their effects, and how to write about them.</li><li>Thesis, paragraphs and conclusion.</li><li>Timed practice.</li></ol><p class="small" style="margin-top:8px"><b>Practice texts</b> must be public domain, made by you, or linked rather than copied. Copying someone's ad or article into a paid course is the same problem as copying an IB paper.</p><p class="small muted">Lead: a 2026 graduate with a 7 in English A, or an English teacher.</p></div>
+    <div class="card"><h3>French ab initio: everything for Papers 1 and 2</h3><p class="small muted">Built from: the everything notes (theme vocabulary and grammar 4.1 to 4.23), the formats booklet, the format picker.</p><ol><li>The five themes and their vocabulary.</li><li>Grammar, point by point.</li><li>The text types for Paper 1 writing.</li><li>Paper 2: reading and listening strategies.</li><li>The individual oral.</li><li>Timed practice.</li></ol><p class="small muted" style="margin-top:8px">Lead: a 7 in French ab initio, or a French teacher.</p></div>
+  </div>
+  <div class="sechead"><h3>Which subjects first</h3><span class="muted small">the biggest subjects in the world that almost every Indian Diploma school runs</span></div>
+  <div class="tbl-wrap"><table class="compact">
+    <thead><tr><th>Wave</th><th>Subject</th><th class="num">Students worldwide, May 2025</th><th>Mostly taken at</th><th class="num">Indian DP schools running it</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag nov">Wave 1</span></td><td>English A: Language and Literature</td><td class="num">74,554</td><td>HL, 58%</td><td class="num">98%</td></tr>
+      <tr><td><span class="tag nov">Wave 1</span></td><td>Maths: Analysis and Approaches</td><td class="num">67,324</td><td>SL, 63%</td><td class="num">98%</td></tr>
+      <tr><td><span class="tag nov">Wave 1</span></td><td>Biology</td><td class="num">55,041</td><td>HL, 60%</td><td class="num">95%</td></tr>
+      <tr><td><span class="tag nov">Wave 1</span></td><td>Maths: Applications and Interpretation</td><td class="num">51,495</td><td>SL, 83%</td><td class="num">92%</td></tr>
+      <tr><td><span class="tag nov">Wave 1</span></td><td>Business Management</td><td class="num">37,817</td><td>HL, 65%</td><td class="num">95%</td></tr>
+      <tr><td><span class="tag nov">Wave 1</span></td><td>Chemistry</td><td class="num">37,741</td><td>HL, 53%</td><td class="num">98%</td></tr>
+      <tr><td><span class="tag nov">Wave 1</span></td><td>Physics</td><td class="num">32,426</td><td>HL, 55%</td><td class="num">98%</td></tr>
+      <tr><td><span class="tag nov">Wave 1</span></td><td>Economics</td><td class="num">30,886</td><td>HL, 65%</td><td class="num">98%</td></tr>
+      <tr><td><span class="tag">Wave 2</span></td><td>Psychology</td><td class="num">28,659</td><td>HL, 53%</td><td class="num">88%</td></tr>
+      <tr><td><span class="tag">Wave 2</span></td><td>Environmental Systems and Societies</td><td class="num">22,078</td><td>SL only</td><td class="num">86%</td></tr>
+      <tr><td><span class="tag">Wave 2</span></td><td>Spanish ab initio</td><td class="num">10,543</td><td>SL only</td><td class="num">71%</td></tr>
+      <tr><td><span class="tag">Wave 2</span></td><td>Computer Science</td><td class="num">9,153</td><td>HL, 52%</td><td class="num">87%</td></tr>
+      <tr><td><span class="tag">Wave 2</span></td><td>French ab initio</td><td class="num">5,748</td><td>SL only</td><td class="num">85%</td></tr>
+      <tr><td><span class="tag">Wave 2</span></td><td>Hindi B</td><td class="num">1,941</td><td>SL, 82%</td><td class="num">84%</td></tr>
+      <tr><td><span class="tag">Wave 3</span></td><td>History</td><td class="num">46,481</td><td>HL, 80%</td><td class="num">43%</td></tr>
+      <tr><td><span class="tag">Wave 3</span></td><td>English A: Literature</td><td class="num">35,973</td><td>HL, 84%</td><td class="num">15%</td></tr>
+      <tr><td><span class="tag">Wave 3</span></td><td>Spanish B</td><td class="num">30,660</td><td>SL, 72%</td><td class="num">51%</td></tr>
+      <tr><td><span class="tag">Wave 3</span></td><td>English B</td><td class="num">27,737</td><td>HL, 83%</td><td class="num">14%</td></tr>
+      <tr><td><span class="tag">Wave 3</span></td><td>Visual Arts</td><td class="num">16,392</td><td>HL, 63%</td><td class="num">76%</td></tr>
+      <tr><td><span class="tag">Wave 3</span></td><td>Global Politics</td><td class="num">10,374</td><td>HL, 60%</td><td class="num">31%</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="card"><div class="flag">Wave 1 &middot; launch</div><p>The eight are the world's ten biggest IB subjects minus History and English A Literature, which few Indian schools run. Every one of the eight runs in at least 92% of Indian Diploma schools. Recruit founding tutors in all eight; make courses one at a time.</p></div>
+    <div class="card"><div class="flag">Wave 2 &middot; by November 2027</div><p>Common in Indian schools, smaller worldwide: Psychology, ESS, Computer Science and the languages Indian students actually take. French ab initio stays course 2 because the material is ready, but it's an India pick: 5,748 students worldwide.</p></div>
+    <div class="card"><div class="flag">Wave 3 &middot; going abroad</div><p>History, English A Literature, Spanish B and English B are huge internationally (History alone had 46,481 students) but rare in India. Add them when the Gulf and the November-session schools abroad open.</p></div>
+  </div>
+  <div class="callout"><b>Course order.</b> 1. English A Paper 1, the biggest subject in the IB. 2. French ab initio, already written. 3. Maths AA SL and Maths AI SL: most maths students take SL (83% of AI, 63% of AA). 4. Biology HL. 5. Economics HL and Business Management HL, where your own material is strongest. Plus <b>TOK and EE coaching</b> from the start (section 05): every Diploma student does both, 101,788 TOK and 100,907 EE students in May 2025. The IB's ten most common EE subjects were English A, History, Business Management, Psychology, Biology, World Studies, Physics, Economics, English B and Mathematics.</div>
+  <p class="small muted">Students worldwide: IB DP and CP final statistical bulletin, May 2025, the latest published, with HL and SL added together (parsed by subjects/parse_bulletin.py into subjects/ib_subject_entries_may2025.tsv). Indian schools: the 176 of 196 Indian Diploma schools that list their subjects in the IB directory, scraped 12 October 2026.</p>
+  <div class="sechead"><h3>Price</h3></div>
+  <div class="grid g3">
+    <div class="card tier best"><div class="flag">A course</div><div class="price">&#8377;1,499 <small>GST included</small></div><p>Everything in the course until the end of your exam session. Full refund within 7 days if you've watched less than a quarter of it.</p></div>
+    <div class="card tier"><div class="flag">A free place</div><div class="price">&#8377;0</div><p>For anyone who asks. No forms, no proof, no questions. If most students start asking, look again at the price.</p></div>
+    <div class="card tier"><div class="flag">Your school's pilot</div><div class="price">Free</div><p>Both courses free for this year's DP1s in February and March 2027, if your DP Coordinator agrees.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>Tutors can make courses too</h3><p>Any FortyFive tutor with a verified 7 can propose a course. A subject lead checks it against the rules on the right. The author gets <b>70% of what each sale brings in</b> after GST and payment fees; FortyFive keeps 30% for hosting, video and checks.</p></div>
+    <div class="card"><h3>Never in a course</h3>
+      <div class="chk"><span class="ic x">&times;</span><div>IB past papers, markschemes or pages copied from them.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>SaveMyExams, InThinking, LitCharts or teachers' material.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>Anyone's real IA, EE or TOK, or fill-in templates for them. Coursework help lives in section 05.</div></div>
+      <p class="small muted" style="margin-top:6px">Charging for access instead of files doesn't change who owns the material.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 TUTORS -->
+<section class="panel" id="tutors" data-title="Tutors" role="tabpanel">
+  <p class="kicker">04 &middot; The tutor marketplace</p>
+  <h2>Students find tutors. Tutors find students. Everything stays on FortyFive.</h2>
+  <p class="lead">Two ways in, one set of rules. Every tutor is checked and verified, and tutors under 18 come with a parent's consent. Every lesson, message and payment goes through FortyFive, so parents can see it and nobody gets cheated.</p>
+  <div class="grid g3">
+    <div class="card"><div class="flag">Students search</div><p>Filter by subject, paper, SL or HL, May or November session, price and free times. Each profile shows the tutor's verified IB score in that subject, the lessons they've taught on FortyFive and every review.</p></div>
+    <div class="card"><div class="flag">Students post, tutors reply</div><p>A student or parent posts a need: "Economics HL Paper 1 essays, two hours a week until the January mocks, up to &#8377;1,000 an hour." Tutors reply with a short plan and a price, and the parent picks. Requests show no names or schools.</p></div>
+    <div class="card"><div class="flag">Small-group clinics</div><p>Tutors can run group sessions of up to 6 students at a lower price each, like a &#8377;400 Saturday Paper 1 clinic. Cheaper for students, better pay for the tutor.</p></div>
+  </div>
+  <div class="sechead"><h3>How a booking works</h3></div>
+  <div class="card">
+    <div class="flow">
+      <div class="node"><b>Find or post</b><span>search, or a request on the board</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node"><b>Free intro call</b><span>15 minutes on FortyFive; parents welcome</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node"><b>Book and pay</b><span>the money is held, not passed on yet</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node"><b>Lesson</b><span>in FortyFive's video room</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node"><b>Tutor paid</b><span>90%, two days after the lesson</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node"><b>Review</b><span>only after a real lesson</span></div>
+    </div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>The fee, in full</h3><ul>
+      <li><b>Tutors keep 90% of their price.</b> FortyFive's 10% pays the GST, the payment fees, video, checks and hosting.</li>
+      <li><b>Students pay the tutor's price.</b> Nothing on top.</li>
+      <li><b>Founding tutors</b> (the first 10) pay nothing until 30 April 2027.</li>
+      <li><b>Coursework coaching</b> is booked separately at the tutor's coursework rate, and coaches keep 85% (section 05 explains the extra 5%).</li>
+      <li>No first-lesson grab, no membership, no paying for leads, no paying to rank higher.</li>
+    </ul></div>
+    <div class="card"><h3>Cancellations and refunds</h3><ul>
+      <li>Student cancels more than 24 hours before: full refund.</li>
+      <li>Student cancels later, or doesn't show: the tutor gets half.</li>
+      <li>Tutor cancels late or doesn't show: full refund. Three times and the tutor is removed.</li>
+      <li>Unhappy with a lesson: say so within 48 hours. A person looks at it, and the money stays held until then.</li>
+    </ul></div>
+  </div>
+  <div class="sechead"><h3>What a tutor keeps from a &#8377;1,000 lesson</h3><span class="muted small">fee rules as published or reported in 2026</span></div>
+  <div class="card">
+    <div class="chart wide" id="keepChart"></div>
+    <button class="btn small" type="button" data-table="keepTable">Show as table</button>
+    <div class="tablet" id="keepTable" hidden></div>
+    <p class="small muted" style="margin-top:10px">Superprof also charges students a monthly pass to message tutors, and Wyzant adds a 9% service fee to lessons. Preply's help pages give the 18 to 33% range and the 100% first lesson; the 400-hour step to 18% is reported by tutors. Sources are in the footer.</p>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>Who can tutor</h3><ul><li><b>18 or older:</b> a verified 6 or 7 in the subject (from the official IB results document), or a teaching qualification and IB teaching experience.</li><li><b>17-year-old IB graduates:</b> a verified 7 in the subject, on the graduate-tutor track (section 07).</li><li>An ID and background check, a teacher's reference, and a 15-minute demo lesson.</li><li>Safeguarding training and a signed code of conduct (section 07).</li><li><b>Coursework coaches:</b> 18 or older, a verified 7 in the subject or IB teaching experience, and the integrity course (section 05).</li></ul></div>
+    <div class="card"><h3>Prices</h3><p>Tutors set their own price. Once there's enough data, each subject page shows the typical price, so nobody has to guess and nobody is overcharged without knowing it.</p><p class="small muted">Advertised IB tutoring in India runs from about &#8377;1,000 to 9,500 an hour.</p></div>
+  </div>
+</section>
+
+<!-- 05 COURSEWORK -->
+<section class="panel" id="coursework" data-title="Coursework" role="tabpanel">
+  <p class="kicker">05 &middot; Coursework</p>
+  <h2>Help with the IA, EE and TOK, inside the IB's rules</h2>
+  <p class="lead">We don't sell coursework and nobody here writes it. Students book a coach by the hour to learn the skills the criteria reward, and the Marker, an AI, tells them where a draft stands, criterion by criterion, without writing a word of it.</p>
+  <div class="callout"><b>The line, in one sentence.</b> A coach can teach anything the student needs to know and ask any question that makes them think, but never writes, edits, rewrites, translates or marks up the work itself. Every session leaves a log the student can show their supervisor.</div>
+  <div class="grid g2">
+    <div class="card"><div class="flag">A coach does</div><ul>
+      <li>Explain each criterion and what separates the levels, in their own words.</li>
+      <li>Help the student find and narrow <i>their own</i> topic and research question, by asking questions.</li>
+      <li>Teach methods: research, judging sources, collecting data, the statistics or analysis the subject expects, referencing.</li>
+      <li>Teach the subject knowledge the piece needs, like how a chi-squared test works or what makes a TOK example strong.</li>
+      <li>Plan: milestones, a word budget for each section, how to act on the supervisor's feedback.</li>
+      <li>Use public or made-up examples to show what strong work looks like, as the IB itself suggests.</li>
+      <li>Get the student ready to talk about their own work, which is how teachers check it's theirs.</li>
+    </ul></div>
+    <div class="card"><div class="flag" style="color:var(--bad)">A coach never</div>
+      <div class="chk"><span class="ic x">&times;</span><div>Writes, rewrites, edits, proofreads, translates or "polishes" any part of the work.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>Takes the file, marks up the draft or predicts its grade. No files change hands; a student can screen-share a plan to talk it through.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>Supplies a research question, thesis, data, analysis or sources the student hasn't found.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>Runs the experiment, the survey or the calculations.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>Shares their own IA, EE or TOK, or anyone else's.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>Coaches a student whose school bans outside help with coursework.</div></div>
+    </div>
+  </div>
+  <p class="small muted" style="margin-top:10px">Why the line sits here: the IB's academic integrity policy says that when a student gets help from tutors "beyond what is recommended in the subject guidelines", the work is "not entirely produced by the student", and it asks every school to set its own rules on tutors. Its AI appendix wants students to be able to "speak about their work with their teachers". Coaching that leaves a student able to explain every choice is the safe kind.</p>
+
+  <div class="sechead"><h3>How it's charged</h3><span class="muted small">by the hour, like a lesson, but booked and priced separately</span></div>
+  <div class="grid g3">
+    <div class="card"><div class="flag">Its own rate</div><p>Each coach sets a coursework rate, separate from their lesson rate, and it's booked as its own kind of session. One hour at a time: no packages priced by the result, no "IA in a week" bundles.</p></div>
+    <div class="card tier best"><div class="flag">A 15% fee, explained</div><p>Coaches keep 85%. The extra 5% over lessons pays for what only coursework needs: every session recorded and kept until results, an experienced IB teacher reviewing 1 in 10 sessions, and the integrity course for coaches.</p></div>
+    <div class="card"><div class="flag">A hard limit on every piece</div><p>So nobody can buy a finished piece one hour at a time. A student who needs more than this needs their supervisor, not us.</p>
+      <table class="compact" style="margin-top:6px"><tbody>
+        <tr><td>An IA (each subject)</td><td class="num">4 hours</td></tr>
+        <tr><td>The Extended Essay</td><td class="num">6 hours</td></tr>
+        <tr><td>TOK essay</td><td class="num">3 hours</td></tr>
+        <tr><td>TOK exhibition</td><td class="num">2 hours</td></tr>
+      </tbody></table></div>
+  </div>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="card"><h3>Where &#8377;1,500 of a coaching hour goes</h3><div class="receipt">
+      <div class="rline total"><span>Student pays</span><span>&#8377;1,500.00</span></div>
+      <div class="rline"><span>Coach gets (85%)</span><span>&#8377;1,275.00</span></div>
+      <div class="rline"><span>FortyFive's fee (15%)</span><span>&#8377;225.00</span></div>
+      <div class="rline sub"><span>GST on the fee</span><span>&#8377;34.32</span></div>
+      <div class="rline sub"><span>Razorpay payment and transfer fees</span><span>&#8377;39.16</span></div>
+      <div class="rline sub"><span>Integrity reviews (1 in 10 sessions)</span><span>&#8377;50.00</span></div>
+      <div class="rline keep"><span>Left for FortyFive</span><span>&#8377;101.52</span></div>
+    </div><p class="small muted" style="margin-top:8px">Same Razorpay rates as the lesson receipt in section 06. A review is an IB teacher spending about 30 minutes on a recording, for &#8377;500.</p></div>
+    <div class="card"><h3>The help log</h3><div class="script">Economics IA, commentary 2
+Session 2 of 4, 14 March 2027
+5 to 6 pm, recorded
+
+Covered: how criterion D rewards evaluation, and what makes an evaluation point specific to the article rather than general.
+
+Next step, in the student's words: find two stakeholders the article leaves out.
+
+The coach did not read, edit or comment on the draft.</div><p class="small muted" style="margin-top:8px">The coach files it within 24 hours, and the payout waits for it. The student and parent get it, with a "share with my supervisor" link.</p></div>
+    <div class="card"><h3>Who can coach coursework</h3><ul>
+      <li>18 or older. <b>Graduate tutors under 18 don't coach coursework</b>: it's the riskiest thing we offer, and they have only just submitted their own. (Your call; this is the recommendation.)</li>
+      <li>A verified 7 in the subject, or IB teaching experience in it.</li>
+      <li>For the EE, an A or B on their own EE or experience supervising EEs. For TOK, an A or B in TOK or TOK teaching.</li>
+      <li>The one-hour integrity course and its quiz, every year.</li>
+      <li>One proven breach of the line ends the account. No three strikes here.</li>
+    </ul></div>
+  </div>
+
+  <div class="sechead"><h3>How a coaching hour works</h3></div>
+  <div class="card"><div class="flow">
+    <div class="node"><b>Pick the piece</b><span>e.g. Economics IA, commentary 2</span></div><div class="arrow" aria-hidden="true"></div>
+    <div class="node"><b>Sign the code</b><span>student and parent, once a piece; it asks them to check the school's rules</span></div><div class="arrow" aria-hidden="true"></div>
+    <div class="node"><b>Book an hour</b><span>shows the hours left on that piece</span></div><div class="arrow" aria-hidden="true"></div>
+    <div class="node"><b>Session</b><span>always recorded; no files change hands</span></div><div class="arrow" aria-hidden="true"></div>
+    <div class="node"><b>Help log</b><span>filed by the coach within 24 hours</span></div><div class="arrow" aria-hidden="true"></div>
+    <div class="node"><b>Show the supervisor</b><span>one link; on a school plan the school sees logs directly</span></div>
+  </div></div>
+
+  <div class="sechead"><h3>The FortyFive Marker</h3><span class="muted small">an AI that marks against the criteria and writes nothing for you</span></div>
+  <div class="grid g3">
+    <div class="card"><div class="flag">Practice marking &middot; from April 2027</div><p>Marks answers to <b>our own</b> practice questions and predicted papers, against our own markschemes. Included in every course. No coursework involved, so no integrity risk, and it does what people couldn't afford to: mark every practice answer.</p></div>
+    <div class="card tier best"><div class="flag">Coursework check &middot; subject by subject</div><p>A student uploads an IA, EE or TOK draft and gets a criterion report. <b>&#8377;499 a piece</b> for two checks: one on a draft and one before submission, at least a week apart. Free for anyone who asks. A subject opens only once it passes the accuracy bar below.</p></div>
+    <div class="card"><div class="flag">Teacher mode &middot; with school plans</div><p>A teacher runs a class set of drafts through the Marker for a first pass, then writes their own feedback faster and marks more consistently across the department. The teacher always has the final word.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>What a report shows</h3><ul>
+      <li>A band for each criterion and how sure it is: "3 to 4 out of 6, fairly sure".</li>
+      <li>The evidence behind each judgement: the page and paragraph it read.</li>
+      <li>Two or three things that work, and two or three questions to ask yourself.</li>
+      <li>A checklist: research question stated, word count, sources cited, data processing shown, evaluation, a conclusion that answers the question.</li>
+      <li>A ready line to credit the AI feedback, and a link to share the report with the supervisor.</li>
+    </ul></div>
+    <div class="card"><h3>What it never shows</h3>
+      <div class="chk"><span class="ic x">&times;</span><div>Sentences to paste, rewritten paragraphs or a "fixed" version.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>A research question, a thesis or an argument.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>A chat box. It writes a report and stops.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>One confident number when its three passes disagree. Then it shows a range.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>A promise of a grade.</div></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px"><h3>How it works</h3><div class="flow">
+    <div class="node"><b>Read</b><span>PDF to text, tables and figures; word count, sections, sources</span></div><div class="arrow" aria-hidden="true"></div>
+    <div class="node"><b>Rubric pack</b><span>the criteria in our own words, plus scored example pieces at each level</span></div><div class="arrow" aria-hidden="true"></div>
+    <div class="node"><b>Mark three times</b><span>three separate passes, each quoting its evidence first; take the middle mark</span></div><div class="arrow" aria-hidden="true"></div>
+    <div class="node"><b>Write feedback</b><span>questions and evidence only; a checker blocks any rewritten text</span></div><div class="arrow" aria-hidden="true"></div>
+    <div class="node"><b>Delete</b><span>the file is gone after 48 hours; the report stays</span></div>
+  </div><p class="small muted" style="margin-top:10px">Suggested build: Claude (Opus 5.5) with prompt caching on the rubric packs, so each check re-reads the rubric cheaply. Measure what a check really costs in the pilot before fixing the price. Uploads are never used for training, never shown to anyone, and never become examples without a separate yes after results.</p></div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card tier best"><div class="flag">Accuracy, published</div><p>After results day, graduates can donate their final IA, EE or TOK with the mark the IB gave it (their consent, and a parent's if they're under 18). That becomes the test set.</p><ul>
+      <li>A subject's coursework check opens only when, on at least 30 real pieces for each component, the Marker's total lands within 2 marks of the IB's mark for 7 pieces in 10. Set the bar with an IB teacher.</li>
+      <li>Every subject page shows the error for each criterion, updated after every session, misses included.</li>
+      <li>RevisionDojo's own blog says there's no published dataset comparing its grader with final IB marks. Publishing ours is the edge.</li>
+    </ul></div>
+    <div class="card"><div class="flag">Why only two checks</div><p>IB subject guides let a teacher comment on one draft. If a student can run their work through an AI twenty times and change whatever it flags, the result starts to be the AI's work, and the IB doesn't count work produced even partly by AI as the student's own (Academic integrity policy, Appendix 6). Two checks a week apart help without taking over.</p><p class="small muted">The donated pieces later become an <b>exemplar library</b>: read on FortyFive only, watermarked, with notes on why each criterion scored what it did. The IB says students benefit from seeing a good example, as long as they don't copy it.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>What we learned from RevisionDojo</h3><p class="small muted">Their three coursework pages are mirrored in site-templates (port 8830), with a teardown in <a href="../site-templates/_notes/08-revisiondojo.md">_notes/08-revisiondojo.md</a>.</p><ul>
+      <li><b>Grader:</b> an 8-step upload (type, subject, file, rubric and level, draft or finished, language and citation style, short or full report, privacy), then a score for each criterion, notes pinned on the PDF and next steps. It marks three times and averages, deletes files after 48 hours and asks for an own-work certificate.</li>
+      <li><b>Coursework Studio:</b> a workspace behind the login: set up the piece, research and plan, drafts, feedback, revise and reflect, deadlines. Free users get a capped number of projects.</li>
+      <li><b>Exemplars:</b> "thousands" of past pieces with scores they say IB examiners verified, filtered by type, subject and language, nearly all behind Pro.</li>
+    </ul><p><b>Take:</b> the stepped upload, draft versus final, marks for each criterion, several passes, 48-hour deletion, the own-work certificate. <b>Skip:</b> unpublished accuracy, unlimited rounds, a paywall on everything, the mascot.</p></div>
+    <div class="card"><h3>Rules for this part</h3><ul>
+      <li><b>The school's rules win.</b> The coursework code asks the student to check them, and a school on a plan can switch coaching or the Marker off for its students.</li>
+      <li><b>The IB's criteria are IB copyright.</b> Rubric packs are written in our own words and mapped to the criterion letters. The lawyer checks this before launch.</li>
+      <li><b>Coursework is personal data.</b> A parent's consent for under-18s, deletion after 48 hours, no training on it, and donation only as a separate yes after results.</li>
+      <li><b>A free coursework planner</b>, our answer to Studio: deadlines, milestones, a source log and a reflection diary for the EE. It's all the student's own work, so it's free for everyone.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 06 HONESTY -->
+<section class="panel" id="honesty" data-title="Honesty" role="tabpanel">
+  <p class="kicker">06 &middot; The honesty charter</p>
+  <h2>Ten promises, on the website, in plain words</h2>
+  <p class="lead">"Honest" is easy to say. These make it checkable: a student, parent or tutor can test every one of them.</p>
+  <div class="grid g21">
+    <div class="card"><ol class="charter">
+      <li><div><b>Two fees, both shown on every booking.</b><span>Tutors keep 90% of a lesson and coaches keep 85% of a coursework hour; the extra 5% pays for integrity reviews. Students pay the price shown and nothing more. No membership, no lead fees, no first-lesson grab.</span></div></li>
+      <li><div><b>Every score is checked.</b><span>A "verified" badge means we've seen the official IB results document. No badge, no claim.</span></div></li>
+      <li><div><b>Reviews come only from real lessons.</b><span>Only a student who finished a paid lesson can review it. Tutors can't hide or delete reviews. We remove only abuse and personal details.</span></div></li>
+      <li><div><b>Nobody pays to rank higher.</b><span>Search is ordered by subject match, free times and reviews, and the search page says so.</span></div></li>
+      <li><div><b>No fake urgency.</b><span>No countdown timers, no "3 spots left", no "50 people viewing".</span></div></li>
+      <li><div><b>No promises about grades.</b><span>We say what a course covers and what students said about it. Never "guaranteed 7".</span></div></li>
+      <li><div><b>Predictions and AI marks show their track record.</b><span>Predicted papers come from patterns in past papers, never leaks, and every page says so. The Marker's accuracy against real IB marks is published for every subject.</span></div></li>
+      <li><div><b>Open books.</b><span>Every quarter: lessons booked, what tutors earned, course sales, what authors earned, every cost, what was left over, and how many free places we gave.</span></div></li>
+      <li><div><b>Mistakes get fixed in public.</b><span>A corrections page lists every error found in a course, and the person who found it is thanked by name if they want.</span></div></li>
+      <li><div><b>No ads, no selling data, no tracking students.</b><span>Your data runs your account and nothing else.</span></div></li>
+    </ol></div>
+    <div>
+      <div class="card"><h3>Where &#8377;1,000 of a lesson goes</h3><div class="receipt" id="receiptStatic"></div><p class="small muted" style="margin-top:10px">These are the rates in Razorpay's own worked example (2% + GST per payment, 0.25% + GST per transfer); real rates depend on the plan you agree. This breakdown goes on the fees page, word for word.</p></div>
+      <div class="card" style="margin-top:14px"><h3>Open books: what a year could look like</h3><p class="small muted">An illustration from the base case in section 14, not real data.</p><div id="openBooks"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 SAFETY -->
+<section class="panel" id="safety" data-title="Safety" role="tabpanel">
+  <p class="kicker">07 &middot; Safety: the most important page</p>
+  <h2>Teaching teenagers online: get this right before anything else</h2>
+  <p class="lead">Most students on FortyFive will be 15 to 17, and most tutors will be adults or recent graduates their parents have never met. Safety comes before features, growth and fees.</p>
+  <div class="callout bad"><b>The safeguarding lead must be an adult.</b> You're 17, so it should be one of your parents (or another adult on the team): named on the website, easy to reach, and trained. They decide on reports; you build the system that makes reporting easy.</div>
+  <div class="grid g2">
+    <div class="card"><h3>Who gets to tutor (18 and over)</h3><ul>
+      <li>ID check through a verification service (DigiLocker or similar). Never store Aadhaar numbers.
+      <li>Background check: a criminal records search, about &#8377;1,000. FortyFive pays for the founding tutors.</li>
+      <li>The official IB results document, or teaching credentials.</li>
+      <li>A reference from a teacher.</li>
+      <li>A 15-minute video interview and demo lesson with you or a subject lead.</li>
+      <li>30 minutes of safeguarding training and a signed code of conduct.</li>
+    </ul></div>
+    <div class="card tier best"><div class="flag">Graduate tutors under 18</div><h3>17-year-olds who just finished the IB</h3><ul>
+      <li><b>A verified 7</b> in every subject they teach, from the official results document. Adults can teach with a 6; under-18s can't.</li>
+      <li><b>A parent or guardian co-signs</b> the tutor agreement, because a minor's contract is void in India, and <b>payouts go to the parent's bank account</b>.</li>
+      <li><b>Their own parent sees their bookings and messages too</b>, so an adult is watching both sides of every lesson. They need a parent's consent for their own data as well (DPDP).</li>
+      <li><b>A reference from their DP Coordinator or head of school</b> instead of a criminal-records check, plus the same interview, demo lesson and safeguarding training.</li>
+      <li><b>DP students only:</b> no adult learners and no lessons booked by adults for themselves. Online on FortyFive only, 7 am to 9 pm.</li>
+      <li><b>Labelled honestly:</b> "Graduate tutor, 17" on the profile, so families choose knowingly.</li>
+      <li><b>At 18</b> they move to the standard track: full ID and background check, payouts to their own account.</li>
+    </ul><p class="small muted" style="margin-top:8px">The lawyer checks this track before launch. Ask about insurance cover for tutors under 18.</p></div>
+    <div class="card"><h3>How lessons with under-18s work</h3><ul>
+      <li>Lessons only in FortyFive's video room; messages only in FortyFive's chat.</li>
+      <li>Phone numbers, emails and social handles are hidden in chat automatically.</li>
+      <li>The parent's account sees every booking and message, and the parent can join any lesson.</li>
+      <li>Lessons only between 7 am and 9 pm.</li>
+      <li>Parents choose at sign-up whether lessons are recorded (coursework coaching is always recorded, until results). Recordings are kept for 30 days, opened only if someone reports a problem, then deleted.</li>
+      <li>No gifts, no social media follows, no meeting in person through FortyFive.</li>
+    </ul></div>
+    <div class="card"><h3>When something goes wrong</h3><ol>
+      <li>A report button in every lesson and every chat, for students, parents and tutors.</li>
+      <li>The safeguarding lead reads every report within 24 hours, and anything about a child's safety the same day.</li>
+      <li>If you learn a child may have been abused: suspend the tutor, tell the parents and <b>report to the police or the Special Juvenile Police Unit straight away</b>. Childline is 1098.</li>
+      <li>Write down what happened and what was done, then fix the rule that failed.</li>
+    </ol><p class="small muted" style="margin-top:8px">Under POCSO, anyone who knows of a sexual offence against a child must report it (section 19). Not reporting is itself an offence (section 21), with a heavier penalty for a person in charge of an organisation. Courts have said an internal inquiry can't come first.</p></div>
+    <div class="card"><h3>Academic integrity</h3><ul>
+      <li>Tutors teach content, skills and how the criteria work.</li>
+      <li>Coursework coaching follows the line in section 05: coaches teach and ask, and never write, edit, rewrite, translate or mark up anyone's IA, EE or TOK. No files change hands.</li>
+      <li>Every coaching session is recorded and logged, and the log goes to the student and parent to show the supervisor.</li>
+      <li>Graduate tutors under 18 don't coach coursework.</li>
+      <li>Crossing the line ends a tutor's account. It protects students too: unauthorised help can cost them their diploma.</li>
+    </ul></div>
+  </div>
+  <div class="card" style="margin-top:14px"><h3>Children's data (DPDP Rules)</h3><p>The children's parts apply from about <b>May 2027</b>: verifiable consent from a parent for under-18 users, and no tracking, behavioural monitoring or targeted ads aimed at children.</p><ul><li>The parent creates the account and gives consent.</li><li>Progress is a checklist the student ticks, not tracking.</li><li>No ads aimed at students: talk to parents and make good content.</li><li>Collect the minimum, delete on request, and name a contact for complaints.</li><li>A lawyer checks all of this, and the recording rule, before launch.</li></ul></div>
+</section>
+
+<!-- 08 PLATFORM -->
+<section class="panel" id="platform" data-title="Platform" role="tabpanel">
+  <p class="kicker">08 &middot; Platform</p>
+  <h2>Build the boring, safe version first</h2>
+  <p class="lead">Two halves on one account system: a course player that protects the content, and a marketplace that keeps every lesson, message and payment on FortyFive.</p>
+  <div class="card">
+    <div class="flow">
+      <div class="node"><b>Student or parent</b><span>browser or phone</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node"><b>Cloudflare</b><span>firewall, rate limits, human checks</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node"><b>App</b><span>courses, search, requests, bookings, chat</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node"><b>Supabase</b><span>accounts, consent, bookings, reviews, access rules</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node"><b>Video and payments</b><span>expiring video links, lesson rooms, Razorpay Route</span></div>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card tight" style="background:var(--surface-2)"><b>Payments (Razorpay Route).</b> Each tutor gets a Razorpay linked account with their own KYC (PAN and bank). The student pays FortyFive, and FortyFive passes 90% to the tutor, held until two days after the lesson. Razorpay asks how the money is split before it switches Route on.</div>
+      <div class="card tight" style="background:var(--surface-2)"><b>Protecting course content.</b> The layers from plan v1 still apply: notes rendered on the server, the student's name stamped on every page, video links that expire, speed limits per account, nothing to download. Screenshots can't be stopped, so courses get refreshed each session.</div>
+    </div>
+  </div>
+  <div class="sechead"><h3>What to build, in order</h3></div>
+  <div class="grid g2">
+    <div class="card"><div class="flag">v0 &middot; the pilot, February 2027</div><ul>
+      <li>Parent accounts with consent, and student profiles</li>
+      <li>Course player: videos, notes, practice, checklist</li>
+      <li>Tutor profiles with verified badges</li>
+      <li>Request board and booking calendar</li>
+      <li>Video room, and chat that hides contact details</li>
+      <li>Reviews from finished lessons</li>
+      <li>Report button and a safeguarding inbox</li>
+      <li><b>No payments yet</b>: parents pay founding tutors directly</li>
+    </ul></div>
+    <div class="card"><div class="flag">v1 &middot; the launch, April 2027</div><ul>
+      <li>Razorpay Route: payments, holds, payouts, refunds</li>
+      <li>Course sales at &#8377;1,499, with free places on request</li>
+      <li>Invoices, plus GST and TDS reports for the CA</li>
+      <li>Small-group clinics</li>
+      <li>Open-books page and corrections page</li>
+      <li>Tutor-made courses, with a review queue</li>
+      <li>Coursework coaching: its own booking type, hour limits, recording and help logs</li>
+      <li>The Marker's practice marking inside courses</li>
+    </ul></div>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="flag">v2 &middot; from August 2027</div><p>The Marker's coursework checks, one subject at a time as each passes the accuracy bar; teacher mode for school plans; the exemplar library from donated pieces; the free coursework planner.</p></div>
+  <div class="sechead"><h3>Stack and running costs</h3><span class="muted small">free tiers while you build; these once it's live</span></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Part</th><th>Choice</th><th class="num">About a month</th></tr></thead>
+    <tbody>
+      <tr><td>Edge security</td><td>Cloudflare Workers paid plan plus Pro: firewall rules, rate limits, Turnstile</td><td class="num">$25 to 30 (&#8377;2,100 to 2,600)</td></tr>
+      <tr><td>App</td><td>Next.js on Cloudflare Workers, the same set-up as your Kalpya build</td><td class="num">included</td></tr>
+      <tr><td>Database, login, access rules, chat</td><td>Supabase Pro: Postgres, login, row-level security, Realtime</td><td class="num">$25 to 35 (&#8377;2,100 to 3,000)</td></tr>
+      <tr><td>Files</td><td>Cloudflare R2, private bucket</td><td class="num">under $5</td></tr>
+      <tr><td>Course video</td><td>A streaming service with signed, expiring links (Cloudflare Stream or similar)</td><td class="num">&#8377;500 to 1,000</td></tr>
+      <tr><td>Lesson rooms</td><td>Jitsi (open source) to start, or a video service with a free monthly allowance</td><td class="num">&#8377;0 to 1,000</td></tr>
+      <tr><td>Payments</td><td>Razorpay Route</td><td class="num">2% + GST a payment, small fee a payout</td></tr>
+      <tr><td>AI marking</td><td>Claude API (Opus 5.5), prompt caching on the rubric packs</td><td class="num">measure in the pilot</td></tr>
+      <tr><td><b>Total, live</b></td><td>before payment fees</td><td class="num"><b>&#8377;5,000 to 8,000</b></td></tr>
+    </tbody>
+  </table></div>
+  <div class="card" style="margin-top:14px"><h3>What the database keeps, and nothing more</h3><ul><li>Parent: name, email, consent record.</li><li>Student: first name, school, subjects, exam session.</li><li>Tutor: name, verified results, check status, Razorpay linked account, price.</li><li>Bookings, payments, reviews and chat, kept for a fixed period the lawyer sets, then deleted.</li><li>Course checklists.</li><li>Coaching help logs and recordings, kept until that session's results, then deleted.</li><li>Marker uploads, deleted after 48 hours. Reports stay with the student.</li><li>A security log, deleted after 90 days.</li></ul></div>
+</section>
+
+<!-- 09 WEBSITE -->
+<section class="panel" id="website" data-title="Website" role="tabpanel">
+  <p class="kicker">09 &middot; Website</p>
+  <h2>Two front doors, one calm website</h2>
+  <p class="lead">Students (with their parents) and tutors need different things, so they sign up separately and land in different homes. The look comes from your own template shelf: the Lab Dossier layout, set in Latin Modern so it matches the deck.</p>
+  <div class="grid g2">
+    <div class="card tier best"><div class="flag">The pick: 03 Lab Dossier</div><p>Warm paper background, big headlines set left, small letter-spaced labels, square black buttons and hairline rules. It already looks like a well-set exam paper, which is the brand. Swap its grotesk headline font for Latin Modern and keep the bones.</p><p class="small"><a href="../site-templates/templates/03-lab-dossier/index.html">Open the template</a></p></div>
+    <div class="card"><div class="flag">The others, and why not</div><ul>
+      <li><b>04 Product platform:</b> borrow only its top bar (sign in, theme switch) for the logged-in app. Its gradient button reads as a tech start-up.</li>
+      <li><b>02 SaaS landing:</b> the same start-up look, built to sell software to companies.</li>
+      <li><b>01 VHS shelf and 05 outline wordmark:</b> fun pieces, wrong mood for exam stress.</li>
+      <li><b>The mirrors</b> (RevisionDojo, myjobb and the rest) are other companies' sites: study them, never ship them.</li>
+    </ul></div>
+  </div>
+  <div class="sechead"><h3>Fonts</h3><span class="muted small">all free for commercial use</span></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Used for</th><th>Font</th><th>Licence</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>Headlines, course notes, long reading</td><td><b>Latin Modern Roman</b></td><td>GUST Font License</td><td>The brand. The deck and every PDF already use it, and no edtech does.</td></tr>
+      <tr><td>Buttons, forms, tables, prices</td><td><b>Inter</b></td><td>SIL Open Font License</td><td>Readable at small sizes, with tabular numbers and the &#8377; sign, which Latin Modern lacks. Already on the shelf (graycup, myjobb, rareui, wensity).</td></tr>
+      <tr><td>Small labels, receipts, help logs</td><td><b>Latin Modern Mono</b></td><td>GUST Font License</td><td>The typed-record feel, from the same family.</td></tr>
+      <tr><td>Skip</td><td>Satoshi, Cabinet Grotesk</td><td>Indian Type Foundry licences</td><td>Marked "check" in the font audit. Not worth the risk.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted" style="margin-top:8px">Checked 13 Oct: Latin Modern Roman 12, Roman 17 and Mono 10 have no &#8377; glyph, so every price is set in Inter.</p>
+  <div class="sechead"><h3>The two sign-ups</h3></div>
+  <div class="grid g2">
+    <div class="card"><div class="flag">Door A &middot; "I'm a student or parent"</div><ol>
+      <li><b>Who are you:</b> student or parent. Either can start, and the other is invited.</li>
+      <li><b>About you:</b> first name and school. The school list is the 629 Diploma schools we scraped, so choosing one fills in its exam session.</li>
+      <li><b>Subjects:</b> six chips with HL or SL, showing only what that school runs.</li>
+      <li><b>Your parent:</b> their email or phone. They approve the account (DPDP consent) and choose whether lessons are recorded.</li>
+    </ol><p class="small muted">Until a parent approves, the student can use the free tools and preview courses, but can't book or message anyone.</p></div>
+    <div class="card"><div class="flag">Door B &middot; "I teach the IB"</div><ol>
+      <li><b>Pick a track:</b> IB graduate (18+), graduate tutor (17, a parent co-signs) or IB teacher.</li>
+      <li><b>Subjects and levels</b>, with the results document or teaching credentials.</li>
+      <li><b>Checks:</b> ID through DigiLocker, then a background check, or a DP Coordinator reference at 17.</li>
+      <li><b>Demo lesson</b>, safeguarding training and quiz, and the code of conduct.</li>
+      <li><b>Rates and payouts:</b> a lesson rate, an optional coursework rate (needs the integrity course), and the payout account (the parent's at 17).</li>
+    </ol><p class="small muted">The profile goes live only when every step is green. Until then the checklist is the whole tutor home page.</p></div>
+  </div>
+  <div class="sechead"><h3>What each person sees</h3><span class="muted small">same look, different homes, never mixed</span></div>
+  <div class="grid g3">
+    <div class="card"><div class="flag">Student</div><p class="small muted">Home &middot; Courses &middot; Tutors &middot; Coursework &middot; Messages &middot; Account</p><ul>
+      <li>"Today": the next lesson, the course to continue, the next-point widget, coursework deadlines.</li>
+      <li>Every chat says "Your parent can see this".</li>
+      <li>"Ask for help" posts a request to the board.</li>
+      <li>Phone first, with a bottom tab bar.</li>
+    </ul></div>
+    <div class="card"><div class="flag">Parent</div><p class="small muted">Home &middot; Bookings &middot; Messages &middot; Payments &middot; Settings</p><ul>
+      <li>A switcher for each child.</li>
+      <li>Bookings waiting for approval and payment.</li>
+      <li>Every message, read-only, and the help logs from coaching.</li>
+      <li>Receipts, consent and the recording choice.</li>
+    </ul></div>
+    <div class="card"><div class="flag">Tutor</div><p class="small muted">Home &middot; Requests &middot; Calendar &middot; Students &middot; Earnings &middot; Profile</p><ul>
+      <li>The verification checklist until the profile is live.</li>
+      <li>Then: today's lessons, requests that match their subjects, help logs to file.</li>
+      <li>Earnings with a receipt for every lesson.</li>
+      <li>Desktop first, and it still works on a phone.</li>
+    </ul></div>
+  </div>
+  <p class="small muted" style="margin-top:10px">Everyone gets a red Report button in the top bar of every screen. School accounts come later, by invitation only.</p>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>The public site</h3><ol>
+      <li><b>Home:</b> "Mastering the IB Diploma. Nothing else." and the two doors, then courses, tutors, coursework, the receipt, safety and honesty.</li>
+      <li><b>Courses</b>, by subject then paper, each saying who doesn't need it.</li>
+      <li><b>Tutors:</b> search and public profiles, with no contact details.</li>
+      <li><b>Coursework:</b> the line, the hour limits, the help log, the Marker and its accuracy.</li>
+      <li><b>Free tools</b>, <b>Honesty</b> (charter, fees, open books, corrections, scorecards), <b>Safety</b> for parents, <b>For schools</b> and <b>Teach on FortyFive</b>.</li>
+    </ol></div>
+    <div class="card"><h3>Rules for every screen</h3><ul>
+      <li><b>Two doors, never one mixed dashboard.</b></li>
+      <li><b>Parents are first-class</b>, not a settings page.</li>
+      <li><b>Every price shows its receipt.</b></li>
+      <li><b>Calm:</b> no streaks, badges, countdowns or nagging. Notifications only for bookings and messages.</li>
+      <li><b>Empty states teach:</b> one sentence on what to do next.</li>
+      <li><b>Accessible:</b> phones from 360px up, AA contrast in both themes, focus rings, 44px tap targets.</li>
+      <li><b>Copy</b> in a student's voice, British spelling, no hype words, no em dashes.</li>
+    </ul></div>
+  </div>
+  <div class="sechead"><h3>The full website plan</h3><span class="muted small">every screen, flow, rule and word, with 29 wireframes</span></div>
+  <div class="card tier best"><p><a class="btn" href="website/website-plan.html">Open the website plan</a></p><p style="margin-top:10px">Planned end to end: 13 roles and who can do what, the site map, both sign-ups and parent approval, 45 screens (public, student, parent, tutor, guardian, staff console, school), the booking states, refunds, reports, notifications, the design system, the words for every key moment, the build order and the tests. The source is <a href="website/FortyFive%20website%20plan.md">website/FortyFive website plan.md</a>, rebuilt with <code>website/build_plan.py</code>.</p></div>
+  <div class="grid g3" style="margin-top:14px">
+    <div class="card"><div class="flag">v0 &middot; pilot, 1 Feb 2027</div><p>About 30 screens. Sign-ups and parent approval, the tutor checklist, search and profiles, booking with parent approval (parents pay founding tutors by UPI), messages that hide contact details, the lesson room, two courses, reports and the safeguarding inbox.</p></div>
+    <div class="card"><div class="flag">v1 &middot; launch, April 2027</div><p>Payments through Razorpay, receipts, refunds and payouts. Course sales and free places, the request board, reviews, coursework coaching with help logs and integrity reviews, practice marking, open books, corrections and course authoring.</p></div>
+    <div class="card"><div class="flag">v2 &middot; from August 2027</div><p>Marker coursework checks subject by subject, the accuracy page, the school console and teacher mode, the exemplar library, standing approvals and an installable phone version.</p></div>
+  </div>
+  <div class="callout"><b>How we get to a look you like.</b> Test the wireframes with 5 students, 5 parents and 3 tutors in late November. Then style one screen, Home, for your sign-off before styling anything else. Results day (16 December) is the hard date: the tutor sign-up and checklist must be live by then.</div>
+
+  <div class="sechead"><h3>The website, built</h3><span class="muted small">13 Oct 2026: every screen in the plan, working on demo data</span></div>
+  <div class="grid g2">
+    <div class="card tier best">
+      <div class="flag">Run it</div>
+      <p>Folder: <code>Downloads\fortyfive-site</code>. Run <code>npm run dev</code> there, then open <a href="http://localhost:4545">localhost:4545</a> and choose a demo account on Sign in: Aarav (student), Priya (parent), Ananya (tutor), Rohan (new tutor), Zara (new student) or the safeguarding lead.</p>
+      <p class="small muted">Next.js 16, the same stack as Kalpya. 55 pages: the public site, the three sign-ups and parent consent, the student, parent and tutor apps, and the staff console. Approvals, messages, help logs and Marker checks work and are remembered in your browser.</p>
+    </div>
+    <div class="card">
+      <div class="flag">Checked</div>
+      <ul>
+        <li>The type-check, 28 unit tests and a production build all pass.</li>
+        <li>Every page was visited as every role at desktop and phone width: no errors, no sideways scrolling.</li>
+        <li>Eight full journeys pass: a booking approved and paid, chat hiding numbers, sign-up with the school search, a help log filed, a Marker check, and a report reaching the safeguarding inbox.</li>
+      </ul>
+      <p class="small muted">Still demo: sign-in, payments, DigiLocker, the lesson video and the Marker&apos;s AI. The README in the folder lists exactly what replaces each.</p>
+    </div>
+  </div>
+
+  <div class="sechead"><h3>The logo</h3><span class="muted small">permanent: the full stop</span></div>
+  <div class="grid g2">
+    <div class="card" style="display:grid;place-items:center;min-height:150px"><img src="brand/final/fortyfive-lockup.svg" alt="FortyFive logo" style="height:56px;width:auto"></div>
+    <div class="card">
+      <p>&ldquo;45.&rdquo; in bold numerals on an ink square, beside the wordmark in Latin Modern: forty-five, full stop, nothing else. Every letter is outlined, so the files never need the font. The website, the favicon and the deck cover all use it now.</p>
+      <p class="small"><a href="brand/FortyFive%20brand.html">Brand guide</a> &middot; <a href="brand/LOGO%20OPTIONS.html">the three directions explored</a> &middot; files in <code>brand/final</code></p>
+    </div>
+  </div>
+
+  <div class="sechead"><h3>The name and the .com</h3><span class="muted small">checked on 13 Oct 2026 through the registries&apos; RDAP records</span></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Domain</th><th>Status</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td><b>joinfortyfive.com</b></td><td>Free</td><td><b>Recommended.</b> &ldquo;Join FortyFive&rdquo; invites without promising a grade.</td></tr>
+      <tr><td>getfortyfive.com</td><td>Free</td><td>Reads as &ldquo;get a 45&rdquo;: a grade promise, which our own rules forbid.</td></tr>
+      <tr><td>fortyfivehq.com</td><td>Free</td><td>Fine, but sounds like a tech company.</td></tr>
+      <tr><td>fortyfive.com</td><td>Taken since 1997, renewed to 2028</td><td>Would have to be bought from its owner. Ask later, not now.</td></tr>
+      <tr><td>fortyfive.in</td><td>Taken July 2026, parked</td><td>Not available.</td></tr>
+      <tr><td>fortycinq.com</td><td>Free</td><td>Fails the say-it-and-spell-it test (&ldquo;forty-sank&rdquo;), and the meaning of 45 is lost.</td></tr>
+      <tr><td>quarantfive.com</td><td>Free</td><td>Reads as &ldquo;quarantine&rdquo;, and isn&apos;t a real word in any language.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><b>Keep the name.</b> FortyFive means the top IB score to every IB student at a glance, and no IB tutoring company uses it. A short prefix gives the .com&apos;s authority without losing that: Facebook started on thefacebook.com, Dropbox on getdropbox.com and Tesla on teslamotors.com, and each bought the exact name years later. Register <b>joinfortyfive.com</b> and <b>fortyfive.co.in</b> (both free, roughly &#8377;500 to &#8377;1,200 a year each at normal prices) through your parent&apos;s business, and search the IP India trademark register for &ldquo;FortyFive&rdquo; in education classes before printing anything.</div>
+</section>
+
+<!-- 10 MARKET -->
+<section class="panel" id="market" data-title="Market" role="tabpanel">
+  <p class="kicker">10 &middot; Market and competition</p>
+  <h2>A small market where trust is the gap</h2>
+  <div class="grid g4" style="margin-top:14px">
+    <div class="card tile"><div class="lab">Diploma schools in India</div><div class="val">192</div><div class="note">May 2026; 177 a year earlier</div></div>
+    <div class="card tile"><div class="lab">Students with results, May 2026</div><div class="val">6,265</div><div class="note">DP and CP, up 3% on 2025</div></div>
+    <div class="card tile"><div class="lab">In the Diploma at any time</div><div class="val">~12,500</div><div class="note">two year groups</div></div>
+    <div class="card tile"><div class="lab">IB tutoring in India</div><div class="val">&#8377;1k to 9.5k</div><div class="note">an hour, advertised rates</div></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>Size of the prize (rough)</h3><p>If one in ten Diploma students in India booked 20 hours a year at &#8377;1,200, that's about <b>&#8377;3 crore of lessons a year</b>, and &#8377;30 lakh of fees at 10%, before courses.</p><p class="small muted">A ceiling, not a forecast. The base case needs 120 lesson hours a month: about 40 students taking 3 hours each.</p></div>
+    <div class="card"><h3>Where to start</h3><ol><li>Your school, on both sides: your batch as tutors, the DP1s as students.</li><li>IB schools in Coimbatore, Chennai, Bengaluru and Kochi.</li><li>India-wide, through content.</li><li>Later: November-session schools abroad, which almost nobody serves.</li></ol></div>
+  </div>
+  <div class="sechead"><h3>Who else does this</h3></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Who</th><th>How they charge</th><th>Tutor keeps</th><th>Your angle</th></tr></thead>
+    <tbody>
+      <tr><td><b>Preply</b></td><td>Commission on every lesson, 33% for new tutors falling to 18%; keeps all of the first lesson with each new student</td><td>67 to 82%</td><td>Global, any subject, scores not checked against IB results. You: one flat fee, verified scores.</td></tr>
+      <tr><td><b>Wyzant</b></td><td>A flat 25% platform fee, plus a 9% service fee on lessons</td><td>75%</td><td>US only.</td></tr>
+      <tr><td><b>Superprof</b></td><td>Students pay a monthly pass to message tutors; 10% on lessons paid through the site, waived for Premium tutors</td><td>90 to 100%</td><td>Students pay before they've met anyone. You: free to message, free intro call.</td></tr>
+      <tr><td><b>UrbanPro</b></td><td>Tutors pay for a premium membership and for "coins" to unlock student enquiries</td><td>varies</td><td>Tutors complain about paying for leads that never turn into students. You: tutors pay only when they earn.</td></tr>
+      <tr><td><b>TutorChase, Tutopiya</b></td><td>IB tutoring agencies: they set the price and pay the tutor part of it</td><td>not published</td><td>Polished, but &#8377;1k to 9.5k an hour. You: tutors set their own price and keep 90%.</td></tr>
+      <tr><td><b>RevisionDojo, Revision Village, Save My Exams, Clastify</b></td><td>Courses, notes, question banks, AI grading</td><td>n/a</td><td>Global and priced in dollars or pounds, and their AI graders publish no accuracy against real IB marks. You: rupee courses led by verified 7s, a tutor one click away, and a Marker whose accuracy is public.</td></tr>
+      <tr><td><b>Free stuff</b></td><td>YouTube, Reddit, Discord, seniors</td><td>n/a</td><td>Free but scattered. You: keep a free layer (the predictor, course previews) and be the trusted next step.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><b>Beyond India.</b> The IB directory lists <b data-sum="intl_dp">many</b> Diploma schools in the 20 countries we mapped next, and <b data-sum="intl_nov">some</b> of them sit the November session like you. The ranked list is in Schools (section 11), and the order to go in is in Plan (section 16).</div>
+</section>
+
+<!-- 11 SCHOOLS -->
+<section class="panel" id="schools" data-title="Schools" role="tabpanel">
+  <p class="kicker">11 &middot; Who to sell to</p>
+  <h2>Every IB Diploma school in India, ranked, plus 20 countries next</h2>
+  <p class="lead">Built from the IB's own school directory on 12 October 2026: each school's city, exam session and the subjects it runs. Your working tracker is <a href="schools/FortyFive School Targets.xlsx">FortyFive School Targets.xlsx</a>, with status, next step and notes for every school. This tab is the overview.</p>
+  <div class="grid g4" id="schTiles"></div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>Start with these 15</h3><p class="small muted">Priority A, nearest first. Tier 1 is within 450 km of Coimbatore. "Fit" means the school runs English A Lang and Lit or French ab initio, our first two courses.</p><div id="schTop"></div></div>
+    <div class="card"><h3>Schools that sit the November session</h3><p class="small muted">Your predicted November mocks fit them first, and almost nothing else is made for them.</p><div id="schNov"></div></div>
+  </div>
+  <div class="sechead"><h3>Where the Diploma schools are</h3><span class="muted small">the 21 countries mapped; November-session schools in brackets</span></div>
+  <div class="card"><div class="chart wide" id="schCountry"></div><button class="btn small" type="button" data-table="schCountryTable">Show as table</button><div class="tablet" id="schCountryTable" hidden></div></div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>School groups</h3><p class="small muted">Names that run two or more Diploma schools on the list. One yes can open several campuses. Check each really is one group before you pitch it as one.</p><div id="schChains"></div></div>
+    <div class="card"><h3>How to approach a school</h3><ol>
+      <li>Nothing before 13 November.</li>
+      <li>Write to the DP coordinator through the school's official email or the "Contact coordinator" form on its IB page. Never contact students directly.</li>
+      <li>Offer the free pilot (February to March 2027) and a 15-minute demo. The email is in Scripts.</li>
+      <li>One follow-up after a week. If there's no reply, mark it "Not now" and move on.</li>
+      <li>Log every step in the tracker's Status, Next step and Last contact columns.</li>
+    </ol></div>
+  </div>
+  <div class="sechead"><h3>All schools</h3><span class="muted small" id="schCount"></span></div>
+  <div class="card">
+    <div class="filters">
+      <input type="search" id="schQ" placeholder="Search school or city" aria-label="Search school or city">
+      <select id="schMarket" aria-label="Market"><option value="">All markets</option></select>
+      <select id="schSess" aria-label="Exam session"><option value="">Any session</option><option value="Nov">November</option><option value="May">May</option></select>
+      <select id="schPri" aria-label="Priority"><option value="">Any priority</option><option>A</option><option>B</option><option>C</option></select>
+    </div>
+    <div class="tbl-wrap" style="margin-top:10px"><table class="compact" id="schTable"><thead><tr><th>Priority</th><th>School</th><th>City</th><th>Country</th><th>Exams</th><th>Fit</th><th class="num">Km</th><th>IB page</th></tr></thead><tbody></tbody></table></div>
+    <button class="btn small" type="button" id="schMore" style="margin-top:10px">Show 50 more</button>
+  </div>
+  <p class="small muted" style="margin-top:10px" id="schNote">Source: IB "Find an IB World School" directory, read on 12 October 2026. Cities come from the IB address and can be wrong, so check before you visit. The data loads from schools/schools_data.js; rebuild it with schools/build_schools.py.</p>
+</section>
+
+<!-- 12 WAYS TO EARN -->
+<section class="panel" id="earn" data-title="Ways to earn" role="tabpanel">
+  <p class="kicker">12 &middot; Ways to earn</p>
+  <h2>Thirty-two ways to bring money in, and six we'll never use</h2>
+  <p class="lead">Sorted by when they make sense. "Now" costs almost nothing to start. "Next" needs a pilot and some trust. "Later" needs a team, a track record or a registered non-profit.</p>
+  <div class="presets" id="earnFilter"><button class="btn on" type="button" data-stage="">All</button><button class="btn" type="button" data-stage="Now">Now</button><button class="btn" type="button" data-stage="Next">Next</button><button class="btn" type="button" data-stage="Later">Later</button></div>
+  <div class="grid g3" id="earnGrid" style="margin-top:10px"></div>
+  <div class="card" style="margin-top:14px"><h3>Never, however good the money looks</h3><div id="earnNever"></div></div>
+  <div class="callout"><b>Which ones matter.</b> Lesson fees and school plans pay the bills. Courses are why people come. Sponsors pay for the free places. Everything else is optional: start with the free tools, courses and lessons, and add school plans once a pilot school says yes.</div>
+</section>
+
+<!-- 13 PARTNERS -->
+<section class="panel" id="partners" data-title="Partners" role="tabpanel">
+  <p class="kicker">13 &middot; Partners and sponsors</p>
+  <h2>Partners make it trusted. Sponsors make it free.</h2>
+  <p class="lead">Nobody pays to change what students see. Partners lend trust or reach. Sponsors fund free places and events, and their name is the only thing they get back.</p>
+  <div class="grid g3">
+    <div class="card"><div class="flag">Your school</div><p><b>Founding pilot.</b> Ask for permission to run both courses free for this year's DP1s. Give back: the pilot results, shared with the coordinator first.</p></div>
+    <div class="card"><div class="flag">Tier 1 schools</div><p>The closest Priority A schools in the Schools tab. Two or three pilots in February and March 2027 turn into the first school plans in 2027-28.</p></div>
+    <div class="card"><div class="flag">TAISI</div><p>The Association of International Schools of India: about 300 member schools and an annual conference in Goa, and listed by the IB as an association of IB World Schools. Ask for a talk or a stall once you have pilot results (2027 or 2028).</p></div>
+    <div class="card"><div class="flag">School groups</div><p>Brands with several Diploma schools, in India and abroad (Schools tab). One agreement can cover several campuses, and some run schools in the Gulf too.</p></div>
+    <div class="card"><div class="flag">Universities</div><p>The India offices of UK, US, Canadian and Australian universities. Free admissions webinars for students and parents. No money changes hands, and nobody is paid per student.</p></div>
+    <div class="card"><div class="flag">NGOs</div><p>For the CAS opportunities board: real volunteering, creativity and activity places, only with organisations that have a child-protection policy.</p></div>
+    <div class="card"><div class="flag">Calculator and textbook makers</div><p>A loaner pool of graphing calculators for students who can't afford one, and discounts on books. Ask once you have users to show them.</p></div>
+    <div class="card"><div class="flag">IB graduates</div><p>Your batch and the ones after it: tutors (keep 90%) and course leads (70% of what a course earns). The supply side is a partnership too.</p></div>
+    <div class="card"><div class="flag">Helplines</div><p>Tele-MANAS (14416) and the school counsellor on every account. Not a partnership, a duty.</p></div>
+  </div>
+  <div class="sechead"><h3>Sponsorship packages</h3><span class="muted small">every sponsor and amount goes on the open-books page</span></div>
+  <div class="grid g4">
+    <div class="card tier best"><div class="flag">Free places</div><div class="price">&#8377;75,000</div><p>50 course places for a term, given to anyone who asks. Named on the free-places page.</p></div>
+    <div class="card tier"><div class="flag">Series</div><div class="price">&#8377;25k to 50k</div><p>A season of results-day help, Mock Days or university Q&amp;As.</p></div>
+    <div class="card tier"><div class="flag">Local</div><div class="price">&#8377;10k to 25k</div><p>One event in Coimbatore: venue, printing, snacks.</p></div>
+    <div class="card tier"><div class="flag">Founding sponsor</div><div class="price">&#8377;2 lakh <small>a year</small></div><p>Named across the free tools and the open-books report.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>Who to ask</h3><ul>
+      <li>University India offices (for events, never referrals)</li>
+      <li>Education-loan and forex companies: their customers are parents</li>
+      <li>Student-housing platforms for students going abroad</li>
+      <li>Calculator and laptop brands</li>
+      <li>Coimbatore businesses, starting with ones your family knows</li>
+      <li>Alumni and parents, through "gift a place"</li>
+    </ul></div>
+    <div class="card"><h3>The rules every sponsor signs</h3>
+      <div class="chk"><span class="ic x">&times;</span><div>No student data, tracking pixels or targeting. Ever.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>No say over courses, tutors, rankings or reviews.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>Nothing inside lessons, and no messages to students.</div></div>
+      <div class="chk"><span class="ic x">&times;</span><div>No agents, counsellors or anyone paid per student sent to a university.</div></div>
+      <p class="small muted" style="margin-top:6px">Every sponsor and amount is published. We can turn any sponsor down, and we will if parents would be uneasy.</p>
+    </div>
+  </div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>Competitions worth entering</h3><ul>
+      <li><b>Diamond Challenge</b> (University of Delaware): concept due 14 January 2027, $100,000 prize pool, ages 14 to 18, teams of 2 to 4 with an adult advisor (21+), free to enter. The pitch deck is most of the entry.</li>
+      <li><b>Blue Ocean Student Entrepreneur Competition</b>: a video pitch under 5 minutes, due around 21 February 2027, top prize $1,000, free.</li>
+    </ul><p class="small muted" style="margin-top:6px">Dates from third-party listings; confirm on the organisers' sites.</p></div>
+    <div class="card"><h3>Free credits</h3><ul>
+      <li>The GitHub Student Developer Pack while you're a student.</li>
+      <li>Cloud startup programmes (Cloudflare, Google, Microsoft, AWS) once the business is registered. Most want a company; some want funding.</li>
+    </ul></div>
+  </div>
+  <div class="card" style="margin-top:14px"><h3>CSR money, later</h3><p>Companies' CSR money can't go to a business. It can go to a non-profit "implementing agency": a Section 8 company, trust or society with 12A and 80G registration, a three-year track record, and CSR-1 registration. If the free places grow, set up the non-profit early (around 2028) so the three years start counting.</p></div>
+</section>
+
+<!-- 14 NUMBERS -->
+<section class="panel" id="numbers" data-title="Numbers" role="tabpanel">
+  <p class="kicker">14 &middot; The numbers (December 2026 to November 2027)</p>
+  <div class="card hero" style="margin-bottom:14px">
+    <div class="big" id="heroHours">76 h</div>
+    <div class="what"><b style="color:var(--ink)">Lesson hours a month at which FortyFive pays its own running costs</b> in the base case. The base case has 15 tutors teaching 8 hours a month each, 120 hours, so once it's running it covers itself with a little to spare. Year one still ends about &#8377;32,000 down: &#8377;35,000 of one-off set-up, and four months before payments start. Your own time isn't counted.</div>
+  </div>
+  <div class="grid g3" id="scenCards"></div>
+  <div class="sechead"><h3>Play with it</h3><span class="muted small">every number updates as you type</span></div>
+  <div class="calc">
+    <div class="card">
+      <div class="presets"><button class="btn" data-preset="Small" type="button">Small</button><button class="btn on" data-preset="Base" type="button">Base</button><button class="btn" data-preset="Big" type="button">Big</button></div>
+      <div id="fields"></div>
+    </div>
+    <div>
+      <div class="grid g2x">
+        <div class="card tile"><div class="lab">Lessons booked</div><div class="val" id="oGmv">-</div><div class="note" id="oGmvN"></div></div>
+        <div class="card tile"><div class="lab">Tutors take home</div><div class="val" id="oTutor">-</div><div class="note" id="oTutorN"></div></div>
+        <div class="card tile"><div class="lab">FortyFive's year one</div><div class="val" id="oNet">-</div><div class="note" id="oNetN"></div></div>
+        <div class="card tile"><div class="lab">Pays for itself at</div><div class="val" id="oNeed">-</div><div class="note" id="oNeedN"></div></div>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <h3>When it pays for itself</h3>
+        <p class="small ink2" id="beCaption" style="margin:0 0 6px"></p>
+        <div class="legend"><span><i class="ln" style="background:var(--s1)"></i>Income a month: lesson fees and courses, after GST and payment fees</span><span><i class="ln" style="background:var(--s2)"></i>Running costs a month</span></div>
+        <div class="lc" id="beChart" tabindex="0" role="img"></div>
+        <button class="btn small" type="button" data-table="beTable" style="margin-top:8px">Show as table</button>
+        <div class="tablet" id="beTable" hidden></div>
+      </div>
+      <div class="card" style="margin-top:14px"><h3 id="rcTitle">One lesson hour</h3><div class="receipt" id="receiptLive"></div></div>
+      <div class="card" style="margin-top:14px"><h3>Money in and out, year one</h3><div id="costList"></div></div>
+    </div>
+  </div>
+  <p class="small muted" style="margin-top:12px">Fixed assumptions: 18% GST on FortyFive's fee and on course sales, inside the prices shown. Razorpay: 2% + GST a payment and 0.25% + GST a payout (their worked example; real rates depend on the plan). 1.5 background checks per active tutor, since some leave or never start. Course authors get their share after GST and payment fees. "Pays for itself" counts running costs only, not the one-off set-up. Income tax on any surplus isn't included; it goes on your parent's return.</p>
+  <p class="small muted">Not in these numbers yet: coursework coaching and the Marker. Add them once the pilot shows real demand and what a Marker check really costs.</p>
+</section>
+
+<!-- 15 GROWING IT -->
+<section class="panel" id="grow" data-title="Growing it" role="tabpanel">
+  <p class="kicker">15 &middot; How to grow it</p>
+  <h2>Tutors first, courses as the hook, your school as the first market</h2>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>Tutors</h3><ol>
+      <li><b>16 December is results day.</b> Invite everyone in your batch with a 7 in a subject. Those still 17 join the graduate-tutor track with a parent co-signing; a 6 is enough once they're 18.</li>
+      <li><b>Hand-pick 10 founding tutors</b>: checks, interview, demo lesson. No fee until 30 April 2027, and a founding badge for good.</li>
+      <li>Then alumni of your school and other IB schools, and IB teachers.</li>
+      <li><b>Grow tutors only as fast as students.</b> A tutor with no bookings leaves and tells others.</li>
+    </ol></div>
+    <div class="card"><h3>Students</h3><ol>
+      <li><b>Courses first.</b> Useful on day one, even with no tutors.</li>
+      <li><b>Your school's DP1s</b>: the free pilot, with your DP Coordinator's permission.</li>
+      <li><b>Content</b>: three short videos a week, one idea each. Your strongest skill.</li>
+      <li><b>The free layer</b>: the FortyFive predictor and free course previews.</li>
+      <li><b>Parents, not ads</b>: school parent groups (with permission) and word of mouth. No ads aimed at students.</li>
+      <li><b>The request board</b>: post what pilot students need, so new tutors see real demand.</li>
+    </ol></div>
+  </div>
+  <div class="callout"><b>The loop.</b> A student takes a course, gets stuck on a module, and books a 30-minute lesson with a tutor who scored a 7 on that paper. A good review brings the next student. Courses make the marketplace useful from day one; the marketplace makes the courses worth more.</div>
+  <div class="sechead"><h3>When people buy</h3><span class="muted small">push in these windows; build outside them</span></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Who</th><th>Mocks</th><th>Finals</th><th>Window</th></tr></thead>
+    <tbody>
+      <tr><td>May-session schools (most of India)</td><td>January to February</td><td>May</td><td><b>December to April</b></td></tr>
+      <tr><td>November-session schools (yours)</td><td>July to September</td><td>November</td><td><b>June to October</b></td></tr>
+      <tr><td>DP1 end-of-year exams (both)</td><td>March to May</td><td>-</td><td><b>February to April</b>: your pilot</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>Keep it alive after you leave</h3><ul><li>A campus lead at each school.</li><li>A subject lead who owns each course.</li><li>A tutor council of three who review the rules every term.</li><li>A written playbook for every job: checks, reports, payouts, corrections.</li></ul></div>
+    <div class="card"><h3>Do more or less</h3><p><b>If it's working:</b> new courses with their own leads, more group clinics, more cities, November-session schools abroad.</p><p><b>If it isn't:</b> drop the marketplace and keep the courses, or keep FortyFive free and small, just for your school.</p></div>
+  </div>
+</section>
+
+<!-- 16 PLAN -->
+<section class="panel" id="roadmap" data-title="Plan" role="tabpanel">
+  <p class="kicker">16 &middot; Plan: start free, stay small, then grow</p>
+  <h2>Nothing before your last exam. Then free, then small, then paid.</h2>
+  <p class="lead">Each step has to earn the next one. Spend money only when the step before it showed people want this.</p>
+  <div class="grid g3">
+    <div class="card tier"><div class="flag">Free &middot; 14 Nov to Dec 2026</div><div class="price">&#8377;0 to 5,000</div><ul>
+      <li>Free tools on free hosting: the next-point planner, timetable maker and a results-day guide for 16 December.</li>
+      <li>The hand-me-down exchange at your school.</li>
+      <li>A list of founding tutors from your batch, and an email list.</li>
+    </ul><p class="small muted" style="margin-top:8px">Goal: 300 people using the tools, 10 tutors lined up.</p></div>
+    <div class="card tier best"><div class="flag">Small &middot; Jan to Mar 2027</div><div class="price">about &#8377;40,000</div><ul>
+      <li>Lawyer (&#8377;20k), recording kit (&#8377;15k), first background checks.</li>
+      <li>Free pilot of both courses at your school and one or two Tier 1 schools.</li>
+      <li>Founding tutors teach; parents pay them directly.</li>
+      <li>Diamond Challenge entry by 14 January.</li>
+    </ul><p class="small muted" style="margin-top:8px">Goal: 40 pilot students, 100 lesson hours, honest feedback.</p></div>
+    <div class="card tier"><div class="flag">Paid &middot; from Apr 2027</div><div class="price">about &#8377;12,000 <small>a month to run</small></div><ul>
+      <li>GST registered, CA on board, Razorpay Route live.</li>
+      <li>Courses at &#8377;1,499 (free on request), lessons at 10%.</li>
+      <li>First sponsor funds the free places.</li>
+    </ul><p class="small muted" style="margin-top:8px">Goal: about 76 lesson hours a month, when it pays its own way.</p></div>
+  </div>
+  <div class="sechead"><h3>Short term, medium term, long term</h3></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Horizon</th><th>Focus</th><th>What done looks like</th></tr></thead>
+    <tbody>
+      <tr><td><b>Short term</b><br><span class="muted small">Nov 2026 to Oct 2027</span></td><td>India. Free tools, two courses then four, verified tutors, school pilots. You run it with your parent.</td><td>30 tutors, 120 lesson hours a month, 300 course places (60 free), 5 pilot schools and 2 paying, 1 or 2 sponsors, a month that pays for itself by October 2027.</td></tr>
+      <tr><td><b>Medium term</b><br><span class="muted small">Nov 2027 to Oct 2028 (you're at university)</span></td><td>A team: campus leads, subject leads and a part-time operations person paid from the surplus. Gulf schools and November-session schools.</td><td>10 courses, 100 tutors, 20 school plans, the first full year of open books, first schools abroad.</td></tr>
+      <tr><td><b>Long term</b><br><span class="muted small">2028 to 2031</span></td><td>All the big subjects. South Asia, south-east Asia, Africa and Oceania. A non-profit arm for free places. A proper company with co-founders once you're over 18.</td><td>A name IB coordinators recognise, a talk at TAISI, CSR-funded free places after the three-year track record, and it runs without you day to day.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="sechead"><h3>Going international, in order</h3><span class="muted small">school counts from the IB directory, October 2026</span></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>#</th><th>Market</th><th class="num">Diploma schools</th><th>Why there</th><th>When</th></tr></thead>
+    <tbody id="intlOrder">
+      <tr><td>1</td><td><b>November-session schools in India</b></td><td class="num" data-k="in_nov">-</td><td>Your own session. Predicted November mocks are made for them.</td><td>2027</td></tr>
+      <tr><td>2</td><td><b>Gulf</b>: UAE, Qatar, Saudi Arabia, Oman, Kuwait, Bahrain</td><td class="num" data-g="Gulf">-</td><td>A big Indian community, 1.5 to 2.5 hours behind India, families who pay for help. Indian IB graduates can tutor in their evenings.</td><td>2027-28</td></tr>
+      <tr><td>3</td><td><b>South Asia</b>: Nepal, Sri Lanka, Bangladesh</td><td class="num" data-g="South Asia">-</td><td>Similar prices and time zones, few local IB resources.</td><td>2028</td></tr>
+      <tr><td>4</td><td><b>South-east and east Asia</b>: Singapore, Malaysia, Indonesia, Thailand, Hong Kong</td><td class="num" data-g="South-east and east Asia">-</td><td>Many IB schools and Indian-run school groups.</td><td>2028 on</td></tr>
+      <tr><td>5</td><td><b>Oceania</b>: Australia, New Zealand</td><td class="num" data-g="Oceania">-</td><td>Mostly November session: the predicted November mocks travel well.</td><td>2028 on</td></tr>
+      <tr><td>6</td><td><b>Africa</b>: Kenya, Tanzania, Uganda, South Africa</td><td class="num" data-g="Africa">-</td><td>Indian community schools; small but loyal.</td><td>2029 on</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><b>What changes abroad:</b> prices in dollars ($29 a course), Razorpay International or Stripe for payments, exports of services under GST (usually zero-rated under a LUT; your CA confirms), each country's privacy law (the UAE has its own), safeguarding rules that fit local law, and lesson times across time zones.</div>
+  <div class="sechead"><h3>The first year, step by step</h3></div>
+  <div class="card">
+    <div class="phase"><div class="when"><b>Now to 13 Nov 2026</b>Phase 0</div><div><b>Exams.</b> Zero business work. Keep one note of ideas as they come; that's all.</div></div>
+    <div class="phase"><div class="when"><b>14 Nov to 16 Dec</b>Phase 1: set up</div><div><ul style="margin:0;padding-left:18px">
+      <li><b>Business</b>: your parent's registered business, or a new sole proprietorship in their name.</li>
+      <li><b>Lawyer</b>: terms, privacy notice and parental consent, safeguarding policy, tutor agreement.</li>
+      <li><b>CA</b>: GST registration as an e-commerce operator before any payment goes through FortyFive, and TDS set-up.</li>
+      <li><b>Courses</b>: outlines for the first two; find the two course leads.</li>
+      <li><b>Platform v0</b> on fortyfive.study (free to register as of 11 Oct).</li>
+      <li>Write the honesty charter and the safety policy first, then build to them.</li>
+    </ul></div></div>
+    <div class="phase"><div class="when"><b>17 Dec to January</b>Phase 2: people</div><div>Invite your batch after results; check and interview 10 founding tutors. Record the first modules of both courses with the leads. Pitch your DP Coordinator. Apply for Razorpay Route.</div></div>
+    <div class="phase"><div class="when"><b>February to March 2027</b>Phase 3: pilot</div><div>Both courses free for your school's DP1s. Founding tutors teach in FortyFive's video room; parents pay them directly, so no money passes through FortyFive yet. Collect honest feedback and fix what breaks.</div></div>
+    <div class="phase"><div class="when"><b>April to June 2027</b>Phase 4: open</div><div>Payments through FortyFive at 10%. Courses on sale India-wide at &#8377;1,499, free on request. The request board opens to everyone. Coursework coaching opens for the IA, EE and TOK, with hour limits and help logs, and the Marker starts practice marking inside courses. First open-books report in July.</div></div>
+    <div class="phase"><div class="when"><b>July to October 2027</b>Phase 5: November push and handover</div><div>Your school's next DP2s sit in November. Tutor-made courses go live. Ask the 2026 and 2027 graduates to donate marked coursework, so the first subjects can pass the Marker's accuracy bar. Hand day-to-day running to a campus lead, the subject leads and your parent before university.</div></div>
+  </div>
+  <div class="sechead"><h3>Milestones that decide whether to keep going</h3></div>
+  <div class="grid g3">
+    <div class="card tile"><div class="lab">By 31 January 2027</div><div class="val">10 / 2</div><div class="note">founding tutors checked / course leads signed</div></div>
+    <div class="card tile"><div class="lab">By 31 March 2027</div><div class="val">40 / 100</div><div class="note">pilot students / lesson hours</div></div>
+    <div class="card tile"><div class="lab">By 31 October 2027</div><div class="val">76+ / 300</div><div class="note">lesson hours a month / course places</div></div>
+  </div>
+  <p class="small muted" style="margin-top:10px">If tutors sign up but students don't book, the problem is trust or price, not effort. Talk to parents before building more.</p>
+</section>
+
+<!-- 17 RULES -->
+<section class="panel" id="rules" data-title="Rules and risks" role="tabpanel">
+  <p class="kicker">17 &middot; Rules and risks</p>
+  <h2>Six rules that are never broken</h2>
+  <div class="card" style="margin-top:14px">
+    <div class="chk"><span class="ic x">&times;</span><div><b>Never put IB past papers, markschemes or pages copied from them on FortyFive, paywalled or not.</b> Every 2026 IB markscheme says: <span class="quote">"Use by third parties, including but not limited to publishers, private teachers, tutoring or study services&hellip; whether fee-covered or not, is prohibited and is a criminal offense."</span></div></div>
+    <div class="chk"><span class="ic x">&times;</span><div><b>Never use SaveMyExams, InThinking, LitCharts or teachers' material in a course.</b> Charging for access instead of files doesn't change who owns it.</div></div>
+    <div class="chk"><span class="ic x">&times;</span><div><b>Nobody on FortyFive writes, edits, rewrites or marks up anyone's IA, EE or TOK.</b> Coaches teach the skills by the hour, every session is logged for the supervisor, and the Marker gives criterion feedback, never text to paste. One coursework scandal ends the project and can cost a student their diploma.</div></div>
+    <div class="chk"><span class="ic x">&times;</span><div><b>No contact between tutors and under-18s outside FortyFive.</b> No phone numbers, no WhatsApp, no social media, no meetings.</div></div>
+    <div class="chk"><span class="ic x">&times;</span><div><b>No claim that can't be proved.</b> Scores, results, reviews and numbers are real or they don't go up.</div></div>
+    <div class="chk"><span class="ic x">&times;</span><div><b>No "IB" in the brand or logo.</b> Say "for IB Diploma students" and add: "Not affiliated with or endorsed by the International Baccalaureate Organization."</div></div>
+  </div>
+  <div class="sechead"><h3>Risks and what to do about them</h3></div>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Risk</th><th>What to do</th></tr></thead>
+    <tbody>
+      <tr><td><b>You are 17</b></td><td>A minor's contract is void in India, and Razorpay, Route and the hosting accounts need an adult. Run everything through a parent's registered business until you turn 18, and make that parent the safeguarding lead. If you get a 7 in a subject, you can tutor it on the graduate-tutor track like any other 17-year-old.</td></tr>
+      <tr><td><b>A safety incident</b></td><td>Section 07: checks, lessons and messages only on FortyFive, parents see everything, a report button everywhere, an adult safeguarding lead and the POCSO duty to report. Ask the lawyer about liability insurance.</td></tr>
+      <tr><td><b>Marketplace tax</b></td><td>Collecting lesson payments makes FortyFive an e-commerce operator. Expect to register for GST from day one (your CA confirms) and to pay 18% GST on your fee and on course sales; the numbers in section 14 include it. Tutors earning under &#8377;20 lakh a year don't need GST, and there's no GST TCS on their lessons; for GST-registered tutors, collect 0.5% TCS and file GSTR-8 every month. Income tax: deduct 0.1% TDS on tutors' bookings (section 393(1) of the Income-tax Act 2025, the old 194-O). Individual tutors under &#8377;5 lakh a year who give their PAN are exempt.</td></tr>
+      <tr><td><b>Razorpay Route approval</b></td><td>Route needs a registered business, a live website with terms, refund and privacy pages, and a description of how money is split. Each tutor completes KYC for their linked account. Apply in December; it can take weeks.</td></tr>
+      <tr><td><b>Going around the fee</b></td><td>The fee is low, and paying on FortyFive protects both sides: refunds, held payouts, reviews. For under-18s, contact outside FortyFive is banned anyway. Accept that some adult tutors will leave with their students.</td></tr>
+      <tr><td><b>Tutor quality</b></td><td>A demo lesson before joining, reviews from real lessons, three strikes for no-shows, and removal for breaking the code.</td></tr>
+      <tr><td><b>Chicken and egg</b></td><td>Courses work with no tutors; founding tutors pay nothing at first; start at one school where you know both sides.</td></tr>
+      <tr><td><b>Mistakes in course material</b></td><td>Course leads check everything, and the corrections page is public.</td></tr>
+      <tr><td><b>AI-made material</b></td><td>Anything AI drafted is checked by a person, and the course says AI helped. No AI chats with students: the Marker writes a report and stops.</td></tr>
+      <tr><td><b>Coaching crosses the line</b></td><td>Hard hour limits on every piece, every session recorded, a help log before any payout, an IB teacher reviewing 1 in 10 sessions, and one proven breach ends the account.</td></tr>
+      <tr><td><b>The Marker is wrong</b></td><td>A subject opens only after it passes the accuracy bar on real, IB-marked pieces. Reports show bands and confidence, not one number. Accuracy is published every session, and teachers have the final word.</td></tr>
+      <tr><td><b>Schools say no</b></td><td>Some schools ban outside coursework help or AI feedback. The coursework code asks students to follow their school's rules, and a school on a plan can switch coaching or the Marker off.</td></tr>
+      <tr><td><b>The IB's criteria</b></td><td>The assessment criteria are IB copyright. Rubric packs are written in our own words and mapped to the criterion letters; the lawyer checks this before launch.</td></tr>
+      <tr><td><b>Time</b></td><td>Nothing before 13 November; university from about September 2027. Write everything down so others can run it.</td></tr>
+      <tr><td><b>Bigger platforms</b></td><td>Compete on what they won't do: one flat fee, verified IB scores, safety for under-18s, open books.</td></tr>
+      <tr><td><b>Brand clash</b></td><td>Search the IP India trademark register before printing anything.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 18 SCRIPTS -->
+<section class="panel" id="scripts" data-title="Scripts" role="tabpanel">
+  <p class="kicker">18 &middot; Ready-to-send scripts</p>
+  <h2>Copy, adjust, send (after 13 November)</h2>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><button class="btn copy" type="button" data-copy="s1">Copy</button><h3>Founding tutor invite (after 16 December)</h3><div class="script" id="s1">Hey [name], congrats on your results!
+
+I'm starting FortyFive: IB courses plus a small, honest tutoring marketplace for DP students. You'd set your own price and keep 90% of it, and as one of the first 10 tutors you pay no fee at all until 30 April.
+
+The rules: we verify your [subject] 7 from your results document, lessons and chats stay on the platform, and nobody writes or edits anyone's IA, EE or TOK (coursework coaching teaches the skills, never the words). If you're 18 we run a background check; if you're still 17, a parent co-signs and the payouts go to them until your birthday.
+
+Want in? You'd be great for [subject].</div></div>
+    <div class="card"><button class="btn copy" type="button" data-copy="s2">Copy</button><h3>Course lead invite</h3><div class="script" id="s2">Hi [name], you got a 7 in [subject], which is exactly what I'm looking for.
+
+I've built the notes, a pattern analysis of every paper since 2020 and predicted mocks for a [subject] course on FortyFive. I need someone with a 7 to check every page and record short video lessons.
+
+You'd get 70% of what each sale brings in (after GST and payment fees) and your name on the course. Most of the recording would happen in January.
+
+Interested? Happy to show you everything first.</div></div>
+    <div class="card"><button class="btn copy" type="button" data-copy="s3">Copy</button><h3>Email to your DP Coordinator</h3><div class="script" id="s3">Subject: A free course pilot for our DP1s
+
+Dear [name],
+
+While preparing for my exams I built revision material for [subjects]: notes, an analysis of patterns in past papers, and predicted mock papers written from scratch (no IB material copied). With [parent's name], I'm turning it into FortyFive: short courses led by graduates with a 7 in the subject, and a small marketplace of checked tutors.
+
+I would like to offer the two courses free to this year's DP1s as a pilot before their end-of-year exams. Tutoring would stay optional and parent-controlled: every tutor is checked and verified against their IB results (graduates still 17 need a 7 in the subject and a parent co-signing), lessons happen only on the platform, parents can see every message, and coursework help follows the IB's rules: coaches teach the skills by the hour and never write or edit, and every session leaves a log the student can show their supervisor.
+
+Could I show you the courses and our safety rules in 15 minutes, at a time that suits you?
+
+Thank you,
+[Your name]</div></div>
+    <div class="card"><button class="btn copy" type="button" data-copy="s4">Copy</button><h3>Message to parents</h3><div class="script" id="s4">Hello! FortyFive is a small IB platform run by [parent's name] and me.
+
+Courses: &#8377;1,499 each, or free if you ask. No questions.
+Tutors: IB graduates and teachers, all checked, scores verified. Any tutor under 18 has a 7 in the subject and a parent co-signing.
+
+You see every booking and message, lessons happen only on FortyFive, and you can join any lesson. Tutors keep 90% of what you pay, and you pay nothing extra.
+
+Any questions, reply here.</div></div>
+    <div class="card"><button class="btn copy" type="button" data-copy="s5">Copy</button><h3>The 15-second version</h3><div class="script" id="s5">FortyFive is IB courses led by people who scored 7s, plus an honest tutor marketplace: verified tutors, lessons and messages only on the platform, parents see everything, and tutors keep 90% of what students pay. It's a passion project; it only has to pay its own bills.</div></div>
+    <div class="card"><button class="btn copy" type="button" data-copy="s6">Copy</button><h3>Email to a sponsor</h3><div class="script" id="s6">Subject: Funding free places for IB students
+
+Dear [name],
+
+I'm an IB Diploma student in Coimbatore. With [parent's name], I run FortyFive: IB courses led by graduates who scored 7s, plus a small marketplace of checked tutors. One in five course places is free for anyone who asks.
+
+Would [company] fund 50 free places this term for &#8377;75,000? Your name goes on our free-places page and in our quarterly open-books report. That is all you get: no student data, no advertising to students and no say over what we teach. Every sponsor signs those rules.
+
+I can send our pitch deck or talk for 15 minutes, whichever suits you.
+
+Thank you,
+[Your name]</div></div>
+    <div class="card"><button class="btn copy" type="button" data-copy="s7">Copy</button><h3>Email to a school abroad</h3><div class="script" id="s7">Subject: A free course pilot for your DP1s
+
+Dear [name],
+
+FortyFive makes IB Diploma courses led by graduates with verified 7s. Each one comes with a predicted mock paper, built from patterns in every paper since 2020 and written from scratch with a sealed markscheme. We started in India and are now opening to schools in [country].
+
+Would a free pilot for your DP1s be useful this term? It takes 15 minutes to see. Coaches never write or edit coursework, and no IB material is copied.
+
+Kind regards,
+[Your name]
+[Parent's name], Director, FortyFive</div></div>
+  </div>
+</section>
+
+<div class="foot">
+  <p><b>Sources.</b> India figures: <a href="https://www.freepressjournal.in/education/ib-results-2026-over-6200-students-in-india-receive-diploma-programme-career-related-programme-scores-average-dp-score-at-3278">Free Press Journal, IB results 2026</a>; <a href="https://educationworld.in/international-baccalaureate-announces-results-for-may-2025-exam/">EducationWorld, May 2025 results</a>.</p>
+  <p>Marketplace fees: <a href="https://help.preply.com/es/articles/4171383-preply-commission-model">Preply help centre, commission model</a>; <a href="https://pensight.com/post/how-much-does-preply-actually-cost-tutors-2026-commission-breakdown">Pensight on Preply's tiers</a>; <a href="https://support.wyzant.com/hc/en-us/articles/115002724723-What-is-the-fee-structure-for-tutors-listed-on-Wyzant-">Wyzant fee structure</a>; <a href="https://www.superprof.co.in/lessons/physics/jaipur/">Superprof India</a>; <a href="https://yourstory.com/2018/03/urbanpro-connects-6-5-lakh-verified-tutors-teachers-institutes-25-lakh-students/amp">UrbanPro on YourStory</a>.</p>
+  <p>Payments: <a href="https://razorpay.com/docs/payments/route/transfer-fees-example/">Razorpay Route fee example</a>; <a href="https://razorpay.com/docs/payments/route/linked-account/">Razorpay linked accounts</a>. Tax: <a href="https://www.gstcouncil.gov.in/sites/default/files/2024-02/faqs_tcs.pdf">GST Council FAQs on TCS</a>; <a href="https://www.vjmglobal.com/es/blog/exempt-suppliers-services-through-an-e-commerce-platform-obtaining-compulsory-registration">VJM Global on service suppliers through e-commerce operators</a>; <a href="https://blog.tdsman.com/2026/07/tds-on-e-commerce-transactions-section-3931-194o/">TDSMAN on section 393(1)</a>; <a href="https://cleartax.in/s/section-194o">ClearTax on 194-O</a>.</p>
+  <p>Safety: <a href="https://www.scconline.com/blog/post/2026/07/17/suppression-of-child-sexual-abuse-attracts-section-21-pocso-act/">SCC Online on POCSO section 21</a>; <a href="https://www.livelaw.in/amp/high-court/punjab-and-haryana-high-court/punjab-haryana-high-court-mandatory-for-all-to-report-sexual-offence-to-police-under-pocso-250937">LiveLaw on the duty to report</a>. Child data: <a href="https://www.azbpartners.com/bank/indias-digital-personal-data-protection-act-phased-rollout-and-key-compliance-milestones/">AZB &amp; Partners</a>, <a href="https://www.amsshardul.com/insight/enforcement-of-the-dpdp-act-and-notification-of-the-dpdp-rules/">Shardul Amarchand Mangaldas</a>, <a href="https://www.ey.com/content/dam/ey-unified-site/ey-com/en-in/pdf/2025/11/ey-india-dpdp-act-2023-and-rules-2025-pov.pdf">EY India</a>.</p>
+  <p>Global IB: <a href="https://ibo.org/news/news-list/more-than-209000-ib-students-worldwide-receive-their-dp-and-cp-results/">IB news release on May 2026 results</a> (209,607 students, 3,442 schools, 159 countries, exam contingency in the Middle East). 24-hour rule: <a href="https://shatincollege.edu.hk/wp-content/uploads/2017/11/Conduct-of-the-examinations-notice-to-candidates.pdf">IB conduct of examinations notice</a>; check the current version with your coordinator.</p>
+  <p>Coursework: <a href="https://www-prod.ibo.org/globalassets/new-structure/programmes/shared-resources/pdfs/academic-integrity-policy-en.pdf">IB Academic integrity policy</a> (help from tutors beyond the subject guidelines; Appendix 6 on AI); <a href="https://help.revisionvillage.com/en/ib-tutoring-guidelines-for-extended-essay-ee-and-internal-assessment-ia-what-to-expect-and-not-expect">Revision Village tutoring guidelines for the EE and IA</a>; RevisionDojo's <a href="https://www.revisiondojo.com/grader">Grader</a>, <a href="https://www.revisiondojo.com/coursework-exemplars">Exemplars</a> and <a href="https://www.revisiondojo.com/coursework-studio">Coursework Studio</a> (mirrored 13 Oct 2026) and <a href="https://www.revisiondojo.com/blog/revisiondojo-ia-grader-review-accuracy">its post on grader accuracy</a>. Subjects: <a href="https://www-prod.ibo.org/globalassets/new-structure/about-the-ib/pdfs/dpcp-final-statistical-bulletin-may-2025_en.pdf">IB DP and CP final statistical bulletin, May 2025</a>.</p>
+  <p>Schools: <a href="https://www.ibo.org/programmes/find-an-ib-school/">IB "Find an IB World School" directory</a> (read 12 Oct 2026). School pricing: <a href="https://thinkib.net/subscribe">InThinking subscriptions</a>, <a href="https://kognity.com/pricing-subscription">Kognity pricing</a>, <a href="https://help.revisionvillage.com/en/how-much-does-revision-village-cost-1">Revision Village</a>. Partners: <a href="https://www.cois.org/about-cis/news/post/~board/news/post/new-supporting-member-the-association-of-international-schools-of-india-taisi">CIS on TAISI</a>, <a href="https://www.dinamalar.com/news/kalvimalar-news-en/goa-hosts-21st-annual-conference-of-association-of-international-schools-in-india/57509">TAISI conference 2025</a>. Competitions: <a href="https://www2.fundsforngos.org/?p=494160">Diamond Challenge 2027</a>, <a href="https://internshala.com/competitions/blue-ocean-student-entrepreneur-competition-2027/">Blue Ocean 2027</a>. CSR: <a href="https://ca2013.com/rule-4-companies-corporate-social-responsibility-rules-2014/">Rule 4, CSR Policy Rules</a>, <a href="https://cleartax.in/s/form-csr-1">ClearTax on CSR-1</a>.</p>
+  <p>Courses and tutoring rates: <a href="https://www.revisiondojo.com/blog/is-revisiondojo-worth-it-pricing-free-plan">RevisionDojo</a>; <a href="https://www.clastify.com/knowledge-hub/post/clastify-vs-revision-dojo">Clastify</a>; <a href="https://www.savemyexams.com/learning-hub/useful-resources/best-ib-revision-websites/">Save My Exams</a>; <a href="https://www.revisionvillage.com/partnerships/the7studentandrevisionvillage/">Revision Village</a>; <a href="https://www.tutorchase.com/ib/india">TutorChase</a>; <a href="https://www.tutopiya.com/tutors/ib-dp-chemistry-hl-sl-tutors-in-mumbai/">Tutopiya</a>. Hosting: <a href="https://makerkit.dev/blog/md/saas/supabase-pricing">Supabase pricing guide</a>, <a href="https://blog.blazingcdn.com/en-us/cloudflare-pricing-2026-free-pro-business-enterprise-explained">Cloudflare plans</a>. IB rule: the third-party notice printed on IB markschemes (May 2026). Domains checked through rdap.org on 11 Oct 2026. Fees and rules change; check before quoting them to anyone.</p>
+</div>
+</main>
+
+<script src="schools/schools_data.js"></script>
+<script>
+(function(){
+  'use strict';
+  // ---------- theme ----------
+  var root = document.documentElement;
+  function store(k, v){ try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  var saved = new URLSearchParams(location.search).get('theme') || store('ff-theme');
+  if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+  document.getElementById('themeBtn').addEventListener('click', function(){
+    var cur = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next); store('ff-theme', next);
+  });
+
+  // ---------- tabs ----------
+  var panels = Array.prototype.slice.call(document.querySelectorAll('section.panel'));
+  var nav = document.querySelector('nav.tabs');
+  panels.forEach(function(p, i){
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.target = p.id;
+    b.innerHTML = '<span class="n">' + String(i + 1).padStart(2, '0') + '</span>' + p.dataset.title;
+    b.addEventListener('click', function(){ show(p.id, true); });
+    nav.appendChild(b);
+  });
+  function show(id, push){
+    panels.forEach(function(p){ p.classList.toggle('active', p.id === id); });
+    nav.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-selected', b.dataset.target === id ? 'true' : 'false'); });
+    var act = nav.querySelector('button[aria-selected="true"]');
+    if (act) nav.scrollLeft += act.getBoundingClientRect().left - nav.getBoundingClientRect().left - (nav.clientWidth - act.offsetWidth) / 2;
+    if (push) { history.replaceState(null, '', '#' + id); store('ff-tab', id); window.scrollTo({top: 0}); }
+    if (id === 'numbers' && lastRun) drawBE(lastRun);
+  }
+
+  // ---------- helpers ----------
+  var MINUS = '−', RS = '₹';
+  function inr(n){ n = Math.round(n); var neg = n < 0, s = Math.abs(n).toString(), last3 = s.slice(-3), rest = s.slice(0, -3);
+    if (rest) rest = rest.replace(/\B(?=(\d{2})+(?!\d))/g, ','); return (neg ? MINUS : '') + RS + (rest ? rest + ',' : '') + last3; }
+  function r2(x){ return Math.round(x * 100 + (x >= 0 ? 1e-7 : -1e-7)) / 100; }
+  function inr2(n){ var neg = n < 0, a = Math.round(Math.abs(n) * 100 + 1e-7), whole = Math.floor(a / 100), paise = a % 100;
+    return (neg ? MINUS : '') + inr(whole) + '.' + String(paise).padStart(2, '0'); }
+  function compact(n){ var a = Math.abs(n), sg = n < 0 ? MINUS : '';
+    if (a >= 1e7) return sg + RS + (a / 1e7).toFixed(1).replace(/\.0$/, '') + ' cr';
+    if (a >= 1e5) return sg + RS + (a / 1e5).toFixed(1).replace(/\.0$/, '') + 'L';
+    if (a >= 1e3) return sg + RS + (a / 1e3).toFixed(1).replace(/\.0$/, '') + 'k';
+    return inr(n); }
+  function set(id, t){ document.getElementById(id).textContent = t; }
+  var tip = document.getElementById('tip');
+  function tipAt(html, x, y){ tip.innerHTML = html; tip.style.opacity = 1;
+    var w = tip.offsetWidth, h = tip.offsetHeight; x += 14; y += 14;
+    if (x + w > innerWidth - 8) x = x - w - 28; if (y + h > innerHeight - 8) y = y - h - 28;
+    tip.style.left = Math.max(8, x) + 'px'; tip.style.top = Math.max(8, y) + 'px'; }
+  function hideTip(){ tip.style.opacity = 0; }
+  function bindTip(el, html){
+    el.addEventListener('mousemove', function(e){ tipAt(html, e.clientX, e.clientY); });
+    el.addEventListener('mouseleave', hideTip);
+    el.tabIndex = 0; el.setAttribute('aria-label', html.replace(/<[^>]+>/g, ' '));
+    el.addEventListener('focus', function(){ var r = el.getBoundingClientRect(); tipAt(html, r.left, r.bottom); });
+    el.addEventListener('blur', hideTip);
+  }
+  function niceMax(v){ var p = Math.pow(10, Math.floor(Math.log10(v))); var m = v / p; var nm = m <= 1 ? 1 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 5 ? 5 : 10; return nm * p; }
+  function niceStep(range, n){ if (!(range > 0)) return 1; var raw = range / n, p = Math.pow(10, Math.floor(Math.log10(raw))), m = raw / p;
+    return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 5 ? 5 : 10) * p; }
+  // 5 ticks when the axis maximum is a 2.5 or 5 (steps of 0.5 or 1), otherwise 4, so every tick is a round number
+  function tickN(max){ var m = max / Math.pow(10, Math.floor(Math.log10(max))); return (Math.abs(m - 2.5) < 1e-9 || Math.abs(m - 5) < 1e-9) ? 5 : 4; }
+  function axisHTML(max){ var n = tickN(max), out = []; for (var i = 0; i <= n; i++) out.push('<span style="left:' + (i * 100 / n) + '%">' + compact(max * i / n) + '</span>');
+    return '<div class="axis"><span></span><div class="ticks">' + out.join('') + '</div></div>'; }
+
+  // ---------- model (same formulas as model3.py) ----------
+  var GST = 0.18, GW = 0.02 * 1.18, TR = 0.0025 * 1.18, ONB = 1.5;
+  function total(rows){ return rows.reduce(function(t, c){ return t + c[1]; }, 0); }
+  function run(s){
+    var c = s.commission / 100;
+    var gmv = s.tutors * s.hours * s.rate * s.months;
+    var fee = gmv * c, tutorEarn = gmv - fee;
+    var paid = s.enrol * (1 - s.scholar / 100);
+    var sales = paid * s.price;
+    var gst = (fee + sales) * GST / (1 + GST);
+    var courseNet = sales * (1 - GST / (1 + GST) - GW);
+    var authors = courseNet * s.authored / 100 * s.author_share / 100;
+    var payFees = gmv * GW + tutorEarn * TR + sales * GW + authors * TR;
+    var running = [['Hosting and security', s.hosting * 12], ['Video: course streaming and lesson rooms', s.video * 12],
+      ['Background checks on new tutors', Math.ceil(s.tutors * ONB) * s.check], ['CA: GST, TDS and filings', s.ca], ['Promotion', s.marketing]];
+    var oneoff = [['Lawyer: terms, privacy, safeguarding (one-off)', s.legal], ['Recording kit (one-off)', s.equipment]];
+    var runTot = total(running), oneTot = total(oneoff);
+    var net = fee + sales - gst - payFees - authors - runTot - oneTot;
+    var perHour = s.rate * (c / (1 + GST) - GW - (1 - c) * TR);
+    var monthlyRunning = runTot / 12, courseMonth = (courseNet - authors * (1 + TR)) / 12;
+    var need = courseMonth >= monthlyRunning ? 0 : perHour > 0 ? (monthlyRunning - courseMonth) / perHour : Infinity;
+    return {s: s, gmv: gmv, fee: fee, tutorEarn: tutorEarn, paid: paid, free: s.enrol - paid, sales: sales, gst: gst, payFees: payFees,
+      authors: authors, running: running, oneoff: oneoff, runTot: runTot, oneTot: oneTot, net: net, perHour: perHour,
+      monthlyRunning: monthlyRunning, courseMonth: courseMonth, need: need, hoursNow: s.tutors * s.hours};
+  }
+  var BASE = {tutors: 15, hours: 8, rate: 1200, commission: 10, months: 8, enrol: 120, price: 1499, scholar: 20, authored: 50, author_share: 70,
+    hosting: 5000, video: 1500, check: 1000, ca: 30000, marketing: 10000, legal: 20000, equipment: 15000};
+  var SCEN = {
+    Small: Object.assign({}, BASE, {tutors: 6, hours: 6, rate: 1000, months: 6, enrol: 40, scholar: 25, authored: 0, hosting: 2500, video: 500, ca: 24000, marketing: 0, legal: 15000, equipment: 8000}),
+    Base: Object.assign({}, BASE),
+    Big: Object.assign({}, BASE, {tutors: 40, hours: 12, rate: 1400, months: 10, enrol: 600, hosting: 10000, video: 3000, ca: 48000, marketing: 60000, legal: 30000, equipment: 25000})
+  };
+  function needText(r){
+    if (r.need === 0) return 'Course income alone covers the running costs';
+    if (!isFinite(r.need)) return 'Never pays for itself at this fee';
+    return 'Pays for itself at ' + Math.round(r.need) + ' lesson hours a month (has ' + r.hoursNow + ')';
+  }
+
+  // ---------- receipts ----------
+  function receiptHTML(price, pct){
+    var fee = r2(price * pct / 100), g = r2(fee * GST / (1 + GST)), gw = r2(price * GW), tr = r2((price - fee) * TR), keep = fee - g - gw - tr;
+    return '<div class="rline total"><span>Student pays</span><span>' + inr2(price) + '</span></div>' +
+      '<div class="rline"><span>Tutor gets (' + (100 - pct) + '%)</span><span>' + inr2(price - fee) + '</span></div>' +
+      "<div class=\"rline\"><span>FortyFive's fee (" + pct + '%)</span><span>' + inr2(fee) + '</span></div>' +
+      '<div class="rline sub"><span>GST on the fee, to the government</span><span>' + inr2(g) + '</span></div>' +
+      '<div class="rline sub"><span>Razorpay payment fee</span><span>' + inr2(gw) + '</span></div>' +
+      '<div class="rline sub"><span>Razorpay transfer fee to the tutor</span><span>' + inr2(tr) + '</span></div>' +
+      '<div class="rline keep"><span>Left for FortyFive</span><span>' + inr2(keep) + '</span></div>';
+  }
+  document.getElementById('receiptStatic').innerHTML = receiptHTML(1000, 10);
+
+  // ---------- open books (illustration) ----------
+  (function(){
+    var r = run(BASE);
+    var rows = [['Lessons booked', inr(r.gmv)], ['Paid to tutors', inr(r.tutorEarn)], ["FortyFive's lesson fees", inr(r.fee)],
+      ['Course sales (' + Math.round(r.paid) + ' paid places)', inr(r.sales)], ['Paid to course authors', inr(r.authors)],
+      ['GST paid', inr(r.gst)], ['Payment fees', inr(r.payFees)], ['Running costs', inr(r.runTot)], ['One-off set-up', inr(r.oneTot)],
+      ['Free course places given', String(Math.round(r.free))]];
+    document.getElementById('openBooks').innerHTML = rows.map(function(x){ return '<div class="costline"><span>' + x[0] + '</span><span>' + x[1] + '</span></div>'; }).join('') +
+      '<div class="costline tot"><span>Left over</span><span>' + inr(r.net) + '</span></div>';
+  })();
+
+  // ---------- pitch and hero figures ----------
+  (function(){
+    var r = run(BASE);
+    set('pNeed', Math.round(r.need) + ' hours'); set('pNet', compact(r.net)); set('heroHours', Math.round(r.need) + ' h');
+    var TXT = {Small: 'just your school', Base: 'a steady first year', Big: 'if it takes off'};
+    document.getElementById('scenCards').innerHTML = ['Small', 'Base', 'Big'].map(function(k){
+      var s = SCEN[k], q = run(s);
+      return '<div class="card tier' + (k === 'Base' ? ' best' : '') + '"><div class="flag">' + k + ' &middot; ' + TXT[k] + '</div>' +
+        '<div class="price">' + compact(q.net) + ' <small>year one</small></div><ul class="small">' +
+        '<li>' + s.tutors + ' tutors, ' + q.hoursNow + ' lesson hours a month</li>' +
+        '<li>' + s.enrol + ' course places, ' + Math.round(q.free) + ' of them free</li>' +
+        '<li>Tutors earn ' + compact(q.tutorEarn) + '</li>' +
+        '<li>' + needText(q) + '</li></ul></div>';
+    }).join('');
+  })();
+
+  // ---------- what a tutor keeps (single series, ours emphasised) ----------
+  var KEEPS = [
+    {k: 'FortyFive', v: 900, ours: true, note: 'One 10% fee; the GST and payment fees come out of it'},
+    {k: 'Superprof, lessons paid on the site', v: 900, note: '10%, waived for Premium tutors who pay a membership; students also pay a monthly pass to message tutors'},
+    {k: 'Preply, after 400+ hours taught', v: 820, note: 'Lowest tier, 18% (the 400-hour step is reported by tutors)'},
+    {k: 'Wyzant', v: 750, note: 'Flat 25% platform fee, plus a 9% service fee on lessons'},
+    {k: 'Preply, a new tutor', v: 670, note: '33% for the first 20 hours taught'},
+    {k: 'Preply, first lesson with each new student', v: 0, note: 'Preply keeps 100% of every first lesson'}
+  ];
+  (function(){
+    var el = document.getElementById('keepChart'), max = 1000, html = '';
+    KEEPS.forEach(function(p){
+      var c = p.ours ? 'var(--s1)' : 'var(--emph-muted)';
+      html += '<div class="brow"><div class="bl">' + (p.ours ? '<b style="color:var(--ink)">' + p.k + '</b>' : p.k) + '</div><div class="track"><div class="bar" style="width:' + (p.v / max * 100).toFixed(2) + '%">' +
+        '<div class="seg" style="flex:1;background:' + c + '"></div></div><span class="bval">' + inr(p.v) + ' (' + (p.v / 10) + '%)</span></div></div>';
+    });
+    el.innerHTML = html + axisHTML(max);
+    el.querySelectorAll('.seg').forEach(function(s, i){ var p = KEEPS[i]; bindTip(s, '<b>' + p.k + '</b><br>Tutor keeps ' + inr(p.v) + ' of ' + inr(1000) + '<br>' + p.note); });
+    document.getElementById('keepTable').innerHTML = '<div class="tbl-wrap"><table><thead><tr><th>Platform</th><th class="num">Tutor keeps</th><th>How</th></tr></thead><tbody>' +
+      KEEPS.map(function(p){ return '<tr><td>' + p.k + '</td><td class="num">' + inr(p.v) + '</td><td>' + p.note + '</td></tr>'; }).join('') + '</tbody></table></div>';
+  })();
+
+  // ---------- break-even line chart ----------
+  var lastRun = null, be = null;
+  var beEl = document.getElementById('beChart');
+  function incomeAt(r, h){ return r.courseMonth + r.perHour * h; }
+  function drawBE(r){
+    lastRun = r;
+    var W = Math.max(280, Math.round(beEl.clientWidth || 0)); if (!beEl.clientWidth) return;
+    var H = W < 480 ? 240 : 270, m = {l: 52, r: 12, t: 26, b: 44}, pw = W - m.l - m.r, ph = H - m.t - m.b;
+    var top = Math.max(r.hoursNow, isFinite(r.need) ? r.need : 0, 10);
+    var xs = niceStep(top * 1.3, 4), x1 = Math.ceil(top * 1.3 / xs) * xs;
+    var vals = [0, r.monthlyRunning, incomeAt(r, 0), incomeAt(r, x1)];
+    var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+    var span = (hi - lo) || 1, ys = niceStep(span * 1.15, 4);
+    var y0 = Math.floor(lo / ys) * ys, y1 = Math.ceil((hi + span * 0.12) / ys) * ys;
+    var X = function(h){ return m.l + h / x1 * pw; }, Y = function(v){ return m.t + (y1 - v) / (y1 - y0) * ph; };
+    var o = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" aria-hidden="true">';
+    for (var v = y0; v <= y1 + ys / 1000; v += ys) {
+      o += '<line class="gl" x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + Y(v) + '" y2="' + Y(v) + '"/>';
+      o += '<text x="' + (m.l - 8) + '" y="' + (Y(v) + 4) + '" text-anchor="end">' + compact(Math.abs(v) < 1e-6 ? 0 : v) + '</text>';
+    }
+    o += '<line class="ax" x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + Y(0) + '" y2="' + Y(0) + '"/>';
+    for (var h = 0; h <= x1 + xs / 1000; h += xs) o += '<text x="' + X(h) + '" y="' + (m.t + ph + 16) + '" text-anchor="middle">' + Math.round(h) + '</text>';
+    o += '<text x="' + (m.l + pw / 2) + '" y="' + (H - 6) + '" text-anchor="middle">Lesson hours a month</text>';
+    if (r.hoursNow > 0 && r.hoursNow <= x1) {
+      var xn = X(r.hoursNow), an = xn > W - m.r - 46 ? 'end' : 'middle';
+      o += '<line class="now" x1="' + xn + '" x2="' + xn + '" y1="' + m.t + '" y2="' + (m.t + ph) + '"/>';
+      o += '<text class="lab" x="' + xn + '" y="' + (m.t - 9) + '" text-anchor="' + an + '">Now: ' + r.hoursNow + ' h</text>';
+    }
+    o += '<path class="ln" style="stroke:var(--s2)" d="M' + X(0) + ' ' + Y(r.monthlyRunning) + 'H' + X(x1) + '"/>';
+    o += '<path class="ln" style="stroke:var(--s1)" d="M' + X(0) + ' ' + Y(incomeAt(r, 0)) + 'L' + X(x1) + ' ' + Y(incomeAt(r, x1)) + '"/>';
+    if (isFinite(r.need) && r.need > 0 && r.need <= x1) o += '<circle class="dot" cx="' + X(r.need) + '" cy="' + Y(r.monthlyRunning) + '" r="5" style="fill:var(--ink)"/>';
+    // end labels: the upper line's label above it, the lower line's label below it, so they never collide
+    var yi = Y(incomeAt(r, x1)), yc = Y(r.monthlyRunning), incUp = yi <= yc, bottom = m.t + ph - 4;
+    var li = incUp ? yi - 8 : yi + 16, lcy = incUp ? yc + 16 : yc - 8;
+    if (!incUp && li > bottom) li = yi - 8; if (incUp && lcy > bottom) lcy = yc - 8;
+    o += '<text class="lab" x="' + (W - m.r) + '" y="' + li + '" text-anchor="end">Income</text>';
+    o += '<text class="lab" x="' + (W - m.r) + '" y="' + lcy + '" text-anchor="end">Running costs</text>';
+    o += '<line class="xh" id="beX" x1="0" x2="0" y1="' + m.t + '" y2="' + (m.t + ph) + '" style="opacity:0"/>';
+    o += '<circle class="dot" id="beD1" r="4" style="fill:var(--s1);opacity:0"/><circle class="dot" id="beD2" r="4" style="fill:var(--s2);opacity:0"/>';
+    o += '</svg>';
+    beEl.innerHTML = o;
+    be = {r: r, X: X, Y: Y, x1: x1, xs: xs, m: m, pw: pw, W: W, cur: null};
+    var cap = !isFinite(r.need) ? 'At this fee FortyFive never pays its own way: each lesson costs more in payment fees than the fee brings in.' :
+      r.need === 0 ? 'Course income alone covers the running costs, before a single lesson.' :
+      'Pays its own running costs at ' + Math.round(r.need) + ' lesson hours a month. Now: ' + r.hoursNow + '. ' +
+      (r.hoursNow >= r.need ? 'Monthly surplus once running: ' + inr(incomeAt(r, r.hoursNow) - r.monthlyRunning) + '.' : 'Monthly gap at that level: ' + inr(r.monthlyRunning - incomeAt(r, r.hoursNow)) + '.');
+    set('beCaption', cap); beEl.setAttribute('aria-label', 'Line chart. ' + cap + ' Use the left and right arrow keys to read values.');
+    // table view
+    var hs = []; for (var k = 0; k <= x1 + xs / 1000; k += xs) hs.push(Math.round(k));
+    if (isFinite(r.need) && r.need > 0) hs.push(Math.round(r.need)); hs.push(r.hoursNow);
+    hs = hs.filter(function(x, i, a){ return a.indexOf(x) === i; }).sort(function(a, b){ return a - b; });
+    document.getElementById('beTable').innerHTML = '<div class="tbl-wrap"><table><thead><tr><th class="num">Lesson hours a month</th><th class="num">Income a month</th><th class="num">Running costs a month</th><th class="num">Surplus or gap</th></tr></thead><tbody>' +
+      hs.map(function(x){ var inc = incomeAt(r, x), d = inc - r.monthlyRunning;
+        return '<tr><td class="num">' + x + (x === r.hoursNow ? ' (now)' : '') + (isFinite(r.need) && x === Math.round(r.need) && r.need > 0 ? ' (pays for itself)' : '') + '</td><td class="num">' + inr(inc) + '</td><td class="num">' + inr(r.monthlyRunning) + '</td><td class="num">' + inr(d) + '</td></tr>'; }).join('') +
+      '</tbody></table></div>';
+  }
+  function beShow(h, cx, cy){
+    if (!be) return; var r = be.r; h = Math.max(0, Math.min(be.x1, h)); be.cur = h;
+    var x = be.X(h), inc = incomeAt(r, h), d = inc - r.monthlyRunning;
+    var xh = document.getElementById('beX'), d1 = document.getElementById('beD1'), d2 = document.getElementById('beD2');
+    xh.setAttribute('x1', x); xh.setAttribute('x2', x); xh.style.opacity = 1;
+    d1.setAttribute('cx', x); d1.setAttribute('cy', be.Y(inc)); d1.style.opacity = 1;
+    d2.setAttribute('cx', x); d2.setAttribute('cy', be.Y(r.monthlyRunning)); d2.style.opacity = 1;
+    tipAt('<b>' + Math.round(h) + ' lesson hours a month</b><br>Income: ' + inr(inc) + '<br>Running costs: ' + inr(r.monthlyRunning) + '<br>' + (d >= 0 ? 'Surplus: ' : 'Gap: ') + inr(Math.abs(d)), cx, cy);
+  }
+  function beHide(){ hideTip(); ['beX', 'beD1', 'beD2'].forEach(function(id){ var n = document.getElementById(id); if (n) n.style.opacity = 0; }); }
+  beEl.addEventListener('pointermove', function(e){
+    if (!be) return; var svg = beEl.querySelector('svg'), rc = svg.getBoundingClientRect(), k = be.W / rc.width;
+    var px = (e.clientX - rc.left) * k; if (px < be.m.l - 6 || px > be.W - be.m.r + 6) { beHide(); return; }
+    beShow(Math.round((px - be.m.l) / be.pw * be.x1), e.clientX, e.clientY);
+  });
+  beEl.addEventListener('pointerleave', beHide);
+  beEl.addEventListener('blur', beHide);
+  beEl.addEventListener('keydown', function(e){
+    if (!be || (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight')) return; e.preventDefault();
+    var step = Math.max(1, Math.round(be.x1 / 40)), h = (be.cur == null ? be.r.hoursNow : be.cur) + (e.key === 'ArrowRight' ? step : -step);
+    var rc = beEl.querySelector('svg').getBoundingClientRect(), k = rc.width / be.W;
+    beShow(h, rc.left + be.X(Math.max(0, Math.min(be.x1, h))) * k, rc.top + 20);
+  });
+  beEl.addEventListener('focus', function(){ if (!be) return; var rc = beEl.querySelector('svg').getBoundingClientRect(), k = rc.width / be.W; beShow(be.r.hoursNow, rc.left + be.X(Math.min(be.x1, be.r.hoursNow)) * k, rc.top + 20); });
+  var rt; addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ if (lastRun) drawBE(lastRun); }, 150); });
+
+  // ---------- calculator ----------
+  var GROUPS = [
+    ['Tutor marketplace', [
+      ['tutors', 'Active tutors (average over the year)', 0, 100, 1],
+      ['hours', 'Lesson hours each tutor teaches a month', 0, 40, 1],
+      ['rate', 'Average price of a lesson hour (&#8377;)', 300, 4000, 50],
+      ['commission', "FortyFive's fee (% of each lesson)", 0, 30, 1],
+      ['months', 'Months of paid lessons in year one', 0, 12, 1]]],
+    ['Courses', [
+      ['enrol', 'Course places taken in year one', 0, 2000, 10],
+      ['price', 'Course price, GST included (&#8377;)', 0, 5000, 50],
+      ['scholar', 'Places given free (%)', 0, 100, 5],
+      ['authored', 'Sales from tutor-made courses (%)', 0, 100, 5],
+      ['author_share', "Author's share of those sales (%)", 0, 100, 5]]],
+    ['Running costs', [
+      ['hosting', 'Hosting and security (&#8377; a month)', 0, 30000, 500],
+      ['video', 'Video: streaming and lesson rooms (&#8377; a month)', 0, 20000, 250],
+      ['check', 'Background check per new tutor (&#8377;)', 0, 3000, 100],
+      ['ca', 'CA: GST, TDS and filings (&#8377; a year)', 0, 120000, 1000],
+      ['marketing', 'Promotion (&#8377; a year)', 0, 200000, 5000]]],
+    ['One-off set-up', [
+      ['legal', 'Lawyer: terms, privacy, safeguarding (&#8377;)', 0, 100000, 1000],
+      ['equipment', 'Recording kit (&#8377;)', 0, 100000, 1000]]]
+  ];
+  var FIELDS = []; GROUPS.forEach(function(g){ g[1].forEach(function(f){ FIELDS.push(f); }); });
+  var state = Object.assign({}, BASE);
+  document.getElementById('fields').innerHTML = GROUPS.map(function(g, gi){
+    return '<div class="fgroup' + (gi === 0 ? ' first' : '') + '">' + g[0] + '</div>' + g[1].map(function(f){
+      return '<div class="field"><label for="f_' + f[0] + '">' + f[1] + '</label><input type="number" id="f_' + f[0] + '" min="' + f[2] + '" max="' + f[3] + '" step="' + f[4] + '">' +
+        '<input type="range" id="r_' + f[0] + '" min="' + f[2] + '" max="' + f[3] + '" step="' + f[4] + '" aria-label="' + f[1].replace(/<[^>]+>/g, '').replace(/&#8377;/g, 'rupees') + '"></div>';
+    }).join('');
+  }).join('');
+  function sync(){ FIELDS.forEach(function(f){ document.getElementById('f_' + f[0]).value = state[f[0]]; document.getElementById('r_' + f[0]).value = state[f[0]]; }); recalc(); }
+  FIELDS.forEach(function(f){
+    ['f_', 'r_'].forEach(function(pre){
+      document.getElementById(pre + f[0]).addEventListener('input', function(e){
+        var v = parseFloat(e.target.value); if (isNaN(v)) return; state[f[0]] = v;
+        (pre === 'f_' ? document.getElementById('r_' + f[0]) : document.getElementById('f_' + f[0])).value = v;
+        document.querySelectorAll('[data-preset]').forEach(function(b){ b.classList.remove('on'); });
+        recalc();
+      });
+    });
+  });
+  document.querySelectorAll('[data-preset]').forEach(function(b){
+    b.addEventListener('click', function(){ state = Object.assign({}, SCEN[b.dataset.preset]);
+      document.querySelectorAll('[data-preset]').forEach(function(x){ x.classList.toggle('on', x === b); }); sync(); });
+  });
+  function recalc(){
+    var r = run(state);
+    set('oGmv', compact(r.gmv)); set('oGmvN', r.hoursNow + ' hours a month for ' + state.months + ' months');
+    set('oTutor', compact(r.tutorEarn)); set('oTutorN', (100 - state.commission) + '% of every lesson');
+    var n = document.getElementById('oNet'); n.textContent = compact(r.net); n.style.color = r.net < 0 ? 'var(--bad)' : '';
+    set('oNetN', 'including ' + compact(r.oneTot) + ' of one-off set-up');
+    if (r.need === 0) { set('oNeed', '0 h'); set('oNeedN', 'course income alone covers the running costs'); }
+    else if (!isFinite(r.need)) { set('oNeed', 'Never'); set('oNeedN', 'at this fee, payment fees eat every lesson'); }
+    else { set('oNeed', Math.round(r.need) + ' h'); set('oNeedN', 'lesson hours a month; now ' + r.hoursNow); }
+    set('rcTitle', 'One lesson hour at ' + inr(state.rate));
+    document.getElementById('receiptLive').innerHTML = receiptHTML(state.rate, state.commission);
+    var line = function(l, v, cls){ return '<div class="costline' + (cls ? ' ' + cls : '') + '"><span>' + l + '</span><span>' + inr(v) + '</span></div>'; };
+    var html = '<div class="cgroup">Money in</div>' + line('Lesson fees (' + state.commission + '% of ' + inr(r.gmv) + ')', r.fee) +
+      line('Course sales (' + Math.round(r.paid) + ' paid places)', r.sales) +
+      '<div class="cgroup">Money out</div>' + line('GST on fees and course sales', r.gst) + line('Payment and transfer fees', r.payFees) +
+      line("Course authors' share", r.authors);
+    r.running.forEach(function(c){ html += line(c[0], c[1]); });
+    r.oneoff.forEach(function(c){ html += line(c[0], c[1]); });
+    document.getElementById('costList').innerHTML = html + line('Left over', r.net, 'tot');
+    drawBE(r);
+  }
+  sync();
+
+  // ---------- ways to earn ----------
+  var EARN = [
+    ['Now', 'Students', 'Free tools', 'Nobody', 'Free', 'The grade predictor, next-point planner, revision timetable maker and results-day guide. They build the trust and the email list that everything else needs.'],
+    ['Now', 'Students and parents', 'Courses', 'Students or parents', '₹1,499 a course', 'GST included, and free for anyone who asks. On sale from April 2027; the pilot is free.'],
+    ['Now', 'Tutors', 'Lesson fee', 'Tutors, out of each lesson', '10% of each lesson', 'Tutors keep 90%. Founding tutors pay nothing until 30 April 2027.'],
+    ['Now', 'Students', 'Small-group clinics', 'Students, to the tutor', '₹300 to 500 each', 'Up to 6 students with one tutor. Cheaper for students, better pay for tutors, the usual 10% fee.'],
+    ['Now', 'Students', 'Hand-me-down exchange', 'Nobody', 'Free', 'Graduates pass textbooks and calculators to juniors. It earns nothing but goodwill, and your batch frees up a whole shelf after 13 November.'],
+    ['Now', 'Sponsors', 'Free-places fund', 'Local businesses, alumni, parents', '₹75,000 for 50 places', 'Pays for the one-in-five free places. Named publicly, nothing else attached.'],
+    ['Now', 'Competitions', 'Prize money', 'Competition organisers', 'Prize pools up to $100,000', 'Diamond Challenge (concept due 14 January 2027) and Blue Ocean (February 2027). The credibility is worth as much as the cash.'],
+    ['Now', 'Savings', 'Free credits', 'Cloud companies, GitHub', 'Free hosting credit', 'The GitHub Student Developer Pack now, cloud startup programmes once the business is registered.'],
+    ['Next', 'Students', 'Subject bundle', 'Students or parents', '₹3,999 a session', 'Every course you take, for one exam session.'],
+    ['Next', 'Students', 'Holiday bootcamps', 'Students or parents', '₹2,499 for 5 days', 'Live, in December or June, led by the course leads. Small groups, recorded only with consent.'],
+    ['Next', 'Students', 'Mock Days', 'Students or parents', '₹999', 'Sit the predicted papers under exam conditions at a partner school or online, then a group debrief. No per-answer marking.'],
+    ['Next', 'Students', 'DP1 head start', 'Students or parents', '₹999, or free', 'For Grade 10s: how the Diploma works, choosing subjects, study habits. It brings families in a year early.'],
+    ['Next', 'Students', 'Coursework coaching', 'Students or parents, to the coach', '15% of each hour', 'Booked by the hour at the coach\'s own rate, with a hard limit on each piece. Coaches keep 85%; the extra 5% pays for integrity reviews.'],
+    ['Next', 'Students', 'Practice marking', 'Students, inside a course', 'Part of ₹1,499', 'The Marker marks answers to our own practice questions and predicted papers, against our own markschemes.'],
+    ['Next', 'Parents and alumni', 'Gift a place', 'Whoever gifts it', '₹1,499', "Buy a course for a student who can't afford one."],
+    ['Next', 'Schools', 'School plan', 'Schools', '₹1,500 per DP student a year', 'Plus GST, minimum ₹30,000. Every course for every DP student and a tutor list the school can trust. First season free. For comparison, InThinking charges schools about $285 a subject a year.'],
+    ['Next', 'Schools', 'Predicted mock papers', 'Schools', '₹40,000 a mock season', "Original papers with markschemes, printed with the school's name for its own mocks."],
+    ['Next', 'Schools', 'Parent evenings', 'Schools', 'Free for partners, ₹10,000 otherwise', 'How the Diploma works, for families choosing it. It helps schools fill their DP classes.'],
+    ['Next', 'Coaching centres', 'Course licence', 'Coaching centres and tutors', '₹12,000 a course a session', 'Use FortyFive courses with their own students, under the same rules.'],
+    ['Next', 'Sponsors', 'Event series', 'Universities, brands', '₹25,000 to 50,000', 'A season of results-day help, Mock Days or university Q&As.'],
+    ['Next', 'International', 'Gulf', 'Students, parents and schools', '$29 a course', 'The same products in dollars, and Indian IB graduates tutoring from a time zone 1.5 to 2.5 hours ahead.'],
+    ['Next', 'International', 'November-session schools', 'Students and schools', 'Same prices', 'In India and abroad: predicted November mocks and courses timed for November.'],
+    ['Later', 'Schools', 'Teacher workshops', 'Schools', '₹15,000 to 25,000 a school', 'Run by experienced IB teachers in the network, and clearly not official IB workshops.'],
+    ['Later', 'Schools', 'Results insights', 'Schools', 'Part of the school plan', "Predicted against actual grades and boundary analysis, with the school's consent and careful privacy."],
+    ['Later', 'Tutors', 'Tutor training', 'Outside tutors', '₹999', 'How IB marking works, safeguarding and integrity. Free for FortyFive tutors.'],
+    ['Later', 'Students', 'Coursework check', 'Students or parents', '₹499 a piece', 'Two Marker checks on one IA, EE or TOK piece: a draft, then the final. Free for anyone who asks. Opens subject by subject once its accuracy is proven and published.'],
+    ['Later', 'Schools', 'Teacher mode', 'Schools', 'Part of the school plan', 'A first pass with the Marker on a class set of drafts, so teachers write their one round of feedback faster and mark consistently.'],
+    ['Later', 'Sponsors', 'Founding sponsor', 'A larger company', '₹2 lakh a year', 'Named across the free tools and the open-books report.'],
+    ['Later', 'Non-profit', 'CSR funding', 'Companies, through a non-profit', 'Varies', 'Needs a Section 8 company, trust or society with 12A and 80G, a three-year track record and CSR-1 registration.'],
+    ['Later', 'International', 'School groups', 'School groups', 'Group school plans', 'One agreement across several campuses and countries.'],
+    ['Later', 'International', 'Asia, Africa, Oceania', 'Students, parents and schools', 'Local prices', 'Singapore, Malaysia, Indonesia, Kenya, Australia, New Zealand and more, in the order set out in Plan.'],
+    ['Later', 'Partners', 'Content licensing', 'Other platforms', 'Per licence', 'Original question banks or predicted papers. Never exclusive, never IB material.']
+  ];
+  var NEVER = ['Paid listings, lead fees or tutor memberships.', "Ads aimed at students, tracking students, or selling anyone's data.",
+    'Commissions from universities, agents or counsellors for sending students.', 'Paying people to mark answers one by one. You ruled it out; the Marker does practice marking instead.',
+    'Writing, editing or "polishing" coursework, or selling finished pieces. Coaching is sold by the hour, never by the result, and never as a guaranteed 7.', "IB past papers or anyone else's material, paywalled or not."];
+  (function(){
+    var grid = document.getElementById('earnGrid');
+    var esc = function(s){ return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
+    function draw(stage){
+      grid.innerHTML = EARN.filter(function(e){ return !stage || e[0] === stage; }).map(function(e){
+        return '<div class="card earn"><div class="meta">' + esc(e[1]) + '<span class="stage ' + e[0] + '">' + e[0] + '</span></div><h3>' + esc(e[2]) + '</h3><div class="price">' + esc(e[4]) + '</div><div class="who">Who pays: ' + esc(e[3]) + '</div><p class="small">' + esc(e[5]) + '</p></div>'; }).join('');
+    }
+    document.querySelectorAll('#earnFilter [data-stage]').forEach(function(b){
+      b.addEventListener('click', function(){ document.querySelectorAll('#earnFilter [data-stage]').forEach(function(x){ x.classList.toggle('on', x === b); }); draw(b.dataset.stage); });
+    });
+    draw('');
+    document.getElementById('earnNever').innerHTML = NEVER.map(function(n){ return '<div class="chk"><span class="ic x">&times;</span><div>' + n + '</div></div>'; }).join('');
+  })();
+
+  // ---------- schools (data from schools/schools_data.js) ----------
+  (function(){
+    var SCH = window.FF_SCHOOLS || [], SUM = window.FF_SUMMARY || null;
+    var fmt = function(n){ return Number(n).toLocaleString('en-IN'); };
+    document.querySelectorAll('[data-sum]').forEach(function(el){ if (SUM && SUM[el.dataset.sum] != null) el.textContent = fmt(SUM[el.dataset.sum]); });
+    var io = document.getElementById('intlOrder');
+    if (io && SUM) {
+      io.querySelectorAll('[data-k]').forEach(function(td){ td.textContent = fmt(SUM[td.dataset.k]); });
+      io.querySelectorAll('[data-g]').forEach(function(td){ var g = (SUM.by_group || []).filter(function(x){ return x.group === td.dataset.g; })[0];
+        if (g) td.textContent = fmt(g.dp) + (g.nov ? ' (' + g.nov + ' Nov)' : ''); });
+    }
+    if (!SCH.length || !SUM) { document.getElementById('schTiles').innerHTML = '<div class="card">School data not built yet: run schools/build_schools.py.</div>'; return; }
+    var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); };
+    var fit = function(s){ return (s.lal ? '<span class="tag">L&amp;L</span>' : '') + (s.fr ? '<span class="tag">French</span>' : ''); };
+    var sess = function(s){ return s.session ? (s.session.indexOf('Nov') > -1 ? '<span class="tag nov">' + s.session + '</span>' : s.session) : '<span class="muted">?</span>'; };
+    var tiles = [['Diploma schools in India', SUM.in_dp, 'IB directory, 12 Oct 2026'], ['Tier 1: within 450 km', SUM.in_tier1, 'of Coimbatore; start here'],
+      ['Indian schools sitting November', SUM.in_nov, 'your own session'], ['Schools in 20 more countries', SUM.intl_dp, SUM.intl_nov + ' of them sit November']];
+    document.getElementById('schTiles').innerHTML = tiles.map(function(t){ return '<div class="card tile"><div class="lab">' + t[0] + '</div><div class="val">' + fmt(t[1]) + '</div><div class="note">' + t[2] + '</div></div>'; }).join('');
+    var india = SCH.filter(function(s){ return s.cc === 'IN'; }).sort(function(a, b){ return a.rank - b.rank; });
+    document.getElementById('schTop').innerHTML = '<div class="tbl-wrap"><table class="compact" style="min-width:0"><thead><tr><th>#</th><th>School</th><th>City</th><th>Exams</th><th>Fit</th><th class="num">Km</th></tr></thead><tbody>' +
+      india.slice(0, 15).map(function(s){ return '<tr><td>' + s.rank + '</td><td>' + esc(s.name) + '</td><td>' + esc(s.city) + '</td><td>' + sess(s) + '</td><td>' + fit(s) + '</td><td class="num">' + (s.km == null ? '' : s.km) + '</td></tr>'; }).join('') + '</tbody></table></div>';
+    var nov = SCH.filter(function(s){ return s.session && s.session.indexOf('Nov') > -1; })
+      .sort(function(a, b){ return (a.cc === 'IN' ? 0 : 1) - (b.cc === 'IN' ? 0 : 1) || b.score - a.score; });
+    var novC = {}; nov.forEach(function(s){ novC[s.country] = (novC[s.country] || 0) + 1; });
+    document.getElementById('schNov').innerHTML = '<p style="margin-bottom:8px">' + Object.keys(novC).sort(function(a, b){ return novC[b] - novC[a]; })
+      .map(function(c){ return '<span class="tag nov">' + esc(c) + ' ' + novC[c] + '</span>'; }).join(' ') + '</p>' +
+      '<div class="tbl-wrap"><table class="compact" style="min-width:0"><thead><tr><th>School</th><th>City</th><th>Country</th><th>Fit</th></tr></thead><tbody>' +
+      nov.slice(0, 15).map(function(s){ return '<tr><td>' + esc(s.name) + '</td><td>' + esc(s.city) + '</td><td>' + esc(s.country) + '</td><td>' + fit(s) + '</td></tr>'; }).join('') + '</tbody></table></div>' +
+      (nov.length > 15 ? '<p class="small muted" style="margin-top:6px">' + (nov.length - 15) + ' more in the table below: set Exams to November.</p>' : '');
+    // schools by country: one series, India emphasised
+    var bc = SUM.by_country, cmax = niceMax(Math.max(1, bc[0].dp)), ch = '';
+    bc.forEach(function(c){ var ours = c.cc === 'IN';
+      ch += '<div class="brow"><div class="bl">' + (ours ? '<b style="color:var(--ink)">' + c.name + '</b>' : c.name) + '</div><div class="track"><div class="bar" style="width:' + (c.dp / cmax * 100).toFixed(2) + '%">' +
+        '<div class="seg" style="flex:1;background:' + (ours ? 'var(--s1)' : 'var(--emph-muted)') + '"></div></div><span class="bval">' + c.dp + (c.nov ? ' (' + c.nov + ')' : '') + '</span></div></div>'; });
+    var n = tickN(cmax), tk = []; for (var i = 0; i <= n; i++) tk.push('<span style="left:' + (i * 100 / n) + '%">' + Math.round(cmax * i / n) + '</span>');
+    var cEl = document.getElementById('schCountry');
+    cEl.innerHTML = ch + '<div class="axis"><span></span><div class="ticks">' + tk.join('') + '</div></div>';
+    cEl.querySelectorAll('.seg').forEach(function(sg, k){ var c = bc[k]; bindTip(sg, '<b>' + c.name + '</b><br>' + c.dp + ' Diploma schools<br>' + c.nov + ' sit the November session'); });
+    document.getElementById('schCountryTable').innerHTML = '<div class="tbl-wrap"><table><thead><tr><th>Country</th><th class="num">Diploma schools</th><th class="num">November session</th></tr></thead><tbody>' +
+      bc.map(function(c){ return '<tr><td>' + c.name + '</td><td class="num">' + c.dp + '</td><td class="num">' + c.nov + '</td></tr>'; }).join('') + '</tbody></table></div>';
+    document.getElementById('schChains').innerHTML = '<ul>' + (SUM.chains || []).slice(0, 10).map(function(c){ return '<li><b>' + esc(c.brand) + '</b>: ' + c.n + ' schools (' + esc(c.countries.join(', ')) + ')</li>'; }).join('') + '</ul>';
+    // the full list
+    var mk = document.getElementById('schMarket');
+    (SUM.by_group || []).forEach(function(g){ var o = document.createElement('option'); o.value = g.group; o.textContent = g.group + ' (' + g.dp + ')'; mk.appendChild(o); });
+    var shown = 50;
+    function draw(){
+      var q = document.getElementById('schQ').value.trim().toLowerCase(), m = mk.value, se = document.getElementById('schSess').value, p = document.getElementById('schPri').value;
+      var rows = SCH.filter(function(s){ return (!q || (s.name + ' ' + s.city + ' ' + s.country).toLowerCase().indexOf(q) > -1) && (!m || s.group === m) &&
+        (!se || (s.session || '').indexOf(se) > -1) && (!p || s.priority === p); });
+      rows.sort(function(a, b){ return (a.cc === 'IN' ? 0 : 1) - (b.cc === 'IN' ? 0 : 1) || a.rank - b.rank; });
+      set('schCount', rows.length + ' of ' + SCH.length + ' schools');
+      document.querySelector('#schTable tbody').innerHTML = rows.slice(0, shown).map(function(s){
+        return '<tr><td><span class="pri ' + s.priority + '">' + s.priority + '</span></td><td>' + (s.website ? '<a href="' + esc(s.website) + '" target="_blank" rel="noopener">' + esc(s.name) + '</a>' : esc(s.name)) +
+          '</td><td>' + esc(s.city) + '</td><td>' + esc(s.country) + '</td><td>' + sess(s) + '</td><td>' + fit(s) + '</td><td class="num">' + (s.cc === 'IN' && s.km != null ? s.km : '') +
+          '</td><td><a href="' + esc(s.ib_page) + '" target="_blank" rel="noopener">IB</a></td></tr>'; }).join('');
+      document.getElementById('schMore').hidden = rows.length <= shown;
+    }
+    ['schQ', 'schSess', 'schPri', 'schMarket'].forEach(function(id){ document.getElementById(id).addEventListener('input', function(){ shown = 50; draw(); }); });
+    document.getElementById('schMore').addEventListener('click', function(){ shown += 50; draw(); });
+    draw();
+  })();
+
+  // ---------- table toggles and copy buttons ----------
+  document.querySelectorAll('[data-table]').forEach(function(b){
+    b.addEventListener('click', function(){ var t = document.getElementById(b.dataset.table); t.hidden = !t.hidden; b.textContent = t.hidden ? 'Show as table' : 'Hide table'; });
+  });
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click', function(){ var t = document.getElementById(b.dataset.copy).innerText;
+      var done = function(){ b.textContent = 'Copied'; setTimeout(function(){ b.textContent = 'Copy'; }, 1500); };
+      if (navigator.clipboard) navigator.clipboard.writeText(t).then(done, function(){}); });
+  });
+
+  // ---------- start ----------
+  var start = (location.hash || '').slice(1) || store('ff-tab') || 'pitch';
+  if (!document.getElementById(start)) start = 'pitch';
+  show(start, false);
+})();
+</script>
+</body>
+</html>

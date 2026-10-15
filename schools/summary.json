@@ -1,0 +1,574 @@
+{
+ "in_dp": 196,
+ "in_nov": 3,
+ "intl_dp": 433,
+ "intl_nov": 109,
+ "fetched": 629,
+ "total": 629,
+ "in_tier1": 31,
+ "in_tier2": 44,
+ "in_tier3": 121,
+ "in_lal": 172,
+ "in_french": 149,
+ "by_country": [
+  {
+   "cc": "IN",
+   "name": "India",
+   "dp": 196,
+   "nov": 3
+  },
+  {
+   "cc": "AU",
+   "name": "Australia",
+   "dp": 82,
+   "nov": 80
+  },
+  {
+   "cc": "ID",
+   "name": "Indonesia",
+   "dp": 57,
+   "nov": 2
+  },
+  {
+   "cc": "AE",
+   "name": "UAE",
+   "dp": 56,
+   "nov": 0
+  },
+  {
+   "cc": "HK",
+   "name": "Hong Kong",
+   "dp": 38,
+   "nov": 1
+  },
+  {
+   "cc": "TH",
+   "name": "Thailand",
+   "dp": 33,
+   "nov": 0
+  },
+  {
+   "cc": "SG",
+   "name": "Singapore",
+   "dp": 30,
+   "nov": 10
+  },
+  {
+   "cc": "SA",
+   "name": "Saudi Arabia",
+   "dp": 27,
+   "nov": 0
+  },
+  {
+   "cc": "QA",
+   "name": "Qatar",
+   "dp": 17,
+   "nov": 0
+  },
+  {
+   "cc": "BH",
+   "name": "Bahrain",
+   "dp": 15,
+   "nov": 0
+  },
+  {
+   "cc": "KE",
+   "name": "Kenya",
+   "dp": 15,
+   "nov": 1
+  },
+  {
+   "cc": "MY",
+   "name": "Malaysia",
+   "dp": 14,
+   "nov": 2
+  },
+  {
+   "cc": "NZ",
+   "name": "New Zealand",
+   "dp": 11,
+   "nov": 11
+  },
+  {
+   "cc": "OM",
+   "name": "Oman",
+   "dp": 9,
+   "nov": 0
+  },
+  {
+   "cc": "BD",
+   "name": "Bangladesh",
+   "dp": 8,
+   "nov": 0
+  },
+  {
+   "cc": "UG",
+   "name": "Uganda",
+   "dp": 6,
+   "nov": 0
+  },
+  {
+   "cc": "TZ",
+   "name": "Tanzania",
+   "dp": 5,
+   "nov": 0
+  },
+  {
+   "cc": "KW",
+   "name": "Kuwait",
+   "dp": 3,
+   "nov": 0
+  },
+  {
+   "cc": "NP",
+   "name": "Nepal",
+   "dp": 3,
+   "nov": 0
+  },
+  {
+   "cc": "ZA",
+   "name": "South Africa",
+   "dp": 3,
+   "nov": 2
+  },
+  {
+   "cc": "LK",
+   "name": "Sri Lanka",
+   "dp": 1,
+   "nov": 0
+  }
+ ],
+ "by_group": [
+  {
+   "group": "India",
+   "dp": 196,
+   "nov": 3
+  },
+  {
+   "group": "Gulf",
+   "dp": 127,
+   "nov": 0
+  },
+  {
+   "group": "South Asia",
+   "dp": 12,
+   "nov": 0
+  },
+  {
+   "group": "South-east and east Asia",
+   "dp": 172,
+   "nov": 15
+  },
+  {
+   "group": "Africa",
+   "dp": 29,
+   "nov": 3
+  },
+  {
+   "group": "Oceania",
+   "dp": 93,
+   "nov": 91
+  }
+ ],
+ "in_cities": [
+  [
+   "Mumbai",
+   38
+  ],
+  [
+   "Bengaluru",
+   29
+  ],
+  [
+   "Hyderabad",
+   15
+  ],
+  [
+   "Chennai",
+   14
+  ],
+  [
+   "Gurugram",
+   13
+  ],
+  [
+   "Pune",
+   12
+  ],
+  [
+   "Noida",
+   8
+  ],
+  [
+   "Delhi",
+   5
+  ],
+  [
+   "Ahmedabad",
+   5
+  ],
+  [
+   "Coimbatore",
+   4
+  ],
+  [
+   "Jaipur",
+   4
+  ],
+  [
+   "Kolkata",
+   4
+  ],
+  [
+   "Faridabad",
+   3
+  ],
+  [
+   "Kochi",
+   3
+  ],
+  [
+   "Thane",
+   2
+  ],
+  [
+   "Navi Mumbai",
+   2
+  ],
+  [
+   "Mussoorie",
+   2
+  ],
+  [
+   "Vadodara",
+   2
+  ],
+  [
+   "Kozhikode",
+   2
+  ],
+  [
+   "Madurai",
+   2
+  ]
+ ],
+ "chains": [
+  {
+   "brand": "Gems",
+   "n": 8,
+   "countries": [
+    "UAE"
+   ],
+   "schools": [
+    "GEMS AlKhaleej International School",
+    "GEMS American Academy - Abu Dhabi",
+    "GEMS International School - Al Khail",
+    "GEMS Modern Academy",
+    "GEMS Wellington Academy - Silicon Oasis",
+    "GEMS Wellington International School",
+    "GEMS World Academy - Dubai",
+    "GEMS World Academy Abu Dhabi"
+   ]
+  },
+  {
+   "brand": "Aga Khan",
+   "n": 6,
+   "countries": [
+    "Bangladesh",
+    "India",
+    "Kenya",
+    "Tanzania",
+    "Uganda"
+   ],
+   "schools": [
+    "The Aga Khan Academy Hyderabad",
+    "The Aga Khan Academy Dhaka",
+    "Aga Khan Academy, Nairobi",
+    "The Aga Khan Academy Mombasa",
+    "Aga Khan School, Dar-es-Salaam",
+    "Aga Khan High School, Kampala"
+   ]
+  },
+  {
+   "brand": "Oakridge",
+   "n": 5,
+   "countries": [
+    "India"
+   ],
+   "schools": [
+    "Oakridge International School",
+    "Oakridge International School",
+    "Oakridge International School, Bengaluru",
+    "Oakridge International School, Mohali",
+    "Oakridge International School, Visakhapatnam"
+   ]
+  },
+  {
+   "brand": "Delhi",
+   "n": 4,
+   "countries": [
+    "India"
+   ],
+   "schools": [
+    "Delhi Public School Bangalore East",
+    "Delhi Public School Ghaziabad",
+    "Delhi Public School R. K. Puram",
+    "The British School New Delhi"
+   ]
+  },
+  {
+   "brand": "Pelita",
+   "n": 4,
+   "countries": [
+    "Indonesia"
+   ],
+   "schools": [
+    "Sekolah Pelita Harapan Lippo Cikarang",
+    "Sekolah Pelita Harapan Sentul City",
+    "Sekolah Pelita Harapan, Kemang Village",
+    "Sekolah Pelita Harapan, Lippo Village"
+   ]
+  },
+  {
+   "brand": "Goenka",
+   "n": 3,
+   "countries": [
+    "India"
+   ],
+   "schools": [
+    "C.P Goenka International School, Oshiwara",
+    "GD Goenka World School",
+    "RP Goenka International School"
+   ]
+  },
+  {
+   "brand": "Indus",
+   "n": 3,
+   "countries": [
+    "India"
+   ],
+   "schools": [
+    "Indus International School Pune",
+    "Indus International School, Bangalore",
+    "Indus International School, Hyderabad"
+   ]
+  },
+  {
+   "brand": "Jbcn",
+   "n": 3,
+   "countries": [
+    "India"
+   ],
+   "schools": [
+    "JBCN International School, Chembur",
+    "JBCN International School, Oshiwara",
+    "JBCN International School, Parel"
+   ]
+  },
+  {
+   "brand": "Kunskapsskolan",
+   "n": 3,
+   "countries": [
+    "India"
+   ],
+   "schools": [
+    "Kunskapsskolan Gurgaon",
+    "Kunskapsskolan International School",
+    "Kunskapsskolan Lucknow"
+   ]
+  },
+  {
+   "brand": "Shiv",
+   "n": 3,
+   "countries": [
+    "India"
+   ],
+   "schools": [
+    "Shiv Nadar School Faridabad",
+    "SHIV NADAR SCHOOL GURUGRAM",
+    "Shiv Nadar School Noida"
+   ]
+  },
+  {
+   "brand": "Collegiate",
+   "n": 3,
+   "countries": [
+    "Singapore",
+    "UAE"
+   ],
+   "schools": [
+    "Collegiate International School",
+    "North London Collegiate School Dubai",
+    "North London Collegiate School (Singapore)"
+   ]
+  },
+  {
+   "brand": "Raffles",
+   "n": 3,
+   "countries": [
+    "Malaysia",
+    "Thailand",
+    "UAE"
+   ],
+   "schools": [
+    "Raffles World Academy",
+    "Raffles American School",
+    "Raffles American International School"
+   ]
+  },
+  {
+   "brand": "Internationale",
+   "n": 3,
+   "countries": [
+    "Qatar",
+    "Saudi Arabia"
+   ],
+   "schools": [
+    "Deutsche Internationale Schule Doha",
+    "Deutsche Internationale Schule Jeddah",
+    "Deutsche Internationale Schule Riad"
+   ]
+  },
+  {
+   "brand": "Dhaka",
+   "n": 3,
+   "countries": [
+    "Bangladesh"
+   ],
+   "schools": [
+    "American International School Dhaka",
+    "AUSTRALIAN INTERNATIONAL SCHOOL DHAKA",
+    "International School Dhaka"
+   ]
+  },
+  {
+   "brand": "Independent",
+   "n": 3,
+   "countries": [
+    "Hong Kong",
+    "Indonesia"
+   ],
+   "schools": [
+    "Australian Independent School Indonesia (Jakarta Campus)",
+    "Australian Independent School, Indonesia (Bali)",
+    "The Independent Schools Foundation Academy Limited"
+   ]
+  },
+  {
+   "brand": "Cita",
+   "n": 3,
+   "countries": [
+    "Indonesia"
+   ],
+   "schools": [
+    "Cita Hati Christian School",
+    "Cita Hati Christian School - West Campus",
+    "Cita Hati Christian Senior School - Samarinda Campus"
+   ]
+  },
+  {
+   "brand": "Intercultural",
+   "n": 3,
+   "countries": [
+    "Indonesia"
+   ],
+   "schools": [
+    "Jakarta Intercultural School",
+    "North Jakarta Intercultural School",
+    "Singapore Intercultural School South Jakarta"
+   ]
+  },
+  {
+   "brand": "Andrews",
+   "n": 3,
+   "countries": [
+    "Thailand"
+   ],
+   "schools": [
+    "St Andrews International School, Bangkok",
+    "St. Andrews International School, Bangna",
+    "St. Andrews International School, Green Valley, Rayong"
+   ]
+  },
+  {
+   "brand": "Island",
+   "n": 3,
+   "countries": [
+    "Hong Kong"
+   ],
+   "schools": [
+    "Island School",
+    "South Island School",
+    "West Island School"
+   ]
+  },
+  {
+   "brand": "Sydney",
+   "n": 3,
+   "countries": [
+    "Australia"
+   ],
+   "schools": [
+    "Australian International Academy, Sydney, Strathfield Campus",
+    "German International School Sydney (GISS)",
+    "Sydney Montessori School"
+   ]
+  },
+  {
+   "brand": "Chennai",
+   "n": 2,
+   "countries": [
+    "India"
+   ],
+   "schools": [
+    "American International School-Chennai",
+    "The Indian Public School - Chennai"
+   ]
+  },
+  {
+   "brand": "Bombay",
+   "n": 2,
+   "countries": [
+    "India"
+   ],
+   "schools": [
+    "American School of Bombay",
+    "Bombay International School"
+   ]
+  },
+  {
+   "brand": "Amity",
+   "n": 2,
+   "countries": [
+    "India"
+   ],
+   "schools": [
+    "Amity Global School",
+    "Amity Global School, Noida"
+   ]
+  },
+  {
+   "brand": "Bangalore",
+   "n": 2,
+   "countries": [
+    "India"
+   ],
+   "schools": [
+    "Bangalore International School",
+    "The International School Bangalore"
+   ]
+  },
+  {
+   "brand": "Universal",
+   "n": 2,
+   "countries": [
+    "India",
+    "UAE"
+   ],
+   "schools": [
+    "The Universal School",
+    "The Universal American School - Dubai"
+   ]
+  }
+ ]
+}

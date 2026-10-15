@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FortyFive Pitch Deck</title>
+<!-- Built by build_deck.py: fonts are embedded and %%TOKENS%% are filled from the school data. Edit this template, not deck.html. -->
+<style>
+%%FONTS%%
+:root{
+  --ink:#121211; --ink2:#4a4945; --muted:#7a7873; --rule:#dcdad2; --wash:#f4f3ef; --paper:#fffffe;
+  --blue:#2a78d6; --blue-wash:#e9f1fb; --orange:#eb6834; --grey-bar:#c9c7bf; --red:#b42a2a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:#8d8b85;font-family:"LM Roman","Times New Roman",serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#deck{padding:24px 0}
+.slide{width:1280px;height:720px;margin:0 auto 24px;background:var(--paper);position:relative;overflow:hidden;padding:54px 72px 78px;box-shadow:0 6px 30px rgba(0,0,0,.25);display:flex;flex-direction:column}
+/* centre the content block between the title and the footer */
+.slide > h2{margin-bottom:26px}
+.slide > h2 + *{margin-top:auto !important}
+.slide > *:nth-last-child(2){margin-bottom:auto !important}
+@page{size:1280px 720px;margin:0}
+@media print{
+  body{background:#fff} #deck{padding:0;zoom:1 !important}
+  .slide{margin:0;box-shadow:none;break-after:page;page-break-after:always}
+  .slide:last-child{break-after:auto;page-break-after:auto}
+}
+.kicker{font-family:"LM Roman Caps","LM Roman",serif;font-size:19px;letter-spacing:.09em;color:var(--blue);margin:0 0 10px}
+h1,h2{font-family:"LM Roman Display","LM Roman",serif;font-weight:400;margin:0;letter-spacing:-.2px}
+h2{font-size:52px;line-height:1.1;max-width:1100px}
+h3{font-family:"LM Roman",serif;font-weight:700;font-size:26px;margin:0 0 10px;line-height:1.2}
+p{margin:0}
+.lead{font-size:26px;line-height:1.42;color:var(--ink2);max-width:1000px;margin-top:16px}
+.body{font-size:22.5px;line-height:1.42;color:var(--ink2)}
+.small{font-size:16.5px;line-height:1.4;color:var(--muted)}
+.foot{position:absolute;left:72px;right:72px;bottom:26px;display:flex;justify-content:space-between;font-size:15px;color:var(--muted);border-top:1px solid var(--rule);padding-top:10px}
+.cols{display:grid;gap:24px;margin-top:34px}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:1fr 1fr 1fr}.c4{grid-template-columns:repeat(4,1fr)}
+.card{border:1px solid var(--rule);border-radius:12px;padding:26px 28px;background:#fff}
+.card.blue{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-wash)}
+.card.wash{background:var(--wash);border-color:transparent}
+.big{font-family:"LM Roman Display","LM Roman",serif;font-size:70px;line-height:1;letter-spacing:-1px;color:var(--ink);margin:0 0 14px}
+.big.blue{color:var(--blue)}
+.num{font-variant-numeric:tabular-nums}
+ul.clean{list-style:none;margin:0;padding:0}
+ul.clean li{font-size:23px;line-height:1.4;color:var(--ink2);padding:11px 0;border-bottom:1px solid var(--rule)}
+ul.clean li:last-child{border-bottom:0}
+ul.clean li b{color:var(--ink)}
+.tick{display:inline-block;width:22px;color:var(--blue);font-weight:700}
+.cross{display:inline-block;width:22px;color:var(--red);font-weight:700}
+/* receipt */
+.rline{display:flex;justify-content:space-between;font-size:23px;padding:10px 0;border-bottom:1px solid var(--rule);color:var(--ink2)}
+.rline.sub{padding-left:24px;font-size:21px}
+.rline.strong{color:var(--ink);font-weight:700}
+.rline.last{border-bottom:0}
+/* bars */
+.brow{display:grid;grid-template-columns:270px 1fr;gap:18px;align-items:center;margin:11px 0}
+.brow .bl{text-align:right;font-size:21px;color:var(--ink2);line-height:1.2}
+.brow .bl b{color:var(--ink)}
+.track{display:flex;align-items:center;gap:12px}
+.bar{height:30px;border-radius:0 4px 4px 0;min-width:2px}
+.bval{font-size:21px;color:var(--ink);white-space:nowrap}
+/* journey */
+.journey{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:40px}
+.step{border-top:3px solid var(--blue);padding-top:16px}
+.step .n{font-family:"LM Roman Display","LM Roman",serif;font-size:52px;color:var(--blue);line-height:1}
+.step p{font-size:21.5px;line-height:1.4;color:var(--ink2);margin-top:10px}
+.step b{color:var(--ink)}
+/* timeline */
+.tl{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:44px;position:relative}
+.tl:before{content:"";position:absolute;left:0;right:0;top:10px;height:2px;background:var(--rule)}
+.tl .t{position:relative;padding-right:18px}
+.tl .t:before{content:"";display:block;width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--blue);margin-bottom:18px;position:relative}
+.tl .t.now:before{background:var(--blue)}
+.tl .when{font-family:"LM Roman Caps","LM Roman",serif;font-size:19px;letter-spacing:.06em;color:var(--blue)}
+.tl .what{font-size:21px;line-height:1.38;color:var(--ink2);margin-top:8px}
+.tl .what b{color:var(--ink)}
+.legend{display:flex;gap:26px;font-size:18.5px;color:var(--ink2);margin:6px 0 4px}
+.legend i{display:inline-block;width:22px;height:3px;border-radius:2px;margin-right:8px;vertical-align:5px}
+svg text{font-family:"LM Roman","Times New Roman",serif}
+.cover{background:var(--paper)}
+.cover .mark{margin-top:auto}
+.cover .line{margin-bottom:auto}
+.cover .mark{width:64px;height:64px}
+.cover .mark svg{width:64px;height:64px;display:block}
+.cover h1{font-size:110px;line-height:1;margin-top:46px;letter-spacing:-2px}
+.cover .tag{font-family:"LM Roman Display","LM Roman",serif;font-size:40px;color:var(--ink2);margin-top:14px}
+.cover .line{font-size:23px;color:var(--ink2);margin-top:30px;max-width:860px;line-height:1.45}
+.cover .rule{position:absolute;left:0;top:0;bottom:0;width:14px;background:var(--blue)}
+ul.clean.tight li{font-size:20.5px;padding:8px 0}
+.disclaimer{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div id="deck">
+
+<!-- 1 COVER -->
+<section class="slide cover">
+  <div class="rule"></div>
+  <div class="mark">%%MONOGRAM%%</div>
+  <h1>FortyFive</h1>
+  <div class="tag">Mastering the IB Diploma. Nothing else.</div>
+  <p class="line">Courses led by people who scored 7s, checked tutors, coursework coaching inside the IB's rules, and free tools. Only the IB, forever. Starting in India.</p>
+  <div class="foot"><span>Devansh Rathod, founder &middot; devanshtrathod@gmail.com &middot; Pitch, October 2026</span><span class="disclaimer">Not affiliated with or endorsed by the International Baccalaureate Organization.</span></div>
+</section>
+
+<!-- 2 PROBLEM -->
+<section class="slide">
+  <p class="kicker">The problem</p>
+  <h2>The IB is hard. Getting good help is harder.</h2>
+  <div class="cols c3">
+    <div class="card"><div class="big num">&#8377;1k-9.5k</div><p class="body">an hour for IB tutoring in India, and no way to check a tutor's real IB score.</p></div>
+    <div class="card"><div class="big num">18-33%</div><p class="body">of every lesson taken by the big tutor marketplaces. Preply keeps the whole first lesson with each new student.</p></div>
+    <div class="card"><div class="big">6 + 4</div><p class="body">six subjects plus the IA, EE, TOK and CAS, deadlines that land together, and parents who never sat the IB.</p></div>
+  </div>
+  <p class="small" style="margin-top:26px">Tutoring rates: TutorChase and Tutopiya India listings. Marketplace fees: Preply help centre and tutor reports, Wyzant fee page (2026).</p>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 3 MARKET -->
+<section class="slide">
+  <p class="kicker">Who it's for</p>
+  <h2>%%IN_DP%% Diploma schools in India, and a world that sits the IB in November too</h2>
+  <div style="display:grid;grid-template-columns:1fr 1.25fr;gap:44px;margin-top:30px">
+    <ul class="clean">
+      <li><b class="num">~12,500</b> students in the Diploma in India at any time</li>
+      <li><b class="num">6,265</b> DP and CP results in India in May 2026, up 3%</li>
+      <li><b class="num">%%IN_NOV%%</b> Indian Diploma schools sit the November session, like ours</li>
+      <li><b class="num">%%INTL_DP%%</b> Diploma schools in the 20 countries we mapped next, <b class="num">%%INTL_NOV%%</b> of them in November</li>
+    </ul>
+    <div>
+      <p class="small" style="margin-bottom:6px">IB Diploma schools by country, the markets we mapped</p>
+      %%COUNTRY_BARS%%
+    </div>
+  </div>
+  <p class="small" style="margin-top:14px">School counts and exam sessions: IB "Find an IB World School" directory, October 2026. Results: Free Press Journal, IB results 2026.</p>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 4 PRODUCT -->
+<section class="slide">
+  <p class="kicker">What FortyFive is</p>
+  <h2>Three things, one honest platform</h2>
+  <div class="cols c3">
+    <div class="card"><h3>Free tools</h3><p class="body">A grade predictor with official boundaries, a planner that finds your cheapest next point, a revision timetable maker and a results-day guide. Free for everyone, no account needed.</p></div>
+    <div class="card blue"><h3>Courses</h3><p class="body">One paper or one subject from the first lesson to exam day: short videos, protected notes, original practice and a predicted mock. Each led by someone with a verified 7. &#8377;1,499, or free for anyone who asks.</p></div>
+    <div class="card"><h3>Verified tutors</h3><p class="body">IB graduates and teachers, checked, scores verified against IB results. Graduates still 17 need a 7 and a parent's sign-off. Students search or post what they need. Tutors keep 90%, and coach coursework by the IB's rules.</p></div>
+  </div>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- WHY DIFFERENT -->
+<section class="slide">
+  <p class="kicker">Why it's different</p>
+  <h2>We only do the IB, so we can master it.</h2>
+  <div class="cols c3" style="gap:20px">
+    <div class="card blue"><h3>Only the IB, forever</h3><p class="body">Every criterion, every paper since 2020, every boundary, both sessions. Deeper, never wider.</p></div>
+    <div class="card"><h3>Your next point</h3><p class="body">A planner that reads the grade boundaries and shows where your next point is cheapest, and what to skip.</p></div>
+    <div class="card"><h3>Verified 7s</h3><p class="body">Every lead and tutor checked against official results. Graduates come back to teach the next batch.</p></div>
+    <div class="card"><h3>A public scorecard</h3><p class="body">After every session we publish which predictions came up, and which missed.</p></div>
+    <div class="card"><h3>November, first-class</h3><p class="body">Predicted papers and courses for the session most products ignore.</p></div>
+    <div class="card"><h3>Calm, not loud</h3><p class="body">No sales calls, streaks, countdowns or chatbots. Free for anyone who asks.</p></div>
+  </div>
+  <p class="small" style="margin-top:16px">Results figure: IB news release, July 2026.</p>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 5 JOURNEY -->
+<section class="slide">
+  <p class="kicker">How a student uses it</p>
+  <h2>From "I'm stuck" to a better mark, in five steps</h2>
+  <div class="journey">
+    <div class="step"><div class="n">1</div><p><b>A free tool</b> shows Economics Paper 1 is the cheapest place to win her next point.</p></div>
+    <div class="step"><div class="n">2</div><p><b>She takes the course</b> on Paper 1 essays: diagrams, real-world examples, evaluation.</p></div>
+    <div class="step"><div class="n">3</div><p><b>She gets stuck</b> on evaluation and posts a request: two hours a week, up to &#8377;1,000.</p></div>
+    <div class="step"><div class="n">4</div><p><b>A tutor with a verified 7</b> replies with a plan. Her parent books, and can see every message.</p></div>
+    <div class="step"><div class="n">5</div><p><b>After the lesson</b> she leaves a review that only a real student can leave.</p></div>
+  </div>
+  <p class="body" style="margin-top:44px">Courses make the marketplace useful from day one. The marketplace makes the courses worth more.</p>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 6 HONEST -->
+<section class="slide">
+  <p class="kicker">Honest by design</p>
+  <h2>Every rupee accounted for, on every booking</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:30px">
+    <div class="card">
+      <h3>Where &#8377;1,000 of a lesson goes</h3>
+      <div class="rline strong"><span>Student pays</span><span class="num">&#8377;1,000.00</span></div>
+      <div class="rline"><span>Tutor gets (90%)</span><span class="num">&#8377;900.00</span></div>
+      <div class="rline"><span>FortyFive's fee (10%)</span><span class="num">&#8377;100.00</span></div>
+      <div class="rline sub"><span>GST on the fee</span><span class="num">&#8377;15.25</span></div>
+      <div class="rline sub"><span>Razorpay payment and transfer fees</span><span class="num">&#8377;26.26</span></div>
+      <div class="rline strong last"><span>Left for FortyFive</span><span class="num">&#8377;58.49</span></div>
+    </div>
+    <ul class="clean">
+      <li><span class="tick">&check;</span><b>One fee.</b> No membership, no lead fees, no first-lesson grab.</li>
+      <li><span class="tick">&check;</span><b>Every score checked</b> against the official IB results document.</li>
+      <li><span class="tick">&check;</span><b>Reviews only from real lessons.</b> Tutors can't delete them.</li>
+      <li><span class="tick">&check;</span><b>Nobody pays to rank higher.</b> No fake urgency, no grade promises.</li>
+      <li><span class="tick">&check;</span><b>Open books</b> every quarter: what came in, what tutors earned, what it all cost.</li>
+    </ul>
+  </div>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 7 SAFE -->
+<section class="slide">
+  <p class="kicker">Safe by design</p>
+  <h2>Teaching teenagers online: the rules come first</h2>
+  <div class="cols c3" style="margin-top:30px">
+    <div class="card"><h3>Under-18 tutors</h3><p class="body">Graduates still 17 need a verified 7 and a parent who co-signs and sees their lessons too.</p></div>
+    <div class="card"><h3>Checked</h3><p class="body">ID and background check, verified IB results, a teacher's reference and a demo lesson.</p></div>
+    <div class="card"><h3>On the platform</h3><p class="body">Lessons and chat stay on FortyFive. Phone numbers and social handles are hidden.</p></div>
+    <div class="card"><h3>Parents see everything</h3><p class="body">Every booking and message, and they can join any lesson. Lessons 7 am to 9 pm only.</p></div>
+    <div class="card"><h3>A named adult lead</h3><p class="body">A report button everywhere. Concerns go straight to the police, as POCSO requires.</p></div>
+    <div class="card"><h3>Coursework, by the rules</h3><p class="body">Coaches teach and never write or edit anyone's IA, EE or TOK. Every session is logged.</p></div>
+  </div>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- COURSEWORK -->
+<section class="slide">
+  <p class="kicker">Coursework, done honestly</p>
+  <h2>Coursework help, inside the IB's rules</h2>
+  <div class="cols c2" style="margin-top:22px">
+    <div class="card blue"><h3>Coaching, by the hour</h3><ul class="clean tight">
+      <li><span class="tick">&check;</span>Coaches teach the skills and ask the questions. They <b>never write, edit or mark up</b> the work.</li>
+      <li><span class="tick">&check;</span>A hard limit on each piece: 4 hours for an IA, 6 for the EE.</li>
+      <li><span class="tick">&check;</span>Every session recorded, with a help log for the supervisor.</li>
+      <li><span class="tick">&check;</span>Coaches keep 85%. The extra 5% pays for integrity reviews.</li>
+    </ul></div>
+    <div class="card"><h3>The Marker: an AI that writes nothing</h3><ul class="clean tight">
+      <li><span class="tick">&check;</span>A band and its evidence for every criterion, and questions to ask yourself.</li>
+      <li><span class="tick">&check;</span>Two checks a piece for &#8377;499, free if you ask. Files deleted in 48 hours.</li>
+      <li><span class="tick">&check;</span>No chat, no rewritten text, no grade promises.</li>
+      <li><span class="tick">&check;</span><b>Accuracy against real IB marks, published</b> for every subject.</li>
+    </ul></div>
+  </div>
+  <p class="small" style="margin-top:16px">The IB treats help beyond its subject guidelines, and work produced even partly by AI, as not the student's own (Academic integrity policy, Appendix 6).</p>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 8 BUILT -->
+<section class="slide">
+  <p class="kicker">What's already built</p>
+  <h2>Built for my own November 2026 exams</h2>
+  <div class="cols c4">
+    <div class="card"><div class="big blue num">2020-26</div><p class="body">Every paper since 2020, in six subjects, mined for patterns.</p></div>
+    <div class="card"><div class="big blue num">16</div><p class="body">predicted papers with sealed markschemes, written from scratch.</p></div>
+    <div class="card"><div class="big blue num">~600</div><p class="body">pages of original toolkits: formulas, formats, model answers.</p></div>
+    <div class="card"><div class="big blue">1</div><p class="body">free grade predictor using official boundaries, May 2019 to Nov 2025.</p></div>
+  </div>
+  <p class="body" style="margin-top:36px">The machine matters more than the files: pattern mining, a predicted-paper builder with an originality check, and a print-quality build system. New subjects and new sessions reuse it.</p>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 9 MODEL -->
+<section class="slide">
+  <p class="kicker">How it pays its way</p>
+  <h2>Four sources of income, none of them hidden</h2>
+  <div class="cols c4">
+    <div class="card blue"><h3>Courses</h3><div class="big num" style="font-size:44px">&#8377;1,499</div><p class="body">per course, GST included. One in five places given free to anyone who asks.</p></div>
+    <div class="card"><h3>Lessons</h3><div class="big num" style="font-size:44px">10%</div><p class="body">of each lesson, so tutors keep 90%. Coursework coaching: 15%.</p></div>
+    <div class="card"><h3>Schools</h3><div class="big num" style="font-size:44px">&#8377;1,500</div><p class="body">per DP student a year, plus GST. The first season is a free pilot.</p></div>
+    <div class="card"><h3>Sponsors</h3><div class="big num" style="font-size:44px">&#8377;75k</div><p class="body">funds 50 free course places, named publicly, with no student data shared.</p></div>
+  </div>
+  <p class="body" style="margin-top:30px"><span class="cross">&times;</span>Never: paid listings, lead fees, ads aimed at students, selling data, or commissions from universities and agents.</p>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 10 NUMBERS -->
+<section class="slide">
+  <p class="kicker">The numbers</p>
+  <h2>A passion project that has to pay its own bills</h2>
+  <div style="display:grid;grid-template-columns:1.35fr 1fr;gap:44px;margin-top:22px">
+    <div>
+      <div class="legend"><span><i style="background:var(--blue)"></i>Income a month (lesson fees and courses, after GST and fees)</span></div>
+      <div class="legend" style="margin-top:0"><span><i style="background:var(--orange)"></i>Running costs a month</span></div>
+      %%BE_SVG%%
+    </div>
+    <ul class="clean" style="margin-top:10px">
+      <li><b class="num">76 lesson hours</b> a month and FortyFive covers its running costs. The base case has 120.</li>
+      <li><b class="num">&#8377;10.4 lakh</b> earned by tutors in year one, base case.</li>
+      <li><b class="num">&#8377;31.7k short</b> in year one, and &#8377;35k of that is one-off set-up (lawyer, recording kit).</li>
+      <li><b class="num">&#8377;5-8k</b> a month to run the platform once it's live.</li>
+    </ul>
+  </div>
+  <p class="small" style="margin-top:12px">Base case: 15 tutors teaching 8 hours a month at &#8377;1,200, 120 course places. Includes 18% GST, Razorpay fees, checks, hosting and a CA.</p>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 11 TUTOR KEEPS -->
+<section class="slide">
+  <p class="kicker">Against the alternatives</p>
+  <h2>What a tutor keeps from a &#8377;1,000 lesson</h2>
+  <div style="margin-top:34px;max-width:1000px">
+    %%KEEP_BARS%%
+  </div>
+  <p class="small" style="margin-top:22px">Superprof also charges students a monthly pass to message tutors; Wyzant adds a 9% service fee. Preply's 18% tier after 400 hours is reported by tutors. Sources: Preply help centre, Pensight, Wyzant and Superprof pages (2026).</p>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 12 SCHOOLS -->
+<section class="slide">
+  <p class="kicker">For schools</p>
+  <h2>A free pilot first. A fair price after.</h2>
+  <div class="cols c2" style="margin-top:30px">
+    <div class="card blue"><h3>What your school gets</h3><ul class="clean">
+      <li><span class="tick">&check;</span>Every FortyFive course for every DP student</li>
+      <li><span class="tick">&check;</span>A list of checked tutors you can point parents to</li>
+      <li><span class="tick">&check;</span>Predicted mock papers for your own mocks (optional, &#8377;40,000 a season)</li>
+      <li><span class="tick">&check;</span>Parent evenings on how the Diploma works</li>
+    </ul></div>
+    <div class="card"><h3>How it works</h3><ul class="clean">
+      <li><b>February to March 2027:</b> free pilot for your DP1s before their end-of-year exams</li>
+      <li><b>Then:</b> &#8377;1,500 per DP student a year, plus GST, minimum &#8377;30,000</li>
+      <li><b>Never:</b> anyone writing or editing coursework, IB past-paper material, or student data used for anything else</li>
+    </ul></div>
+  </div>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 13 PARTNERS -->
+<section class="slide">
+  <p class="kicker">For partners and sponsors</p>
+  <h2>Fund the free places. Your name goes on them, nothing else.</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:30px">
+    <ul class="clean">
+      <li><b class="num">&#8377;75,000</b> funds 50 free course places for a term</li>
+      <li><b class="num">&#8377;25-50k</b> sponsors a series: results-day help, Mock Days, university Q&amp;As</li>
+      <li><b>CAS board:</b> real volunteering places with NGOs that have child-protection policies</li>
+      <li><b>Universities:</b> free admissions webinars for students and parents</li>
+    </ul>
+    <div class="card wash"><h3>The rules every sponsor signs</h3><ul class="clean">
+      <li>Named publicly on the open-books page</li>
+      <li>No student data, no tracking, no targeting</li>
+      <li>No say over courses, tutors or rankings</li>
+      <li>No agents or counsellors paid per student</li>
+    </ul></div>
+  </div>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 14 PLAN -->
+<section class="slide">
+  <p class="kicker">The plan</p>
+  <h2>Start free, earn trust, then grow</h2>
+  <div class="tl">
+    <div class="t now"><div class="when">Nov-Dec 2026</div><div class="what"><b>Free tools</b> and a results-day guide for 16 December</div></div>
+    <div class="t"><div class="when">Jan 2027</div><div class="what"><b>10 founding tutors</b> across the 8 biggest subjects, checked and verified</div></div>
+    <div class="t"><div class="when">Feb-Mar 2027</div><div class="what"><b>Free pilot</b> of two courses in partner schools</div></div>
+    <div class="t"><div class="when">Apr 2027</div><div class="what"><b>Open across India:</b> paid courses, lessons, coursework coaching</div></div>
+    <div class="t"><div class="when">2027-28</div><div class="what"><b>School plans</b>, more subjects, the Gulf and November-session schools</div></div>
+    <div class="t"><div class="when">2028 on</div><div class="what"><b>Asia, Africa, Oceania;</b> a non-profit arm for free places</div></div>
+  </div>
+  <p class="body" style="margin-top:44px">It is built to keep running after I leave for university: campus leads, subject leads, and written playbooks for every job.</p>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 15 TEAM -->
+<section class="slide">
+  <p class="kicker">Who's behind it</p>
+  <h2>A student who built the tools he needed, with adults where it counts</h2>
+  <div class="cols c3" style="margin-top:30px">
+    <div class="card blue"><h3>Devansh Rathod</h3><p class="body">Founder. IB Diploma student, November 2026 session. Built the pattern analysis, predicted-paper pipeline and grade predictor. Runs community operations for Atomik, a creator-marketing company.</p></div>
+    <div class="card"><h3>[Parent's name]</h3><p class="body">Director of the registered business and the named safeguarding lead. Signs contracts and handles payments.</p></div>
+    <div class="card"><h3>Course leads and advisers</h3><p class="body">2026 graduates with verified 7s, recruited from results day on 16 December, plus an IB teacher, a CA and a lawyer as advisers.</p></div>
+  </div>
+  <div class="foot"><span>FortyFive</span><span>%%N%%</span></div>
+</section>
+
+<!-- 16 ASK -->
+<section class="slide">
+  <p class="kicker">The ask</p>
+  <h2>Three ways to help, starting now</h2>
+  <div class="cols c3">
+    <div class="card blue"><h3>Schools</h3><p class="body">Let us run a free pilot for your DP1s in February and March 2027. Fifteen minutes to see it.</p></div>
+    <div class="card"><h3>Sponsors</h3><p class="body">Fund 50 free course places for &#8377;75,000, named publicly, with nothing else attached.</p></div>
+    <div class="card"><h3>IB graduates</h3><p class="body">Got a 7? Lead a course for 70% of what it earns, or tutor and keep 90%.</p></div>
+  </div>
+  <p class="lead" style="margin-top:40px">devanshtrathod@gmail.com</p>
+  <div class="foot"><span>FortyFive &middot; Pitch, October 2026</span><span class="disclaimer">Not affiliated with or endorsed by the International Baccalaureate Organization.</span></div>
+</section>
+
+</div>
+<script>
+(function(){
+  function fit(){ var d = document.getElementById('deck'); var s = Math.min(1, (window.innerWidth - 32) / 1280); d.style.zoom = s; }
+  if (!window.matchMedia('print').matches) { fit(); window.addEventListener('resize', fit); }
+})();
+</script>
+</body>
+</html>
